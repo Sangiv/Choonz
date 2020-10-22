@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Track {
 
@@ -27,6 +30,8 @@ public class Track {
     private Album album;
 
     @ManyToOne
+//    @JsonIgnoreProperties("playlist")
+    @JsonBackReference
     private Playlist playlist;
 
     // in seconds
