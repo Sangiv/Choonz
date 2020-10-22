@@ -49,6 +49,11 @@ public class Track {
         this.duration = duration;
         this.lyrics = lyrics;
     }
+    
+    public Track(@NotNull @Size(max = 100) String name) {
+        super();
+        this.name = name;
+    }
 
     public long getId() {
         return id;
