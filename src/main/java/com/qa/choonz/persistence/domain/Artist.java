@@ -14,8 +14,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreProperties(value = { "albums" })
 public class Artist {
 
     @Id
@@ -28,7 +30,7 @@ public class Artist {
     private String name;
 
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("id")
+    @JsonManagedReference(value = "artist")
     private List<Album> albums;
 
     public Artist() {
