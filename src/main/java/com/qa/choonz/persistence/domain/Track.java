@@ -11,12 +11,15 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 100)
@@ -24,9 +27,13 @@ public class Track {
     private String name;
 
     @ManyToOne
+    @JsonBackReference(value = "album")
     private Album album;
 
     @ManyToOne
+//    @JsonIgnoreProperties("playlist")
+    @JsonBackReference(value = "playlist")
+    @JsonIgnoreProperties(value = { "playlist" })
     private Playlist playlist;
 
     // in seconds
@@ -39,7 +46,7 @@ public class Track {
         // TODO Auto-generated constructor stub
     }
 
-    public Track(long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
+    public Track(Long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
             String lyrics) {
         super();
         this.id = id;
@@ -49,12 +56,17 @@ public class Track {
         this.duration = duration;
         this.lyrics = lyrics;
     }
+    
+    public Track(@NotNull @Size(max = 100) String name) {
+        super();
+        this.name = name;
+    }
 
-    public long getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

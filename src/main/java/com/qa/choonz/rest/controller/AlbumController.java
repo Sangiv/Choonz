@@ -45,8 +45,8 @@ public class AlbumController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<AlbumDTO> update(@RequestBody Album album, @PathVariable long id) {
-        return new ResponseEntity<AlbumDTO>(this.service.update(album, id), HttpStatus.ACCEPTED);
+    public ResponseEntity<AlbumDTO> update(@RequestBody AlbumDTO albumDTO, @PathVariable long id) {
+        return new ResponseEntity<AlbumDTO>(this.service.update(albumDTO, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("delete/{id}")

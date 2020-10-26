@@ -14,12 +14,16 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 100)
@@ -27,12 +31,15 @@ public class Album {
     private String name;
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "album")
     private List<Track> tracks;
 
     @ManyToOne
+    @JsonBackReference(value = "artist")
     private Artist artist;
 
     @ManyToOne
+    @JsonBackReference(value = "genre")
     private Genre genre;
 
     private String cover;
@@ -42,7 +49,7 @@ public class Album {
         // TODO Auto-generated constructor stub
     }
 
-    public Album(long id, @NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre,
+    public Album(Long id, @NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre,
             String cover) {
         super();
         this.id = id;
@@ -53,11 +60,16 @@ public class Album {
         this.cover = cover;
     }
 
-    public long getId() {
+    public Album(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,7 +1,7 @@
 package com.qa.choonz.persistence.domain;
 
 
-import com.qa.choonz.persistence.domain.Playlist;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,7 +27,8 @@ public class Users {
     private String password;
 
     @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Playlist> playlists;
+    @JsonManagedReference(value = "users")
+    private List<Playlist> playlist;
 
     @Override
     public boolean equals(Object o) {
@@ -42,7 +43,7 @@ public class Users {
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, user_name, password, playlists);
+        return Objects.hash(user_id, user_name, password, playlist);
     }
 
     @Override
@@ -91,12 +92,12 @@ public class Users {
 
     public List<Playlist> getTasks() {
 
-        return playlists;
+        return playlist;
     }
 
     public void setTasks(List<Playlist> tasks) {
-        this.playlists.clear();
-        this.playlists.addAll(tasks);
+        this.playlist.clear();
+        this.playlist.addAll(tasks);
     }
 
 }

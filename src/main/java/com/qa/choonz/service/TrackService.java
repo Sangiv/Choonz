@@ -41,7 +41,7 @@ public class TrackService {
         return this.mapToDTO(found);
     }
 
-    public TrackDTO update(Track track, long id) {
+    public TrackDTO update(TrackDTO track, long id) {
         Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
         toUpdate.setName(track.getName());
         toUpdate.setAlbum(track.getAlbum());

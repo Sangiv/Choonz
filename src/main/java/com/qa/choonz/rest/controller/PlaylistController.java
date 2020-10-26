@@ -45,8 +45,8 @@ public class PlaylistController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<PlaylistDTO> update(@RequestBody Playlist playlist, @PathVariable long id) {
-        return new ResponseEntity<PlaylistDTO>(this.service.update(playlist, id), HttpStatus.ACCEPTED);
+    public ResponseEntity<PlaylistDTO> update(@RequestBody PlaylistDTO playlistDTO, @PathVariable long id) {
+        return new ResponseEntity<PlaylistDTO>(this.service.update(playlistDTO, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/delete/{id}")

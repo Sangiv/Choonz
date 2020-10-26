@@ -1,8 +1,8 @@
 package com.qa.choonz.rest.dto;
 
+import com.qa.choonz.persistence.domain.Playlist;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -13,15 +13,22 @@ import java.util.List;
 @EqualsAndHashCode
 //converting our POJO to JSON
 public class UserDTO {
+
     private Long user_id;
     private String user_name;
     private String password;
-    private List<PlaylistDTO> playlist;
 
-    public List<PlaylistDTO> getPlayList() {
+    private List<Playlist> playlist;
+
+
+    public void setPlaylist(List<Playlist> playlist) {
+        this.playlist = playlist;
+    }
+
+    public List<Playlist> getPlayList() {
         return playlist;
     }
-    public void setPlayList(List<PlaylistDTO> playlist) {
+    public void setPlayList(List<Playlist> playlist) {
         this.playlist=playlist;
     }
 
@@ -48,12 +55,6 @@ public class UserDTO {
     }
 
     public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public UserDTO(Long user_id, String user_name,String password) {
-        this.user_id = user_id;
-        this.user_name = user_name;
         this.password = password;
     }
 

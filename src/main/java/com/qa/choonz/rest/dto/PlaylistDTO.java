@@ -4,40 +4,49 @@ import java.util.List;
 import java.util.Objects;
 
 import com.qa.choonz.persistence.domain.Track;
+import com.qa.choonz.persistence.domain.Users;
 
 public class PlaylistDTO {
 
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private String artwork;
     private List<Track> tracks;
+    private Users users;
 
     public PlaylistDTO() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public PlaylistDTO(long id, String name, String description, String artwork, List<Track> tracks) {
+    public PlaylistDTO(Long id, String name, String description, String artwork, List<Track> tracks, Users users) {
         super();
         this.id = id;
         this.name = name;
         this.description = description;
         this.artwork = artwork;
         this.tracks = tracks;
+        this.users = users;
     }
 
-    /**
+    public PlaylistDTO(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	/**
      * @return the id
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -102,13 +111,14 @@ public class PlaylistDTO {
         StringBuilder builder = new StringBuilder();
         builder.append("PlaylistDTO [id=").append(id).append(", name=").append(name).append(", description=")
                 .append(description).append(", artwork=").append(artwork).append(", tracks=").append(tracks)
+                .append(", users=").append(users)
                 .append("]");
         return builder.toString();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(artwork, description, id, name, tracks);
+        return Objects.hash(artwork, description, id, name, tracks,users);
     }
 
     @Override
@@ -121,7 +131,15 @@ public class PlaylistDTO {
         }
         PlaylistDTO other = (PlaylistDTO) obj;
         return Objects.equals(artwork, other.artwork) && Objects.equals(description, other.description)
-                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
+                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks)
+                && Objects.equals(users, other.users);
     }
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 }

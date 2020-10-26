@@ -7,12 +7,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
+@JsonIgnoreProperties(value = { "tracks" })
 public class Playlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 100)
@@ -29,10 +34,15 @@ public class Playlist {
     @Column(unique = true)
     private String artwork;
 
-    @OneToMany(mappedBy = "playlist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties("playlist")
+    @JsonManagedReference(value = "playlist")
+//    @JsonIgnoreProperties(value = { "tracks" })
     private List<Track> tracks;
 
-    @ManyToOne()
+    @ManyToOne
+    @JsonBackReference(value = "users")
+//    @JsonIgnoreProperties(value = { "users" })
     private Users users;
 
     public Playlist() {
@@ -40,7 +50,7 @@ public class Playlist {
         // TODO Auto-generated constructor stub
     }
 
-    public Playlist(long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
+    public Playlist(Long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
             @NotNull @Size(max = 1000) String artwork, List<Track> tracks) {
         super();
         this.id = id;
@@ -50,11 +60,16 @@ public class Playlist {
         this.tracks = tracks;
     }
 
-    public long getId() {
+    public Playlist(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
