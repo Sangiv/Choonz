@@ -18,61 +18,61 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.qa.choonz.persistence.domain.Track;
-import com.qa.choonz.rest.controller.TrackController;
-import com.qa.choonz.rest.dto.TrackDTO;
-import com.qa.choonz.service.TrackService;
+import com.qa.choonz.persistence.domain.Artist;
+import com.qa.choonz.rest.controller.ArtistController;
+import com.qa.choonz.rest.dto.ArtistDTO;
+import com.qa.choonz.service.ArtistService;
 
 @SpringBootTest
-public class TrackControllerUnitTest {
+public class ArtistControllerUnitTest {
 	
 	@Autowired
-	private TrackController controller;
+	private ArtistController controller;
 	
 	@Autowired
 	private ModelMapper mapper;
 	
 	@MockBean
-    private TrackService service;
+    private ArtistService service;
 
-    private List<Track> tracks;
-    private Track testTrack;
-    private Track testTrackWithID;
-    private TrackDTO trackDTO;
+    private List<Artist> artists;
+    private Artist testArtist;
+    private Artist testArtistWithID;
+    private ArtistDTO artistDTO;
     private final Long id = 1L;
 
-    private TrackDTO mapToDTO(Track track) {
-        return this.mapper.map(track, TrackDTO.class);
+    private ArtistDTO mapToDTO(Artist artist) {
+        return this.mapper.map(artist, ArtistDTO.class);
     }
     
     @BeforeEach
     void init() {
-        this.tracks = new ArrayList<>();
-        this.testTrack = new Track("Fireflies");
-        this.testTrackWithID = new Track(testTrack.getName());
-        this.testTrackWithID.setId(id);
-        this.tracks.add(testTrackWithID);
-        this.trackDTO = this.mapToDTO(testTrackWithID);
+        this.artists = new ArrayList<>();
+        this.testArtist = new Artist("Owl City");
+        this.testArtistWithID = new Artist(testArtist.getName());
+        this.testArtistWithID.setId(id);
+        this.artists.add(testArtistWithID);
+        this.artistDTO = this.mapToDTO(testArtistWithID);
     }
     
     @Test
     void createTest() {
-        when(this.service.create(testTrack))
-            .thenReturn(this.trackDTO);
+        when(this.service.create(testArtist))
+            .thenReturn(this.artistDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.CREATED))
-                .isEqualTo(this.controller.create(testTrack));
+        assertThat(new ResponseEntity<ArtistDTO>(this.artistDTO, HttpStatus.CREATED))
+                .isEqualTo(this.controller.create(testArtist));
         
         verify(this.service, times(1))
-            .create(this.testTrack);
+            .create(this.testArtist);
     }
     
     @Test
     void readOneTest() {
         when(this.service.read(this.id))
-            .thenReturn(this.trackDTO);
+            .thenReturn(this.artistDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.OK))
+        assertThat(new ResponseEntity<ArtistDTO>(this.artistDTO, HttpStatus.OK))
                 .isEqualTo(this.controller.read(this.id));
         
         verify(this.service, times(1))
@@ -82,7 +82,7 @@ public class TrackControllerUnitTest {
     @Test
     void readAllTest() {
         when(service.read())
-            .thenReturn(this.tracks
+            .thenReturn(this.artists
                     .stream()
                     .map(this::mapToDTO)
                     .collect(Collectors.toList()));
@@ -97,17 +97,17 @@ public class TrackControllerUnitTest {
     @Test
     void updateTest() {
         // given
-        TrackDTO newTrack= new TrackDTO(null, "Cave In");
-        TrackDTO updatedTrack= new TrackDTO(this.id, newTrack.getName());
+    	ArtistDTO newArtist= new ArtistDTO(null, "Arsenal");
+    	ArtistDTO updatedArtist= new ArtistDTO(this.id, newArtist.getName());
 
-        when(this.service.update(newTrack, this.id))
-            .thenReturn(updatedTrack);
+        when(this.service.update(newArtist, this.id))
+            .thenReturn(updatedArtist);
         
-        assertThat(new ResponseEntity<TrackDTO>(updatedTrack, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newTrack));
+        assertThat(new ResponseEntity<ArtistDTO>(updatedArtist, HttpStatus.ACCEPTED))
+                .isEqualTo(this.controller.update(this.id, newArtist));
         
         verify(this.service, times(1))
-            .update(newTrack, this.id);
+            .update(newArtist, this.id);
     }
     
     @Test

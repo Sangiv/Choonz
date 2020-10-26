@@ -53,7 +53,12 @@ public class Playlist {
         this.tracks = tracks;
     }
 
-    public long getId() {
+    public Playlist(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public long getId() {
         return id;
     }
 

@@ -18,61 +18,61 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.qa.choonz.persistence.domain.Track;
-import com.qa.choonz.rest.controller.TrackController;
-import com.qa.choonz.rest.dto.TrackDTO;
-import com.qa.choonz.service.TrackService;
+import com.qa.choonz.persistence.domain.Genre;
+import com.qa.choonz.rest.controller.GenreController;
+import com.qa.choonz.rest.dto.GenreDTO;
+import com.qa.choonz.service.GenreService;
 
 @SpringBootTest
-public class TrackControllerUnitTest {
+public class GenreControllerUnitTest {
 	
 	@Autowired
-	private TrackController controller;
+	private GenreController controller;
 	
 	@Autowired
 	private ModelMapper mapper;
 	
 	@MockBean
-    private TrackService service;
+    private GenreService service;
 
-    private List<Track> tracks;
-    private Track testTrack;
-    private Track testTrackWithID;
-    private TrackDTO trackDTO;
+    private List<Genre> genre;
+    private Genre testGenre;
+    private Genre testGenreWithID;
+    private GenreDTO genreDTO;
     private final Long id = 1L;
 
-    private TrackDTO mapToDTO(Track track) {
-        return this.mapper.map(track, TrackDTO.class);
+    private GenreDTO mapToDTO(Genre genre) {
+        return this.mapper.map(genre, GenreDTO.class);
     }
     
     @BeforeEach
     void init() {
-        this.tracks = new ArrayList<>();
-        this.testTrack = new Track("Fireflies");
-        this.testTrackWithID = new Track(testTrack.getName());
-        this.testTrackWithID.setId(id);
-        this.tracks.add(testTrackWithID);
-        this.trackDTO = this.mapToDTO(testTrackWithID);
+        this.genre = new ArrayList<>();
+        this.testGenre = new Genre("Owl City");
+        this.testGenreWithID = new Genre(testGenre.getName());
+        this.testGenreWithID.setId(id);
+        this.genre.add(testGenreWithID);
+        this.genreDTO = this.mapToDTO(testGenreWithID);
     }
     
     @Test
     void createTest() {
-        when(this.service.create(testTrack))
-            .thenReturn(this.trackDTO);
+        when(this.service.create(testGenre))
+            .thenReturn(this.genreDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.CREATED))
-                .isEqualTo(this.controller.create(testTrack));
+        assertThat(new ResponseEntity<GenreDTO>(this.genreDTO, HttpStatus.CREATED))
+                .isEqualTo(this.controller.create(testGenre));
         
         verify(this.service, times(1))
-            .create(this.testTrack);
+            .create(this.testGenre);
     }
     
     @Test
     void readOneTest() {
         when(this.service.read(this.id))
-            .thenReturn(this.trackDTO);
+            .thenReturn(this.genreDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.OK))
+        assertThat(new ResponseEntity<GenreDTO>(this.genreDTO, HttpStatus.OK))
                 .isEqualTo(this.controller.read(this.id));
         
         verify(this.service, times(1))
@@ -82,7 +82,7 @@ public class TrackControllerUnitTest {
     @Test
     void readAllTest() {
         when(service.read())
-            .thenReturn(this.tracks
+            .thenReturn(this.genre
                     .stream()
                     .map(this::mapToDTO)
                     .collect(Collectors.toList()));
@@ -97,17 +97,17 @@ public class TrackControllerUnitTest {
     @Test
     void updateTest() {
         // given
-        TrackDTO newTrack= new TrackDTO(null, "Cave In");
-        TrackDTO updatedTrack= new TrackDTO(this.id, newTrack.getName());
+    	GenreDTO newGenre = new GenreDTO(null, "Arsenal");
+    	GenreDTO updatedGenre = new GenreDTO(this.id, newGenre.getName());
 
-        when(this.service.update(newTrack, this.id))
-            .thenReturn(updatedTrack);
+        when(this.service.update(newGenre, this.id))
+            .thenReturn(updatedGenre);
         
-        assertThat(new ResponseEntity<TrackDTO>(updatedTrack, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newTrack));
+        assertThat(new ResponseEntity<GenreDTO>(updatedGenre, HttpStatus.ACCEPTED))
+                .isEqualTo(this.controller.update(this.id, newGenre));
         
         verify(this.service, times(1))
-            .update(newTrack, this.id);
+            .update(newGenre, this.id);
     }
     
     @Test

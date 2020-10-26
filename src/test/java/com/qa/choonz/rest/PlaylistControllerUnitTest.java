@@ -18,61 +18,61 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.qa.choonz.persistence.domain.Track;
-import com.qa.choonz.rest.controller.TrackController;
-import com.qa.choonz.rest.dto.TrackDTO;
-import com.qa.choonz.service.TrackService;
+import com.qa.choonz.persistence.domain.Playlist;
+import com.qa.choonz.rest.controller.PlaylistController;
+import com.qa.choonz.rest.dto.PlaylistDTO;
+import com.qa.choonz.service.PlaylistService;
 
 @SpringBootTest
-public class TrackControllerUnitTest {
+public class PlaylistControllerUnitTest {
 	
 	@Autowired
-	private TrackController controller;
+	private PlaylistController controller;
 	
 	@Autowired
 	private ModelMapper mapper;
 	
 	@MockBean
-    private TrackService service;
+    private PlaylistService service;
 
-    private List<Track> tracks;
-    private Track testTrack;
-    private Track testTrackWithID;
-    private TrackDTO trackDTO;
+    private List<Playlist> playlists;
+    private Playlist testPlaylist;
+    private Playlist testPlaylistWithID;
+    private PlaylistDTO playlistsDTO;
     private final Long id = 1L;
 
-    private TrackDTO mapToDTO(Track track) {
-        return this.mapper.map(track, TrackDTO.class);
+    private PlaylistDTO mapToDTO(Playlist playlist) {
+        return this.mapper.map(playlist, PlaylistDTO.class);
     }
     
     @BeforeEach
     void init() {
-        this.tracks = new ArrayList<>();
-        this.testTrack = new Track("Fireflies");
-        this.testTrackWithID = new Track(testTrack.getName());
-        this.testTrackWithID.setId(id);
-        this.tracks.add(testTrackWithID);
-        this.trackDTO = this.mapToDTO(testTrackWithID);
+        this.playlists = new ArrayList<>();
+        this.testPlaylist = new Playlist("Mix");
+        this.testPlaylistWithID = new Playlist(testPlaylist.getName());
+        this.testPlaylistWithID.setId(id);
+        this.playlists.add(testPlaylistWithID);
+        this.playlistsDTO = this.mapToDTO(testPlaylistWithID);
     }
     
     @Test
     void createTest() {
-        when(this.service.create(testTrack))
-            .thenReturn(this.trackDTO);
+        when(this.service.create(testPlaylist))
+            .thenReturn(this.playlistsDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.CREATED))
-                .isEqualTo(this.controller.create(testTrack));
+        assertThat(new ResponseEntity<PlaylistDTO>(this.playlistsDTO, HttpStatus.CREATED))
+                .isEqualTo(this.controller.create(testPlaylist));
         
         verify(this.service, times(1))
-            .create(this.testTrack);
+            .create(this.testPlaylist);
     }
     
     @Test
     void readOneTest() {
         when(this.service.read(this.id))
-            .thenReturn(this.trackDTO);
+            .thenReturn(this.playlistsDTO);
         
-        assertThat(new ResponseEntity<TrackDTO>(this.trackDTO, HttpStatus.OK))
+        assertThat(new ResponseEntity<PlaylistDTO>(this.playlistsDTO, HttpStatus.OK))
                 .isEqualTo(this.controller.read(this.id));
         
         verify(this.service, times(1))
@@ -82,7 +82,7 @@ public class TrackControllerUnitTest {
     @Test
     void readAllTest() {
         when(service.read())
-            .thenReturn(this.tracks
+            .thenReturn(this.playlists
                     .stream()
                     .map(this::mapToDTO)
                     .collect(Collectors.toList()));
@@ -97,17 +97,17 @@ public class TrackControllerUnitTest {
     @Test
     void updateTest() {
         // given
-        TrackDTO newTrack= new TrackDTO(null, "Cave In");
-        TrackDTO updatedTrack= new TrackDTO(this.id, newTrack.getName());
+    	PlaylistDTO newPlaylist = new PlaylistDTO(null, "Arsenal");
+    	PlaylistDTO updatedPlaylist = new PlaylistDTO(this.id, newPlaylist.getName());
 
-        when(this.service.update(newTrack, this.id))
-            .thenReturn(updatedTrack);
+        when(this.service.update(newPlaylist, this.id))
+            .thenReturn(updatedPlaylist);
         
-        assertThat(new ResponseEntity<TrackDTO>(updatedTrack, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newTrack));
+        assertThat(new ResponseEntity<PlaylistDTO>(updatedPlaylist, HttpStatus.ACCEPTED))
+                .isEqualTo(this.controller.update(this.id, newPlaylist));
         
         verify(this.service, times(1))
-            .update(newTrack, this.id);
+            .update(newPlaylist, this.id);
     }
     
     @Test
