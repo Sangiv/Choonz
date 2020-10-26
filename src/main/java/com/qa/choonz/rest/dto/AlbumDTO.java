@@ -31,7 +31,12 @@ public class AlbumDTO {
         this.cover = cover;
     }
 
-    public long getId() {
+	public AlbumDTO(String name) {
+		super();
+		this.name = name;
+	}
+
+	public long getId() {
         return id;
     }
 

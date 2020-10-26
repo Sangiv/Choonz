@@ -56,7 +56,12 @@ public class Album {
         this.cover = cover;
     }
 
-    public long getId() {
+    public Album(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public long getId() {
         return id;
     }
 
