@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.qa.choonz.exception.AlbumNotFoundException;
 import com.qa.choonz.exception.ArtistNotFoundException;
 import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.repository.ArtistRepository;
@@ -50,6 +51,9 @@ public class ArtistService {
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new ArtistNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }

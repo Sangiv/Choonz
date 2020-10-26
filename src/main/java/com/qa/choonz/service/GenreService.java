@@ -48,6 +48,9 @@ public class GenreService {
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new GenreNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
