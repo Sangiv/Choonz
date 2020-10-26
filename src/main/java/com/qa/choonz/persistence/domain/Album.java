@@ -14,7 +14,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Album {
@@ -29,13 +31,15 @@ public class Album {
     private String name;
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "album")
     private List<Track> tracks;
 
     @ManyToOne
-    @JsonIgnoreProperties("albums")
+    @JsonBackReference(value = "artist")
     private Artist artist;
 
     @ManyToOne
+    @JsonBackReference(value = "genre")
     private Genre genre;
 
     private String cover;

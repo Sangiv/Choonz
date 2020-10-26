@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreProperties(value = { "tracks" })
 public class Playlist {
 
     @Id
@@ -41,7 +42,8 @@ public class Playlist {
 
     @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JsonIgnoreProperties("playlist")
-    @JsonManagedReference
+    @JsonManagedReference(value = "playlist")
+//    @JsonIgnoreProperties(value = { "tracks" })
     private List<Track> tracks;
 
     public Playlist() {

@@ -27,11 +27,13 @@ public class Track {
     private String name;
 
     @ManyToOne
+    @JsonBackReference(value = "album")
     private Album album;
 
     @ManyToOne
 //    @JsonIgnoreProperties("playlist")
-    @JsonBackReference
+    @JsonBackReference(value = "playlist")
+    @JsonIgnoreProperties(value = { "playlist" })
     private Playlist playlist;
 
     // in seconds
