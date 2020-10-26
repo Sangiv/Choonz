@@ -1,4 +1,4 @@
-package com.qa.Todo.dto;
+package com.qa.choonz.rest.dto;
 
 import lombok.*;
 
@@ -14,20 +14,15 @@ import java.util.List;
 //converting our POJO to JSON
 public class UserDTO {
     private Long user_id;
-    private String first_name;
-    private String surname;
     private String user_name;
-    private String email;
     private String password;
-    private List<TaskDTO> tasks;
+    private List<PlaylistDTO> playlist;
 
-    public List<TaskDTO> getTasks() {
-        return tasks;
+    public List<PlaylistDTO> getPlayList() {
+        return playlist;
     }
-    public void setTasks(List<TaskDTO> tasks) {
-//        this.tasks.clear();
-//        this.tasks.addAll(tasks);
-        this.tasks=tasks;
+    public void setPlayList(List<PlaylistDTO> playlist) {
+        this.playlist=playlist;
     }
 
 
@@ -39,21 +34,6 @@ public class UserDTO {
         this.user_id = user_id;
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 
     public String getUser_name() {
         return user_name;
@@ -61,14 +41,6 @@ public class UserDTO {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
@@ -79,21 +51,14 @@ public class UserDTO {
         this.password = password;
     }
 
-    public UserDTO(Long user_id, String first_name, String surname, String user_name, String email, String password) {
+    public UserDTO(Long user_id, String user_name,String password) {
         this.user_id = user_id;
-        this.first_name = first_name;
-        this.surname = surname;
         this.user_name = user_name;
-        this.email = email;
         this.password = password;
-//        this.tasks = tasks;
     }
 
-    public UserDTO(String first_name, String surname, String user_name, String email, String password) {
-        this.first_name = first_name;
-        this.surname = surname;
+    public UserDTO( String user_name, String password) {
         this.user_name = user_name;
-        this.email = email;
         this.password = password;
     }
 

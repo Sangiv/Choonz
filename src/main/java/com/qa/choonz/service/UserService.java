@@ -1,10 +1,11 @@
-package com.qa.Todo.services;
+package com.qa.choonz.service;
 
-import com.qa.Todo.dto.UserDTO;
-import com.qa.Todo.exception.UserNotFoundException;
-import com.qa.Todo.presistence.domain.Users;
-import com.qa.Todo.presistence.repo.UserRepo;
-import com.qa.Todo.utils.TodoBeanUtils;
+
+import com.qa.choonz.exception.UserNotFoundException;
+import com.qa.choonz.persistence.domain.Users;
+import com.qa.choonz.persistence.repository.UserRepository;
+import com.qa.choonz.rest.dto.UserDTO;
+import com.qa.choonz.utils.BeanUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-    public UserRepo repo;
+    public UserRepository repo;
     private ModelMapper mapper;
 
     @Autowired
-    public UserService(UserRepo repo, ModelMapper mapper) {
+    public UserService(UserRepository repo, ModelMapper mapper) {
         this.repo = repo;
         this.mapper = mapper;
     }
@@ -50,7 +51,7 @@ public class UserService {
     //update
     public UserDTO update(UserDTO userDTO,Long userId){
         Users toUpdate = this.repo.findById(userId).orElseThrow(UserNotFoundException::new);
-        TodoBeanUtils.mergeNotNull(userDTO,toUpdate);
+        BeanUtils.mergeNotNull(userDTO,toUpdate);
         return this.mapToDTO(this.repo.save(toUpdate));
 
     }

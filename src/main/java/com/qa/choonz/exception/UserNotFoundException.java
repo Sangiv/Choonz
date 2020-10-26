@@ -1,4 +1,4 @@
-package com.qa.Todo.exception;
+package com.qa.choonz.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

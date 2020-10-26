@@ -1,8 +1,8 @@
-package com.qa.Todo.controller;
+package com.qa.choonz.rest.controller;
 
-import com.qa.Todo.dto.UserDTO;
-import com.qa.Todo.presistence.domain.Users;
-import com.qa.Todo.services.UserService;
+import com.qa.choonz.persistence.domain.Users;
+import com.qa.choonz.rest.dto.UserDTO;
+import com.qa.choonz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

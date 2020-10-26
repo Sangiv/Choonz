@@ -1,6 +1,7 @@
-package com.qa.Todo.presistence.domain;
+package com.qa.choonz.persistence.domain;
 
 
+import com.qa.choonz.persistence.domain.Playlist;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,9 +22,12 @@ public class Users {
     @Column
     private Long user_id;
     @Column
-    private String first_name;
+    private String user_name;
     @Column
-    private String surname;
+    private String password;
+
+    @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Playlist> playlists;
 
     @Override
     public boolean equals(Object o) {
@@ -31,56 +35,32 @@ public class Users {
         if (o == null || getClass() != o.getClass()) return false;
         Users users = (Users) o;
         return user_id.equals(users.user_id) &&
-                first_name.equals(users.first_name) &&
-                surname.equals(users.surname) &&
                 user_name.equals(users.user_name) &&
-                email.equals(users.email) &&
                 password.equals(users.password);
                // tasks.equals(users.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, first_name, surname, user_name, email, password, tasks);
+        return Objects.hash(user_id, user_name, password, playlists);
     }
-
-    @Column
-
-    private String user_name;
-    @Column
-    private String email;
-
-    @Column
-    private String password;
-
-    @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Tasks> tasks;
 
     @Override
     public String toString() {
         return "Users{" +
                 "userId=" + user_id +
-                ", firstName='" + first_name + '\'' +
-                ", surname='" + surname + '\'' +
                 ", userName='" + user_name + '\'' +
-                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
-    public Users(Long user_id, String first_name, String surname, String user_name, String email, String password) {
+    public Users(Long user_id, String user_name, String password) {
         this.user_id = user_id;
-        this.first_name = first_name;
-        this.surname = surname;
         this.user_name = user_name;
-        this.email = email;
         this.password = password;
     }
-    public Users(String first_name, String surname, String user_name, String email, String password) {
-        this.first_name = first_name;
-        this.surname = surname;
+    public Users( String user_name, String password) { ;
         this.user_name = user_name;
-        this.email = email;
         this.password = password;
     }
 
@@ -92,22 +72,6 @@ public class Users {
         this.user_id = user_id;
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getUser_name() {
         return user_name;
     }
@@ -116,13 +80,6 @@ public class Users {
         this.user_name = user_name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;
@@ -132,14 +89,14 @@ public class Users {
         this.password = password;
     }
 
-    public List<Tasks> getTasks() {
+    public List<Playlist> getTasks() {
 
-        return tasks;
+        return playlists;
     }
 
-    public void setTasks(List<Tasks> tasks) {
-        this.tasks.clear();
-        this.tasks.addAll(tasks);
+    public void setTasks(List<Playlist> tasks) {
+        this.playlists.clear();
+        this.playlists.addAll(tasks);
     }
 
 }
