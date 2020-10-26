@@ -70,6 +70,24 @@ public class Genre {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
 
 	@Override
     public String toString() {
