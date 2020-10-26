@@ -30,7 +30,7 @@ fetch('http://localhost:8082/tracks/read')
     let row = thead.insertRow();
 
     for (let keys of data){
-        console.log(keys);
+
         if (keys == 'id'){
             
         } else if (keys == 'playlist') {
