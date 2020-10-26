@@ -24,7 +24,7 @@ import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
 @SpringBootTest
-public class AlbumControllerUnitTest {
+public class AlbumControllerUnitTesting {
 	
 	@Autowired
 	private AlbumController controller;
