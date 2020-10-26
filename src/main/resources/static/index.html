@@ -8,7 +8,7 @@
   crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
   <script src="Java/userAuth.js"></script>
-  <title>QAC Home</title>
+  <title>Music Library</title>
 </head>
 <body>
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -16,14 +16,28 @@
       <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="todo.html" role="tab" aria-controls="pills-todo" aria-selected="false">To-do</a>
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="playlist.html" role="tab" aria-controls="pills-todo" aria-selected="false">Playlist</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="about.html" role="tab" aria-controls="pills-aboutus" aria-selected="false">About Us</a>
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="artist.html" role="tab" aria-controls="pills-aboutus" aria-selected="false">Artist</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="contact.html" role="tab" aria-controls="pills-contact" aria-selected="false">Contact Us</a>
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="album.html" role="tab" aria-controls="pills-contact" aria-selected="false">Album</a>
     </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="genre.html" role="tab" aria-controls="pills-contact" aria-selected="false">Genre</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="track.html" role="tab" aria-controls="pills-contact" aria-selected="false">Track</a>
+    </li>
+    <br>
+      <!-- search bar -->
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search a track by Id" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <br>
+
     <li>
       <button id ="my-profile" type="button" class="btn btn-light">
         Guest<span class="badge badge-light"></span>
@@ -44,27 +58,9 @@
           <form class="create-user" action="todo.html" method="POST" >
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
               </div>
               <input name="first_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Surname</span></>
-              </div>
-              <input name="surname" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">User Name</span></>
-              </div>
-              <input name ="user_name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span></>
-              </div>
-              <input name= "email" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group">
               <div class="input-group-prepend">
