@@ -28,52 +28,52 @@ class PlaylistServiceUnitTest {
     private PlaylistService service;
 
     @MockBean
-    private GenreRepository repo;
+    private PlaylistRepository repo;
 
     @MockBean
     private ModelMapper modelMapper;
 
 
-    private List<Genre> genres;
-    private Genre testGenre;
-    private Genre testGenreWithId;
-    private GenreDTO genreDTO;
+    private List<Playlist> playlists;
+    private Playlist testPlaylist;
+    private Playlist testPlaylistWithId;
+    private PlaylistDTO playlistDTO;
 
     final Long id = 1L;
     final String testName = "Arsenal";
 
     @BeforeEach
     void init() {
-        this.genres = new ArrayList<>();
-        this.testGenre = new Genre(testName);
-        this.genres.add(testGenre);
-        this.testGenreWithId = new Genre(testGenre.getName());
-        this.testGenreWithId.setId(id);
-        this.genreDTO = modelMapper.map(testGenreWithId, GenreDTO.class);
+        this.playlists = new ArrayList<>();
+        this.testPlaylist = new Playlist(testName);
+        this.playlists.add(testPlaylist);
+        this.testPlaylistWithId = new Playlist(testPlaylist.getName());
+        this.testPlaylistWithId.setId(id);
+        this.playlistDTO = modelMapper.map(testPlaylistWithId, PlaylistDTO.class);
     }
 
     @Test
     void createTest() {
 
-        when(this.repo.save(this.testGenre)).thenReturn(this.testGenreWithId);
+        when(this.repo.save(this.testPlaylist)).thenReturn(this.testPlaylistWithId);
 
-        when(this.modelMapper.map(this.testGenreWithId, GenreDTO.class)).thenReturn(this.genreDTO);
+        when(this.modelMapper.map(this.testPlaylistWithId, PlaylistDTO.class)).thenReturn(this.playlistDTO);
 
-        GenreDTO expected = this.genreDTO;
-        GenreDTO actual = this.service.create(this.testGenre);
+        PlaylistDTO expected = this.playlistDTO;
+        PlaylistDTO actual = this.service.create(this.testPlaylist);
         assertThat(expected).isEqualTo(actual);
 
-        verify(this.repo, times(1)).save(this.testGenre);
+        verify(this.repo, times(1)).save(this.testPlaylist);
     }
 
     @Test
     void readOneTest() {
 
-        when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testGenreWithId));
+        when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testPlaylistWithId));
 
-        when(this.modelMapper.map(this.testGenreWithId, GenreDTO.class)).thenReturn(this.genreDTO);
+        when(this.modelMapper.map(this.testPlaylistWithId, PlaylistDTO.class)).thenReturn(this.playlistDTO);
 
-        assertThat(this.genreDTO).isEqualTo(this.service.read(this.id));
+        assertThat(this.playlistDTO).isEqualTo(this.service.read(this.id));
 
         verify(this.repo, times(1)).findById(this.id);
     }
@@ -81,9 +81,9 @@ class PlaylistServiceUnitTest {
     @Test
     void readAllTest() {
 
-        when(this.repo.findAll()).thenReturn(this.genres);
+        when(this.repo.findAll()).thenReturn(this.playlists);
 
-        when(this.modelMapper.map(this.testGenreWithId, GenreDTO.class)).thenReturn(this.genreDTO);
+        when(this.modelMapper.map(this.testPlaylistWithId, PlaylistDTO.class)).thenReturn(this.playlistDTO);
 
         assertThat(this.service.read().isEmpty()).isFalse();
 
@@ -92,26 +92,26 @@ class PlaylistServiceUnitTest {
 
     @Test
     void updateTest() {
-    	Genre genre = new Genre("BVB");
-        genre.setId(this.id);
+    	Playlist playlist = new Playlist("BVB");
+        playlist.setId(this.id);
 
-        GenreDTO genreDTO = new GenreDTO(null, "BVB");
+        PlaylistDTO playlistDTO = new PlaylistDTO(null, "BVB");
 
-        Genre updatedGenre = new Genre(genreDTO.getName());
-        updatedGenre.setId(this.id);
+        Playlist updatedPlaylist = new Playlist(playlistDTO.getName());
+        updatedPlaylist.setId(this.id);
 
-        GenreDTO updatedGenreDTO = new GenreDTO(this.id, updatedGenre.getName());
+        PlaylistDTO updatedGenreDTO = new PlaylistDTO(this.id, updatedPlaylist.getName());
 
-        when(this.repo.findById(this.id)).thenReturn(Optional.of(genre));
+        when(this.repo.findById(this.id)).thenReturn(Optional.of(playlist));
 
-        when(this.repo.save(genre)).thenReturn(updatedGenre);
+        when(this.repo.save(playlist)).thenReturn(updatedPlaylist);
 
-        when(this.modelMapper.map(updatedGenre, GenreDTO.class)).thenReturn(updatedGenreDTO);
+        when(this.modelMapper.map(updatedPlaylist, PlaylistDTO.class)).thenReturn(updatedGenreDTO);
 
-        assertThat(updatedGenreDTO).isEqualTo(this.service.update(genreDTO, this.id));
+        assertThat(updatedGenreDTO).isEqualTo(this.service.update(playlistDTO, this.id));
 
         verify(this.repo, times(1)).findById(1L);
-        verify(this.repo, times(1)).save(updatedGenre);
+        verify(this.repo, times(1)).save(updatedPlaylist);
     }
 
     @Test
