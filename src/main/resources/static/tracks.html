@@ -8,16 +8,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Choonz Tracks</title>
 </head>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="playlist.html" role="tab" aria-controls="pills-todo" aria-selected="false">Playlist</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="artist.html" role="tab" aria-controls="pills-aboutus" aria-selected="false">Artist</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="album.html" role="tab" aria-controls="pills-contact" aria-selected="false">Album</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="genre.html" role="tab" aria-controls="pills-contact" aria-selected="false">Genre</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="track.html" role="tab" aria-controls="pills-contact" aria-selected="false">Track</a>
+    </li>
+    <br>
+      <!-- search bar -->
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search a track by Id" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <br>
 
+    <li>
+      <button id ="my-profile" type="button" class="btn btn-light">
+        Guest<span class="badge badge-light"></span>
+        <!-- <span class="sr-only">unread messages</span> -->
+      </button>
+    </li>
+  </ul> <!--end of nav bar -->
 <body>
-<!-- Navbar -->
-
-
-<!-- /Navbar -->
-
 <!-- /main -->
 
-<h1> Put some stuff here</h1>
+<h1>Tracks</h1>
+
+<table class="table table-dark table-hover"></table>
 
 
 
