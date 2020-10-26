@@ -5,7 +5,7 @@ import com.qa.choonz.persistence.domain.Playlist;
 
 public class TrackDTO {
 
-    private long id;
+    private Long id;
     private String name;
     private Album album;
     private Playlist playlist;
@@ -17,7 +17,7 @@ public class TrackDTO {
         // TODO Auto-generated constructor stub
     }
 
-	public TrackDTO(long id, String name, Album album, Playlist playlist, int duration, String lyrics) {
+	public TrackDTO(Long id, String name, Album album, Playlist playlist, int duration, String lyrics) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,6 +25,12 @@ public class TrackDTO {
 		this.playlist = playlist;
 		this.duration = duration;
 		this.lyrics = lyrics;
+	}
+
+	public TrackDTO(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
 	}
 
 	public long getId() {

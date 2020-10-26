@@ -7,7 +7,7 @@ import com.qa.choonz.persistence.domain.Album;
 
 public class GenreDTO {
 
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private List<Album> albums;
@@ -17,7 +17,7 @@ public class GenreDTO {
         // TODO Auto-generated constructor stub
     }
 
-    public GenreDTO(long id, String name, String description, List<Album> albums) {
+    public GenreDTO(Long id, String name, String description, List<Album> albums) {
         super();
         this.id = id;
         this.name = name;
@@ -25,11 +25,17 @@ public class GenreDTO {
         this.albums = albums;
     }
 
-    public long getId() {
+    public GenreDTO(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

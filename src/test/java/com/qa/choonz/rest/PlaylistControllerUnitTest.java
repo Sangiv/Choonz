@@ -104,7 +104,7 @@ public class PlaylistControllerUnitTest {
             .thenReturn(updatedPlaylist);
         
         assertThat(new ResponseEntity<PlaylistDTO>(updatedPlaylist, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newPlaylist));
+                .isEqualTo(this.controller.update(newPlaylist, this.id));
         
         verify(this.service, times(1))
             .update(newPlaylist, this.id);

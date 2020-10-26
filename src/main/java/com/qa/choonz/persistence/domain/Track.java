@@ -19,7 +19,7 @@ public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 100)
@@ -46,7 +46,7 @@ public class Track {
         // TODO Auto-generated constructor stub
     }
 
-    public Track(long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
+    public Track(Long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
             String lyrics) {
         super();
         this.id = id;
@@ -62,11 +62,11 @@ public class Track {
         this.name = name;
     }
 
-	public long getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
