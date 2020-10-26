@@ -63,6 +63,12 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
+		</dependency>	
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>3.4.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
