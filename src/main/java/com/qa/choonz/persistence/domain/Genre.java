@@ -51,7 +51,13 @@ public class Genre {
         this.albums = albums;
     }
 
-    public Genre(@NotNull @Size(max = 100) String name) {
+    public Genre(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+	public Genre(@NotNull @Size(max = 100) String name) {
 		super();
 		this.name = name;
 	}

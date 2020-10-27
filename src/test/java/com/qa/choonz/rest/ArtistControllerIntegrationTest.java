@@ -75,9 +75,11 @@ public class ArtistControllerIntegrationTest {
 
     @Test
     void testReadOne() throws Exception {
-        this.mock.perform(request(HttpMethod.GET, "/artits/read/" + this.id).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(this.artistDTO)));
+        this.mock
+			.perform(request(HttpMethod.GET, "/artists/read/" + this.id)
+				.accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().json(this.objectMapper.writeValueAsString(this.artistDTO)));
     }
 
     @Test

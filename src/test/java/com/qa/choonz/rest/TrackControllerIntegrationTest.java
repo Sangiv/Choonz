@@ -19,20 +19,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.choonz.rest.dto.GenreDTO;
-import com.qa.choonz.persistence.domain.Genre;
-import com.qa.choonz.persistence.repository.GenreRepository;
+import com.qa.choonz.rest.dto.TrackDTO;
+import com.qa.choonz.persistence.domain.Track;
+import com.qa.choonz.persistence.repository.TrackRepository;
 
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GenreControllerIntegrationTest {
+public class TrackControllerIntegrationTest {
 
     @Autowired
     private MockMvc mock;
 
     @Autowired
-    private GenreRepository repo;
+    private TrackRepository repo;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -40,55 +40,55 @@ public class GenreControllerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private Genre testGenre; 
-    private Genre testGenreWithID;
-    private GenreDTO genreDTO;
+    private Track testTrack; 
+    private Track testTrackWithID;
+    private TrackDTO trackDTO;
 
     private Long id;
     private String testName;
 
-    private GenreDTO mapToDTO(Genre genre) {
-        return this.modelMapper.map(genre, GenreDTO.class);
+    private TrackDTO mapToDTO(Track track) {
+        return this.modelMapper.map(track, TrackDTO.class);
     }
 
     @BeforeEach
     void init() {
         this.repo.deleteAll();
 
-        this.testGenre = new Genre("Pop","Pop");
-        this.testGenreWithID = this.repo.save(this.testGenre);
-        this.genreDTO = this.mapToDTO(testGenreWithID);
+        this.testTrack = new Track("Fireflies");
+        this.testTrackWithID = this.repo.save(this.testTrack);
+        this.trackDTO = this.mapToDTO(testTrackWithID);
 
-        this.id = this.testGenreWithID.getId();
-        this.testName = this.testGenreWithID.getName();
+        this.id = this.testTrackWithID.getId();
+        this.testName = this.testTrackWithID.getName();
     }
 
     @Test
     void testCreate() throws Exception {
         this.mock
-                .perform(request(HttpMethod.POST, "/genres/create").contentType(MediaType.APPLICATION_JSON)
-                        .content(this.objectMapper.writeValueAsString(testGenre))
+                .perform(request(HttpMethod.POST, "/tracks/create").contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(testTrack))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(genreDTO)));
+                .andExpect(content().json(this.objectMapper.writeValueAsString(trackDTO)));
     }
 
     @Test
     void testReadOne() throws Exception {
         this.mock
-        		.perform(request(HttpMethod.GET, "/genres/read/" + this.id)
+        		.perform(request(HttpMethod.GET, "/tracks/read/" + this.id)
         				.accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(this.genreDTO)));
+                .andExpect(content().json(this.objectMapper.writeValueAsString(this.trackDTO)));
     }
 
     @Test
     void testReadAll() throws Exception {
-        List<GenreDTO> genres = new ArrayList<>();
-        genres.add(this.genreDTO);
+        List<TrackDTO> tracks = new ArrayList<>();
+        tracks.add(this.trackDTO);
 
         String content = this.mock
-                .perform(request(HttpMethod.GET, "/genres/read").accept(MediaType.APPLICATION_JSON))
+                .perform(request(HttpMethod.GET, "/tracks/read").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
 //        assertEquals(this.objectMapper.writeValueAsString(albums), content);
@@ -96,22 +96,22 @@ public class GenreControllerIntegrationTest {
 
     @Test
     void testUpdate() throws Exception {
-    	GenreDTO newGenre = new GenreDTO(null, "Arsenal");
-    	Genre updatedGenre = new Genre(newGenre.getName());
-        updatedGenre.setId(this.id);
+    	TrackDTO newTrack = new TrackDTO(null, "Arsenal");
+    	Track updatedTrack = new Track(newTrack.getName());
+        updatedTrack.setId(this.id);
 
         String result = this.mock
-                .perform(request(HttpMethod.PUT, "/genres/update/" + this.id).accept(MediaType.APPLICATION_JSON)
+                .perform(request(HttpMethod.PUT, "/tracks/update/" + this.id).accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(this.objectMapper.writeValueAsString(newGenre)))
+                        .content(this.objectMapper.writeValueAsString(newTrack)))
                 .andExpect(status().isAccepted()).andReturn().getResponse().getContentAsString();
 
-        assertEquals(this.objectMapper.writeValueAsString(this.mapToDTO(updatedGenre)), result);
+        assertEquals(this.objectMapper.writeValueAsString(this.mapToDTO(updatedTrack)), result);
     }
 
     @Test
     void testDelete() throws Exception {
-        this.mock.perform(request(HttpMethod.DELETE, "/genres/delete/" + this.id)).andExpect(status().isNoContent());
+        this.mock.perform(request(HttpMethod.DELETE, "/tracks/delete/" + this.id)).andExpect(status().isNoContent());
     }
 
 }
