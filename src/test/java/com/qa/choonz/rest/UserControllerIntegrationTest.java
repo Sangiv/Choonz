@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -94,16 +95,15 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
+        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
     }
 
     @Test
     void testUpdate() throws Exception {
         UserDTO newUsers = new UserDTO(TEST_UPDATE_USER_NAME,TEST_UPDATE_PASS);
         newUsers.setUser_id(this.id);
-//        Users updatedUsers = new Users(newUsers.getFirstName(),
-//                newUsers.getSurname(), newUsers.getUserName(), newUsers.getEmail(), newUsers.getPassword());
-//        updatedUsers.setUserId(this.id);
+        Users updatedUsers = new Users(newUsers.getUser_name(), newUsers.getPassword());
+        updatedUsers.setUser_id(this.id);
 
         String result = this.mock
                 .perform(request(HttpMethod.PUT, "/users/update/" + this.id)
@@ -113,7 +113,7 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isAccepted())
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(this.mapToDTO(updatedUsers)), result);
+        assertEquals(this.objectMapper.writeValueAsString(updatedUsers), result);
     }
 
     @Test
