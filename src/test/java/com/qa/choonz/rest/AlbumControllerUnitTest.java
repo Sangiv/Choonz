@@ -24,7 +24,7 @@ import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
 @SpringBootTest
-public class AlbumControllerUnitTesting {
+public class AlbumControllerUnitTest {
 	
 	@Autowired
 	private AlbumController controller;
@@ -104,7 +104,7 @@ public class AlbumControllerUnitTesting {
             .thenReturn(updatedAlbum);
         
         assertThat(new ResponseEntity<AlbumDTO>(updatedAlbum, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newAlbum));
+                .isEqualTo(this.controller.update(newAlbum, this.id));
         
         verify(this.service, times(1))
             .update(newAlbum, this.id);

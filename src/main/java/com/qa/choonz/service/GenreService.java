@@ -41,13 +41,16 @@ public class GenreService {
         return this.mapToDTO(found);
     }
 
-    public GenreDTO update(Genre genre, long id) {
+    public GenreDTO update(GenreDTO genreDTO, long id) {
         Genre toUpdate = this.repo.findById(id).orElseThrow(GenreNotFoundException::new);
         Genre updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new GenreNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }

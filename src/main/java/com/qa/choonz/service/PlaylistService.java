@@ -41,7 +41,7 @@ public class PlaylistService {
         return this.mapToDTO(found);
     }
 
-    public PlaylistDTO update(Playlist playlist, long id) {
+    public PlaylistDTO update(PlaylistDTO playlistDTO, long id) {
         Playlist toUpdate = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
         toUpdate.setName(toUpdate.getName());
         toUpdate.setDescription(toUpdate.getDescription());
@@ -52,6 +52,9 @@ public class PlaylistService {
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new PlaylistNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }

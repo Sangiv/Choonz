@@ -104,7 +104,7 @@ public class TrackControllerUnitTest {
             .thenReturn(updatedTrack);
         
         assertThat(new ResponseEntity<TrackDTO>(updatedTrack, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newTrack));
+                .isEqualTo(this.controller.update(newTrack, this.id));
         
         verify(this.service, times(1))
             .update(newTrack, this.id);

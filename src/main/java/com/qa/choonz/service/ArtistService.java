@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.qa.choonz.exception.AlbumNotFoundException;
 import com.qa.choonz.exception.ArtistNotFoundException;
 import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.repository.ArtistRepository;
@@ -41,15 +42,18 @@ public class ArtistService {
         return this.mapToDTO(found);
     }
 
-    public ArtistDTO update(Artist artist, long id) {
+    public ArtistDTO update(ArtistDTO artistDTO, long id) {
         Artist toUpdate = this.repo.findById(id).orElseThrow(ArtistNotFoundException::new);
-        toUpdate.setName(artist.getName());
-        toUpdate.setAlbums(artist.getAlbums());
+        toUpdate.setName(artistDTO.getName());
+        toUpdate.setAlbums(artistDTO.getAlbums());
         Artist updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new ArtistNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }

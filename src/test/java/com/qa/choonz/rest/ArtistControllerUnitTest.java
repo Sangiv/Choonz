@@ -104,7 +104,7 @@ public class ArtistControllerUnitTest {
             .thenReturn(updatedArtist);
         
         assertThat(new ResponseEntity<ArtistDTO>(updatedArtist, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newArtist));
+                .isEqualTo(this.controller.update(newArtist, this.id));
         
         verify(this.service, times(1))
             .update(newArtist, this.id);

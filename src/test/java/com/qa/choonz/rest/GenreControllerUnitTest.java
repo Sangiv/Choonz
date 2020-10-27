@@ -104,7 +104,7 @@ public class GenreControllerUnitTest {
             .thenReturn(updatedGenre);
         
         assertThat(new ResponseEntity<GenreDTO>(updatedGenre, HttpStatus.ACCEPTED))
-                .isEqualTo(this.controller.update(this.id, newGenre));
+                .isEqualTo(this.controller.update(newGenre, this.id));
         
         verify(this.service, times(1))
             .update(newGenre, this.id);

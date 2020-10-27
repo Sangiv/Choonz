@@ -9,7 +9,7 @@ import com.qa.choonz.persistence.domain.Track;
 
 public class AlbumDTO {
 
-    private long id;
+    private Long id;
     private String name;
     private List<Track> tracks;
     private Artist artist;
@@ -21,7 +21,7 @@ public class AlbumDTO {
         // TODO Auto-generated constructor stub
     }
 
-    public AlbumDTO(long id, String name, List<Track> tracks, Artist artist, Genre genre, String cover) {
+    public AlbumDTO(Long id, String name, List<Track> tracks, Artist artist, Genre genre, String cover) {
         super();
         this.id = id;
         this.name = name;
@@ -31,8 +31,9 @@ public class AlbumDTO {
         this.cover = cover;
     }
 
-	public AlbumDTO(String name) {
+	public AlbumDTO(Long id, String name) {
 		super();
+		this.id = id;
 		this.name = name;
 	}
 
@@ -40,7 +41,7 @@ public class AlbumDTO {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
