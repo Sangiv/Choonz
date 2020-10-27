@@ -11,10 +11,6 @@ fetch('http://localhost:8082/genres/read')
       response.json().then(function(dataData) {
         console.log(dataData);
 
-        let data = Object.keys(dataData[0]);
-        let table = document.querySelector("table");
-        let card = document.querySelector("div.card");
-
         cardData(dataData);
 
       });
@@ -50,7 +46,7 @@ fetch('http://localhost:8082/genres/read')
                 let title = dataRecord.name;
                 let description = dataRecord.description;
                 let buttonText = dataRecord.name;
-                let buttonLink = "http://i.imgur.com/czM0qWd.png";
+                let buttonLink = "genreview.html?id="+id;
                 createCard(id, image, title, description, buttonText, buttonLink);
 
             }
