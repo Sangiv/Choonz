@@ -37,8 +37,8 @@ public class Users {
         Users users = (Users) o;
         return user_id.equals(users.user_id) &&
                 user_name.equals(users.user_name) &&
-                password.equals(users.password);
-               // tasks.equals(users.tasks);
+                password.equals(users.password) &&
+                playlist.equals(users.playlist);
     }
 
     @Override
@@ -95,9 +95,9 @@ public class Users {
         return playlist;
     }
 
-    public void setTasks(List<Playlist> tasks) {
+    public void setTasks(List<Playlist> playlist) {
         this.playlist.clear();
-        this.playlist.addAll(tasks);
+        this.playlist.addAll(playlist);
     }
 
 }

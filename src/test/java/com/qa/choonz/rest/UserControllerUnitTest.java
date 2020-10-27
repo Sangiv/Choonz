@@ -1,11 +1,5 @@
 package com.qa.choonz.rest;
 
-import com.qa.Todo.controller.UserController;
-import com.qa.Todo.dto.TaskDTO;
-import com.qa.Todo.dto.UserDTO;
-import com.qa.Todo.presistence.domain.Users;
-import com.qa.Todo.services.UserService;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
@@ -16,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.qa.choonz.persistence.domain.Users;
+import com.qa.choonz.rest.controller.UserController;
+import com.qa.choonz.rest.dto.PlaylistDTO;
+import com.qa.choonz.rest.dto.UserDTO;
+import com.qa.choonz.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -48,17 +47,14 @@ class UserControllerUnitTest {
     private UserDTO userDTO;
 
     private final Long id = 1L;
-    private static final String TEST_FIRST_NAME = "Joni";
-    private static final String TEST_SURNAME = "Baki";
-    private static final String TEST_USER_NAME = "mjoni";
-    private static final String TEST_EMAIL = "mjoni@qa.com";
+    private static final String TEST_USER_NAME = "test";
     private static final String TEST_PASS = "123456";
 
     @BeforeEach
     void init() {
         this.userList = new ArrayList<>();
-        this.testUser = new Users(TEST_FIRST_NAME,TEST_SURNAME,TEST_USER_NAME,TEST_EMAIL,TEST_PASS);
-        this.testUserWithId = new Users(testUser.getFirst_name(),testUser.getSurname(),testUser.getUser_name(),testUser.getEmail(),testUser.getPassword());
+        this.testUser = new Users(TEST_USER_NAME,TEST_PASS);
+        this.testUserWithId = new Users(testUser.getUser_name(),testUser.getPassword());
         this.testUserWithId.setUser_id(this.id);
         this.userList.add(this.testUserWithId);
     }
@@ -87,10 +83,11 @@ class UserControllerUnitTest {
 
     @Test
     void updateTest() throws Exception {
-        //final List<TaskDTO> task = new ArrayList<>();
-        UserDTO oldUser = new UserDTO(null, TEST_FIRST_NAME,TEST_SURNAME,TEST_USER_NAME,TEST_EMAIL,TEST_PASS);
-        UserDTO newUser = new UserDTO(this.id, oldUser.getFirst_name(), oldUser.getSurname(),
-                oldUser.getUser_name(), oldUser.getEmail(),oldUser.getPassword());
+        final List<PlaylistDTO> playlist = new ArrayList<>();
+        UserDTO oldUser = new UserDTO(TEST_USER_NAME,TEST_PASS);
+        oldUser.setUser_id(null);
+        UserDTO newUser = new UserDTO(oldUser.getUser_name(),oldUser.getPassword());
+        userDTO.setUser_id(oldUser.getUser_id());
 
         when(this.service.update(oldUser, this.id)).thenReturn(newUser);
         assertThat(new ResponseEntity<UserDTO>(newUser, HttpStatus.ACCEPTED))

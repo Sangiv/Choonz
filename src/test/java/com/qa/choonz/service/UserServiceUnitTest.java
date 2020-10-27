@@ -1,9 +1,8 @@
 package com.qa.choonz.service;
 
-import com.qa.Todo.dto.UserDTO;
-import com.qa.Todo.presistence.domain.Users;
-import com.qa.Todo.presistence.repo.UserRepo;
-import com.qa.Todo.services.UserService;
+import com.qa.choonz.persistence.domain.Users;
+import com.qa.choonz.persistence.repository.UserRepository;
+import com.qa.choonz.rest.dto.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -26,7 +25,7 @@ public class UserServiceUnitTest {
     private UserService service;
 
     @MockBean
-    private UserRepo repo;
+    private UserRepository repo;
 
     @MockBean
     private ModelMapper mapper;
@@ -37,16 +36,13 @@ public class UserServiceUnitTest {
     private UserDTO userDTO;
 
     final long id = 1L;
-    private final String TEST_FIRST_NAME = "Joni";
-    private final String TEST_SURNAME = "Baki";
-    private final String TEST_USER_NAME = "mjoni";
-    private final String TEST_USER_EMAIL = "mjoni@qa.com";
+    private final String TEST_USER_NAME = "test";
     private final String TEST_PASS = "123456";
 
-    private final String TEST_UPDATE_FIRST_NAME = "Roni";
-    private final String TEST_UPDATE_SURNAME = "Taher";
-    private final String TEST_UPDATE_USER_NAME = "rtaher";
-    private final String TEST_UPDATE_PASS = "rtaher";
+
+    private final String TEST_UPDATE_USER_NAME = "update";
+    private final String TEST_UPDATE_PASS = "update";
+
 
 //    private UserDTO mapToDTO(Users user) {
 //        return this.mapper.map(user, UserDTO.class);
@@ -55,9 +51,9 @@ public class UserServiceUnitTest {
     @BeforeEach
     void init() {
         this.userList = new ArrayList<>();
-        this.testUser = new Users(TEST_FIRST_NAME, TEST_SURNAME, TEST_USER_NAME,TEST_USER_EMAIL,TEST_PASS);
+        this.testUser = new Users(TEST_USER_NAME,TEST_PASS);
         this.userList.add(testUser);
-        this.testUserWithID = new Users(testUser.getFirst_name(), testUser.getSurname(), testUser.getUser_name(), testUser.getEmail(), testUser.getPassword());
+        this.testUserWithID = new Users(testUser.getUser_name(), testUser.getPassword());
         this.testUserWithID.setUser_id(id);
         this.userDTO = this.mapper.map(testUserWithID, UserDTO.class);
     }
@@ -104,20 +100,20 @@ public class UserServiceUnitTest {
         verify(repo, times(1)).findAll();
     }
 
-    //TODO: Need to fix this update method
     @Test
     void updateUsersTest() {
         // given
         final long ID = 1L;
-        UserDTO newUsers = new UserDTO(null, TEST_FIRST_NAME, TEST_SURNAME, TEST_USER_NAME,TEST_USER_EMAIL,TEST_PASS);
-        Users user = new Users(TEST_UPDATE_FIRST_NAME, TEST_UPDATE_SURNAME,TEST_UPDATE_USER_NAME,TEST_USER_EMAIL,TEST_UPDATE_PASS);
+        UserDTO newUsers = new UserDTO(TEST_USER_NAME,TEST_PASS);
+        newUsers.setUser_id(null);
+        Users user = new Users(TEST_UPDATE_USER_NAME,TEST_UPDATE_PASS);
         user.setUser_id(ID);
-        Users updatedUsers = new Users(newUsers.getFirst_name(), newUsers.getSurname(), newUsers.getUser_name(), newUsers.getEmail(),newUsers.getPassword());
+        Users updatedUsers = new Users(newUsers.getUser_name(),newUsers.getPassword());
         updatedUsers.setUser_id(ID);
-        UserDTO updatedDTO = new UserDTO(ID, updatedUsers.getFirst_name(), updatedUsers.getSurname(), updatedUsers.getUser_name(),updatedUsers.getEmail(),updatedUsers.getPassword());
+        UserDTO updatedDTO = new UserDTO(updatedUsers.getUser_name(),updatedUsers.getPassword());
+        updatedDTO.setUser_id(ID);
 
         when(this.repo.findById(this.id)).thenReturn(Optional.of(user));
-        // You NEED to configure a .equals() method in Users.java for this to work
         when(this.repo.save(updatedUsers)).thenReturn(updatedUsers);
         when(this.mapper.map(updatedUsers, UserDTO.class)).thenReturn(updatedDTO);
 
