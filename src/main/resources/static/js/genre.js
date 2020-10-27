@@ -18,8 +18,8 @@ fetch('http://localhost:8082/genres/read')
         createTableHead(table,data);
         createTableBody(table,dataData);
 
-        // createCard(data);
-        testCard(data);
+        // createBlankCard();
+        cardData(dataData);
 
       });
     }
@@ -29,43 +29,52 @@ fetch('http://localhost:8082/genres/read')
 
   });
 
-//   function createCard(dataData){
-//     for (let dataRecord of dataData){
-//         console.log(dataRecord);
-//         for (value in dataRecord){
-//             if (value == 'id'){
-//                 log.info("namefound");
-//             }
-//         }
-//     }
-    
-//     let genreCount = dataData.length;
+//   function createBlankCard(){
+//     //populates blank, hidden card to be cloned
+//     let card = document.querySelector("div.card");
+//     card.querySelector("img").src = ("")
+//     let cardTitle = card.querySelector("h5").innerHTML = ("");
+//     let cardText = card.querySelector("p").innerHTML = ("");
+//     let cardButton = card.querySelector("a").innerHTML = ("");
+//     console.log("blank card created");
 //   }
 
-  function testCard(data){
-
-    // //selects existing card
-    // let card = document.querySelector("div.card");
-    // let cards = document.querySelector("div.cards");
-    // //sets image
-    // card.querySelector("img").src = ("https://i.imgur.com/KIX5Kpf.jpg")
-   
-    // //selects elements of it
-    // let cardTitle = card.querySelector("h5").innerHTML = ("test");
-    // let cardText = card.querySelector("p").innerHTML = ("test");
-    // let cardButton = card.querySelector("a").innerHTML = ("test");
-
+  function createCard(id, image, title, description, buttonText, buttonLink){
     //updates cloneCard with new information
+    let cards = document.querySelector("div.showcards");
     let cloneCard = document.querySelector("div.card").cloneNode(true);
-    cloneCard.id = ("card2");
-    cloneCard.querySelector("img").src=("http://i.imgur.com/czM0qWd.png");
-    cloneCard.querySelector("h5").innerHTML = ("test2");
-    cloneCard.querySelector("p").innerHTML = ("test2");
-    cloneCard.querySelector("a").innerHTML = ("test2");
+    cloneCard.id = ("card" + id);
+    cloneCard.querySelector("img").src=(image);
+    cloneCard.querySelector("h5").innerHTML = (title);
+    cloneCard.querySelector("p").innerHTML = (description);
+    cloneCard.querySelector("a").innerHTML = (buttonText);
+    cloneCard.querySelector("a").href = (buttonLink)
 
     console.log(cloneCard);
     cards.appendChild(cloneCard);
+  }
 
+  function cardData(dataData){
+
+    for (let dataRecord of dataData){
+
+        for (value in dataRecord){
+
+            if (typeof dataRecord[value] === 'object'){
+                console.log("4");
+                console.log(dataRecord);
+                let id = dataRecord.id;
+                let image = "http://i.imgur.com/czM0qWd.png";
+                let title = dataRecord.name;
+                let description = dataRecord.description;
+                let buttonText = dataRecord.name;
+                let buttonLink = "http://i.imgur.com/czM0qWd.png";
+                createCard(id, image, title, description, buttonText, buttonLink);
+
+            }
+
+        }
+    }
   }
 
 
@@ -129,10 +138,5 @@ function createTableBody(table,dataData){
               }
 }
 
-let cardDiv = document.getElementById('card');
-console.log(cardDiv);
 
-if (cardDiv.text() == ''){
-    cardDiv.hide();
-}
 
