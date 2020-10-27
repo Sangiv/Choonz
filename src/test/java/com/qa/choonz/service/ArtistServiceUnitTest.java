@@ -100,15 +100,15 @@ class ArtistServiceUnitTest {
         Artist updatedArtist = new Artist(artistDTO.getName());
         updatedArtist.setId(this.id);
 
-        ArtistDTO updatedAlbumDTO = new ArtistDTO(this.id, updatedArtist.getName());
+        ArtistDTO updatedArtistDTO = new ArtistDTO(this.id, updatedArtist.getName());
 
         when(this.repo.findById(this.id)).thenReturn(Optional.of(artist));
 
         when(this.repo.save(artist)).thenReturn(updatedArtist);
 
-        when(this.modelMapper.map(updatedArtist, ArtistDTO.class)).thenReturn(updatedAlbumDTO);
+        when(this.modelMapper.map(updatedArtist, ArtistDTO.class)).thenReturn(updatedArtistDTO);
 
-        assertThat(updatedAlbumDTO).isEqualTo(this.service.update(artistDTO, this.id));
+        assertThat(updatedArtistDTO).isEqualTo(this.service.update(artistDTO, this.id));
 
         verify(this.repo, times(1)).findById(1L);
         verify(this.repo, times(1)).save(updatedArtist);

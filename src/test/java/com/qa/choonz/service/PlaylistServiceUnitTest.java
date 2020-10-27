@@ -100,15 +100,15 @@ class PlaylistServiceUnitTest {
         Playlist updatedPlaylist = new Playlist(playlistDTO.getName());
         updatedPlaylist.setId(this.id);
 
-        PlaylistDTO updatedGenreDTO = new PlaylistDTO(this.id, updatedPlaylist.getName());
+        PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(this.id, updatedPlaylist.getName());
 
         when(this.repo.findById(this.id)).thenReturn(Optional.of(playlist));
 
         when(this.repo.save(playlist)).thenReturn(updatedPlaylist);
 
-        when(this.modelMapper.map(updatedPlaylist, PlaylistDTO.class)).thenReturn(updatedGenreDTO);
+        when(this.modelMapper.map(updatedPlaylist, PlaylistDTO.class)).thenReturn(updatedPlaylistDTO);
 
-        assertThat(updatedGenreDTO).isEqualTo(this.service.update(playlistDTO, this.id));
+        assertThat(updatedPlaylistDTO).isEqualTo(this.service.update(playlistDTO, this.id));
 
         verify(this.repo, times(1)).findById(1L);
         verify(this.repo, times(1)).save(updatedPlaylist);
