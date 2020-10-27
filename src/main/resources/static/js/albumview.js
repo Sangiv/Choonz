@@ -1,4 +1,4 @@
-console.log('test');
+
 const params = new URLSearchParams(window.location.search);
 
 for(let param of params){
