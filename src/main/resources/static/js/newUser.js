@@ -41,7 +41,7 @@ function newUser(first_name,surname,user_name,email,password){
             "email": email,
             "password": password
     }
-    fetch( "http://localhost:3000/api/users", 
+    fetch( "http://localhost:8082/users", 
     {
     method: 'post',
     headers: {
@@ -57,7 +57,7 @@ function newUser(first_name,surname,user_name,email,password){
     });
 }
 function userLogIn(userId, password){
-    fetch('http://localhost:3000/api/users/'+userId)
+    fetch('http://localhost:8082/users/read/'+userId)
     .then(
       function(response) {
         if (response.status !== 200) {

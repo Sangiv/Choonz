@@ -34,7 +34,7 @@ fetch('http://localhost:8082/albums/read')
         // console.log(keys);
         if (keys == 'id'){
             
-        } else if (keys == 'playlist') {
+        } else if (keys == 'tracks') {
 
         } else {
             let th = document.createElement("th");
@@ -46,7 +46,7 @@ fetch('http://localhost:8082/albums/read')
 
     }
     let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("Edit");
+    let editButtonTitle = document.createTextNode("View Tracks");
     editHead.appendChild(editButtonTitle);
     row.appendChild(editHead);
 
@@ -61,6 +61,9 @@ function createTableBody(table,dataData){
             if (value == 'id'){
 
             } 
+            else if(value == 'tracks'){
+
+            }
             else if(value == 'genre'){
                 let cell = row.insertCell();
                 // let text = document.createTextNode(dataRecord[value]);
@@ -93,12 +96,12 @@ function createTableBody(table,dataData){
           }
         }
         }
-        let editCell = row.insertCell();
-        let editButton = document.createElement("a");
-        editButton.className="btn btn-primary";
-        // editButton.href="userRecord.html?id="+dataRecord.id;
-        editButton.innerHTML="Edit";
-        editCell.appendChild(editButton);
+        let viewCell = row.insertCell();
+        let viewButton = document.createElement("a");
+        viewButton.className="btn btn-primary";
+        viewButton.href="albumview.html?id="+dataRecord.id;
+        viewButton.innerHTML="View";
+        viewCell.appendChild(viewButton);
 
               }
 }
