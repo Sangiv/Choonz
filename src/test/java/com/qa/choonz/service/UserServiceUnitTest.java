@@ -107,20 +107,20 @@ public class UserServiceUnitTest {
         Users user = new Users(TEST_UPDATE_USER_NAME,TEST_UPDATE_PASS);
         user.setUser_id(ID);
 
-        UserDTO newUsers = new UserDTO(TEST_USER_NAME,TEST_PASS);
-        newUsers.setUser_id(null);
+        UserDTO newUserDTO = new UserDTO(user.getUser_name(),user.getPassword());
+        newUserDTO.setUser_id(null);
 
-        Users updatedUsers = new Users(newUsers.getUser_name(),newUsers.getPassword());
+        Users updatedUsers = new Users(newUserDTO.getUser_name(),newUserDTO.getPassword());
         updatedUsers.setUser_id(ID);
 
         UserDTO updatedDTO = new UserDTO(updatedUsers.getUser_name(),updatedUsers.getPassword());
         updatedDTO.setUser_id(updatedUsers.getUser_id());
 
         when(this.repo.findById(this.id)).thenReturn(Optional.of(user));
-        when(this.repo.save(user)).thenReturn(updatedUsers);
+        when(this.repo.save(updatedUsers)).thenReturn(updatedUsers);
         when(this.mapper.map(updatedUsers, UserDTO.class)).thenReturn(updatedDTO);
 
-        assertThat(updatedDTO).isEqualTo(this.service.update(newUsers, this.id));
+        assertThat(updatedDTO).isEqualTo(this.service.update(newUserDTO, this.id));
 
         verify(this.repo, times(1)).findById(1L);
         verify(this.repo, times(1)).save(updatedUsers);

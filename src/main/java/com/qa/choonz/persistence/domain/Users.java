@@ -8,12 +8,10 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("ALL")
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @ToString
 @EqualsAndHashCode
 public class Users {
@@ -21,12 +19,13 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long user_id;
+
     @Column
     private String user_name;
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "users")
     private List<Playlist> playlist;
 
@@ -49,9 +48,10 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "userId=" + user_id +
-                ", userName='" + user_name + '\'' +
+                "user_id=" + user_id +
+                ", user_name='" + user_name + '\'' +
                 ", password='" + password + '\'' +
+                ", playlist=" + playlist +
                 '}';
     }
 

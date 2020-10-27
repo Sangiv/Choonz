@@ -27,6 +27,7 @@ import com.qa.choonz.persistence.repository.UserRepository;
 import com.qa.choonz.rest.dto.TrackDTO;
 import com.qa.choonz.rest.dto.UserDTO;
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserControllerIntegrationTest {
@@ -101,16 +102,14 @@ public class UserControllerIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
 
         assertEquals(this.objectMapper.writeValueAsString(usersList), content);
-        
     }
 
     @Test
     void testUpdate() throws Exception {
         UserDTO newUsers = new UserDTO(TEST_UPDATE_USER_NAME,TEST_UPDATE_PASS);
         newUsers.setUser_id(this.id);
-//        Users updatedUsers = new Users(newUsers.getFirstName(),
-//                newUsers.getSurname(), newUsers.getUserName(), newUsers.getEmail(), newUsers.getPassword());
-//        updatedUsers.setUserId(this.id);
+        Users updatedUsers = new Users(newUsers.getUser_name(), newUsers.getPassword());
+        updatedUsers.setUser_id(this.id);
 
         String result = this.mock
                 .perform(request(HttpMethod.PUT, "/users/update/" + this.id)
@@ -120,7 +119,7 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isAccepted())
                 .andReturn().getResponse().getContentAsString();
 
-        assertEquals(this.objectMapper.writeValueAsString(newUsers), result);
+        assertEquals(this.objectMapper.writeValueAsString(updatedUsers), result);
     }
 
     @Test

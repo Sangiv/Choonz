@@ -3,6 +3,7 @@ package com.qa.choonz.service;
 
 import com.qa.choonz.persistence.domain.Users;
 import com.qa.choonz.persistence.repository.UserRepository;
+import com.qa.choonz.rest.dto.PlaylistDTO;
 import com.qa.choonz.rest.dto.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,11 +24,12 @@ public class UserServiceIntegrationTest {
     @Autowired
     private UserService service;
 
-    @MockBean
+    @Autowired
     private UserRepository repo;
 
-    private Users testUser;
 
+    private  final List<PlaylistDTO> playlistDTOList = new ArrayList<>();
+    private Users testUser;
     private Users testUserWithID;
 
     private Long id;
@@ -38,17 +42,17 @@ public class UserServiceIntegrationTest {
     private final String TEST_UPDATE_USER_NAME = "update";
     private final String TEST_UPDATE_PASS = "update";
 
-    @MockBean
+    @Autowired
     private ModelMapper mapper;
 
-    private UserDTO mapToDTO(Users task) {
-        return this.mapper.map(task, UserDTO.class);
+    private UserDTO mapToDTO(Users user) {
+        return this.mapper.map(user, UserDTO.class);
     }
 
     @BeforeEach
     void init() {
         this.repo.deleteAll();
-        this.testUser = new Users(TEST_USER_NAME,TEST_PASS);
+        this.testUser = new Users(this.TEST_USER_NAME,this.TEST_PASS);
         this.testUserWithID = this.repo.save(this.testUser);
         this.testUserDTO = this.mapToDTO(testUserWithID);
         this.id = this.testUserWithID.getUser_id();
@@ -58,7 +62,7 @@ public class UserServiceIntegrationTest {
     @Test
     void testCreateUser() {
         assertThat(this.testUserDTO)
-                .isEqualTo(this.service.createUser(testUser));
+                .isEqualTo(this.service.createUser(this.testUser));
     }
 
 
