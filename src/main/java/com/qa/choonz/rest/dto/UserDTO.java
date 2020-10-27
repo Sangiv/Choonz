@@ -2,14 +2,10 @@ package com.qa.choonz.rest.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
 //converting our POJO to JSON
 public class UserDTO {
     private Long user_id;
@@ -17,21 +13,7 @@ public class UserDTO {
     private String user_name;
     private String password;
 
-    private List<PlaylistDTO> playlist;
-
-
-    public void setPlaylist(List<PlaylistDTO> playlist) {
-        this.playlist = playlist;
-    }
-
-    public List<PlaylistDTO> getPlayList() {
-        return playlist;
-    }
-
-    public void setPlayList(List<PlaylistDTO> playlist) {
-        this.playlist=playlist;
-    }
-
+    private List<PlaylistDTO> playList = new ArrayList<>();
 
     public Long getUser_id() {
         return user_id;
@@ -54,14 +36,40 @@ public class UserDTO {
         return password;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserDTO() {
     }
 
     public UserDTO( String user_name, String password) {
         this.user_name = user_name;
         this.password = password;
     }
+
+    public UserDTO(String user_name, String password, List<PlaylistDTO> playList) {
+        this.user_name = user_name;
+        this.password = password;
+        this.playList = playList;
+    }
+
+    public UserDTO(Long user_id, String user_name, String password, List<PlaylistDTO> playList) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.password = password;
+        this.playList = playList;
+    }
+
+    public void setPlayList(List<PlaylistDTO> playList) {
+        this.playList = playList;
+    }
+
+    public List<PlaylistDTO> getPlayList() {
+        return playList;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -71,12 +79,12 @@ public class UserDTO {
             return false;
         }
         UserDTO other = (UserDTO) obj;
-        return Objects.equals(user_name, other.user_name) && Objects.equals(password, other.password) && user_id.equals(other.user_id) && Objects.equals(playlist, other.playlist);
+        return Objects.equals(user_name, other.user_name) && Objects.equals(password, other.password) && user_id.equals(other.user_id) && Objects.equals(playList, other.playList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, user_name, password,playlist);
+        return Objects.hash(user_id, user_name, password, playList);
     }
 
 }

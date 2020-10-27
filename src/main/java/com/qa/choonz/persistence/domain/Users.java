@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class Users {
 
     @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "users")
-    private List<Playlist> playlist;
+    private List<Playlist> playlist = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
