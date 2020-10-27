@@ -67,7 +67,7 @@ public class UserServiceIntegrationTest {
 
 
     @Test
-    void testFindTaskByID() {
+    void testFindUserByID() {
         assertThat(this.service.read(this.testUserWithID.getUser_id()))
                 .isEqualTo(this.mapToDTO(this.testUserWithID));
     }
