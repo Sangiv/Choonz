@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,7 +21,7 @@ public class UserServiceIntegrationTest {
     @Autowired
     private UserService service;
 
-    @Autowired
+    @MockBean
     private UserRepository repo;
 
     private Users testUser;
@@ -37,7 +38,7 @@ public class UserServiceIntegrationTest {
     private final String TEST_UPDATE_USER_NAME = "update";
     private final String TEST_UPDATE_PASS = "update";
 
-    @Autowired
+    @MockBean
     private ModelMapper mapper;
 
     private UserDTO mapToDTO(Users task) {

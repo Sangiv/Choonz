@@ -28,6 +28,7 @@ public class UserDTO {
     public List<Playlist> getPlayList() {
         return playlist;
     }
+
     public void setPlayList(List<Playlist> playlist) {
         this.playlist=playlist;
     }

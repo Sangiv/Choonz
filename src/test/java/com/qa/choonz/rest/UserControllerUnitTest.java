@@ -87,7 +87,7 @@ class UserControllerUnitTest {
         UserDTO oldUser = new UserDTO(TEST_USER_NAME,TEST_PASS);
         oldUser.setUser_id(null);
         UserDTO newUser = new UserDTO(oldUser.getUser_name(),oldUser.getPassword());
-        userDTO.setUser_id(oldUser.getUser_id());
+        newUser.setUser_id(oldUser.getUser_id());
 
         when(this.service.update(oldUser, this.id)).thenReturn(newUser);
         assertThat(new ResponseEntity<UserDTO>(newUser, HttpStatus.ACCEPTED))

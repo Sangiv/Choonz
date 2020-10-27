@@ -35,7 +35,7 @@ public class UserServiceUnitTest {
     private Users testUserWithID;
     private UserDTO userDTO;
 
-    final long id = 1L;
+    final Long id = 1L;
     private final String TEST_USER_NAME = "test";
     private final String TEST_PASS = "123456";
 
@@ -60,9 +60,8 @@ public class UserServiceUnitTest {
 
     @Test
     void createUsersTest() {
-        when(this.mapper.map(testUser, Users.class)).thenReturn(testUser);
         when(this.repo.save(testUser)).thenReturn(testUserWithID);
-        when(this.mapper.map(testUserWithID, UserDTO.class)).thenReturn(userDTO);
+        when(this.mapper.map(testUserWithID, UserDTO.class)).thenReturn(this.userDTO);
 
         assertThat(this.userDTO).isEqualTo(this.service.createUser(this.testUser));
 
@@ -103,18 +102,22 @@ public class UserServiceUnitTest {
     @Test
     void updateUsersTest() {
         // given
-        final long ID = 1L;
-        UserDTO newUsers = new UserDTO(TEST_USER_NAME,TEST_PASS);
-        newUsers.setUser_id(null);
+        final Long ID = 1L;
+
         Users user = new Users(TEST_UPDATE_USER_NAME,TEST_UPDATE_PASS);
         user.setUser_id(ID);
+
+        UserDTO newUsers = new UserDTO(TEST_USER_NAME,TEST_PASS);
+        newUsers.setUser_id(null);
+
         Users updatedUsers = new Users(newUsers.getUser_name(),newUsers.getPassword());
         updatedUsers.setUser_id(ID);
+
         UserDTO updatedDTO = new UserDTO(updatedUsers.getUser_name(),updatedUsers.getPassword());
-        updatedDTO.setUser_id(ID);
+        updatedDTO.setUser_id(updatedUsers.getUser_id());
 
         when(this.repo.findById(this.id)).thenReturn(Optional.of(user));
-        when(this.repo.save(updatedUsers)).thenReturn(updatedUsers);
+        when(this.repo.save(user)).thenReturn(updatedUsers);
         when(this.mapper.map(updatedUsers, UserDTO.class)).thenReturn(updatedDTO);
 
         assertThat(updatedDTO).isEqualTo(this.service.update(newUsers, this.id));
