@@ -17,6 +17,7 @@ fetch('http://localhost:8082/albums/read')
 
         createTableHead(table,data);
         createTableBody(table,dataData);
+        cardData(dataData);
 
 
       });
@@ -25,6 +26,46 @@ fetch('http://localhost:8082/albums/read')
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+
+  function createCard(id, image, title, description, buttonText, buttonLink){
+    //updates cloneCard with new information
+    let cards = document.querySelector("div.showcards");
+    let cloneCard = document.querySelector("div.card").cloneNode(true);
+    cloneCard.id = ("card" + id);
+    cloneCard.querySelector("img").src=(image);
+    cloneCard.querySelector("h5").innerHTML = (title);
+    cloneCard.querySelector("p").innerHTML = (description);
+    cloneCard.querySelector("a").innerHTML = (buttonText);
+    cloneCard.querySelector("a").href = (buttonLink)
+    cards.appendChild(cloneCard);
+  }
+
+  function cardData(dataData){
+
+    for (let dataRecord of dataData){
+        singleIterationCheck = 0;
+        for (value in dataRecord){
+
+            if (typeof dataRecord[value] === 'object'){
+              if (singleIterationCheck != 0){
+
+              } else {
+                let id = dataRecord.id;
+                let image = dataRecord.cover;
+                let title = dataRecord.name;
+                let description = dataRecord.artist.name;
+                let buttonText = "View";
+                let buttonLink = "albumview.html?id="+id;
+                createCard(id, image, title, description, buttonText, buttonLink);
+                singleIterationCheck++;
+              }
+            }
+
+        }
+    }
+  }
+
+
 
   function createTableHead(table,data){
     let thead = table.createTHead();
@@ -69,7 +110,6 @@ function createTableBody(table,dataData){
                 // let text = document.createTextNode(dataRecord[value]);
                 if (typeof dataRecord[value] === 'object'){
                   for (object in dataRecord[value]){
-                      console.log(object);
                       if (object == 'name'){
                           let albumText = document.createTextNode(dataRecord.genre.name);
                           cell.appendChild(albumText);
@@ -85,7 +125,6 @@ function createTableBody(table,dataData){
           let text = document.createTextNode(dataRecord[value]);
           if (typeof dataRecord[value] === 'object'){
             for (object in dataRecord[value]){
-                console.log(object);
                 if (object == 'name'){
                     let albumText = document.createTextNode(dataRecord.artist.name);
                     cell.appendChild(albumText);

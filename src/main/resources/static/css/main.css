@@ -1,7 +1,7 @@
 body{
   background-color:#16213e;
   min-height: 100vh;
-  background-image: url("src\main\resources\img\QA_Logo.png");
+  background-image: url("src\main\resources\static\img\QA_Logo.png");
   background-repeat: no-repeat;
   background-size: cover;
 
