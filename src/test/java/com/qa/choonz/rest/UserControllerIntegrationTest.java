@@ -1,9 +1,14 @@
 package com.qa.choonz.rest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.choonz.persistence.domain.Users;
-import com.qa.choonz.persistence.repository.UserRepository;
-import com.qa.choonz.rest.dto.UserDTO;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -11,15 +16,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.choonz.persistence.domain.Users;
+import com.qa.choonz.persistence.repository.UserRepository;
+import com.qa.choonz.rest.dto.TrackDTO;
+import com.qa.choonz.rest.dto.UserDTO;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -94,7 +100,8 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
+        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
+        
     }
 
     @Test
@@ -113,7 +120,7 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isAccepted())
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(this.mapToDTO(updatedUsers)), result);
+        assertEquals(this.objectMapper.writeValueAsString(newUsers), result);
     }
 
     @Test
