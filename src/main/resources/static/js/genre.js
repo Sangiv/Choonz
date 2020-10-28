@@ -27,10 +27,10 @@ fetch('http://localhost:8082/genres/read')
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
-    cloneCard.querySelector("h5").innerHTML = (title);
-    cloneCard.querySelector("p").innerHTML = (description);
-    cloneCard.querySelector("a").innerHTML = (buttonText);
-    cloneCard.querySelector("a").href = (buttonLink)
+    cloneCard.querySelector("#title").innerHTML = (title);
+    cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector("#button").innerHTML = (buttonText);
+    cloneCard.querySelector("#button").href = (buttonLink);
     cards.appendChild(cloneCard);
   }
 
