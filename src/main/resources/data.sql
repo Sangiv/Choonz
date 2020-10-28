@@ -4,7 +4,7 @@ INSERT INTO users (user_name,password) VALUES
 ('Sangiv D', '123456'),
 ('M Joni', '123456');
 
-INSERT INTO playlist (name,artwork, description, users_user_id) VALUES
+INSERT INTOf playlist (name,artwork, description, users_user_id) VALUES
 ('Chill', 'img/test-playlist.png', 'My friend, it is good!', 1),
 ('Super Chill', 'img/test-playlist.png', 'My friend, it is very good!', 2),
 ('Club Banger', 'img/test-playlist.png', 'My friend, it is very very good!',3),
