@@ -79,7 +79,7 @@ function getGenreView(id){
           let row = table.insertRow();
   
           for(let prop in obj){
-            if(prop == 'tracks'){
+            if(prop == 'tracks' || prop == 'id'){
 
             }else{
             // console.log(prop);
@@ -105,9 +105,7 @@ function getGenreView(id){
             //     console.log(obj[0].name);
             // }
             // console.log(arr)
-            let cell = row.insertCell();
-            let text = document.createTextNode("Id")
-            cell.appendChild(text);
+            
 
             let cell2 = row.insertCell();
             let text2 = document.createTextNode("Album Name");

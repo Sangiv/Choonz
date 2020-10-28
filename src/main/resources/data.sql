@@ -35,9 +35,9 @@ INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 ('Lust for Life', 'img/lustforlife.jpg',4,5);
 
 
-INSERT INTO track (name, duration, lyrics, album_id) VALUES
-('I feel it coming', 5, 'I feel it coming', 3),
-('Rockstar', 5, 'I feel it coming', 5),
-('When I see', 5, 'When I see you eyes', 6),
-('Royalty', 5, 'Jude Jude Jud', 1),
-('Grass aint greener', 5, 'Blah blah blah', 2);
+INSERT INTO track (name, duration, lyrics, album_id, playlist_id) VALUES
+('I feel it coming', 5, 'I feel it coming', 3, 1),
+('Rockstar', 5, 'I feel it coming', 5, 2),
+('When I see', 5, 'When I see you eyes', 6, 3),
+('Royalty', 5, 'Jude Jude Jud', 1, 2),
+('Grass aint greener', 5, 'Blah blah blah', 2, 4);
