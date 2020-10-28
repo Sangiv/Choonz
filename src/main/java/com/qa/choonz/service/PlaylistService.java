@@ -37,23 +37,23 @@ public class PlaylistService {
         return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public PlaylistDTO read(long id) {
+    public PlaylistDTO read(Long id) {
         Playlist found = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
         return this.mapToDTO(found);
     }
 
-    public PlaylistDTO update(PlaylistDTO playlistDTO, long id) {
+    public PlaylistDTO update(PlaylistDTO playlistDTO, Long id) {
         Playlist toUpdate = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
         toUpdate.setName(playlistDTO.getName());
         toUpdate.setDescription(playlistDTO.getDescription());
         toUpdate.setArtwork(playlistDTO.getArtwork());
         toUpdate.setTracks(playlistDTO.getTracks());
-//        BeanUtils.mergeNotNull(playlistDTO,toUpdate);
+        BeanUtils.mergeNotNull(playlistDTO,toUpdate);
         Playlist updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
 
-    public boolean delete(long id) {
+    public boolean delete(Long id) {
         if (!this.repo.existsById(id)) {
             throw new PlaylistNotFoundException();
         }

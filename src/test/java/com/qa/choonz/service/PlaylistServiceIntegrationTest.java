@@ -85,7 +85,7 @@ class PlaylistServiceIntegrationTest {
 
     @Test
     void testDelete() {
-        assertThat(this.service.delete(this.id)).isTrue();
+        assertThat(this.service.delete(this.testPlaylistWithId.getId())).isTrue();
     }
 
 }
