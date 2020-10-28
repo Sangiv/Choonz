@@ -39,25 +39,17 @@ fetch('http://localhost:8082/artists/read/'+ id)
     let thead = table.createTHead();
     let row = thead.insertRow();
 
-    for (let keys of data){
-        // console.log(keys);
-        if (keys == 'id'){
-            
-        } else if (keys == 'tracks') {
+    let cell2 = row.insertCell();
+    let text2 = document.createTextNode("Track Name");
+    cell2.appendChild(text2);
 
-        } else {
-            let th = document.createElement("th");
-            let text = document.createTextNode(keys);
-            th.appendChild(text);
-            row.appendChild(th);
-        }
+    let cell3 = row.insertCell();
+    let text3 = document.createTextNode("Duration");
+    cell3.appendChild(text3);
 
-
-    }
-    let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("View Tracks");
-    editHead.appendChild(editButtonTitle);
-    row.appendChild(editHead);
+    let cell4 = row.insertCell();
+    let text4 = document.createTextNode("Lyrics");
+    cell4.appendChild(text4);
 
 }
 
@@ -66,28 +58,45 @@ function createTableBody(table,dataData){
         if(dataRecord == 'albums'){
             let arr = dataData.albums;
             
+            
             for(let i = 0; i < arr.length; i++){
                 let obj = arr[i];
                 console.log(obj);
-                let row = table.insertRow();
+                console.log("hello")
+                
         
                 for(let prop in obj){
-                    if(prop == 'id' || prop == 'tracks'){
+                    if(prop == 'tracks'){
+                        let arr1 = obj.tracks;
+                        
+                        for(let i = 0; i < arr1.length; i++){
+                          let obj1 = arr1[i];
+                          let row = table.insertRow();
 
-                    }else{
-                  // console.log(prop);
-                  // console.log(obj[prop]);
-                  let cell = row.insertCell();
-                  let text = document.createTextNode(obj[prop]);
-                  cell.appendChild(text);
+                          for(let prop1 in obj1){
+                            if(prop1 == 'id'){
+                              
+
+                            }else{
+                              let cell = row.insertCell();
+                              let text = document.createTextNode(obj1[prop1]);
+                              cell.appendChild(text);
+
+                            }
+                          }
+
+
+
+                        }
+
+                        
+                        
+
+                   
+                  
                   
                 }}
-                let viewCell = row.insertCell();
-                let viewButton = document.createElement("a");
-                viewButton.className="btn btn-primary";
-                viewButton.href="albumview.html?id="+dataData.albums[i].id;
-                viewButton.innerHTML="View";
-                viewCell.appendChild(viewButton);
+                
               }
               
         }
