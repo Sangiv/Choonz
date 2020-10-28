@@ -15,8 +15,8 @@ fetch('http://localhost:8082/albums/read')
         let data = Object.keys(dataData[0]);
         // console.log(data);
 
-        createTableHead(table,data);
-        createTableBody(table,dataData);
+        // createTableHead(table,data);
+        // createTableBody(table,dataData);
         cardData(dataData);
 
 
@@ -36,7 +36,7 @@ fetch('http://localhost:8082/albums/read')
     cloneCard.querySelector("h5").innerHTML = (title);
     cloneCard.querySelector("p").innerHTML = (description);
     cloneCard.querySelector("a").innerHTML = (buttonText);
-    cloneCard.querySelector("a").href = (buttonLink)
+    cloneCard.querySelector("a").href = (buttonLink);
     cards.appendChild(cloneCard);
   }
 
