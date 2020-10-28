@@ -79,13 +79,16 @@ function getGenreView(id){
           let row = table.insertRow();
   
           for(let prop in obj){
+            if(prop == 'tracks' || prop == 'id'){
+
+            }else{
             // console.log(prop);
             // console.log(obj[prop]);
             let cell = row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
             
-          }
+          }}
         }
         }
     }
@@ -102,17 +105,13 @@ function getGenreView(id){
             //     console.log(obj[0].name);
             // }
             // console.log(arr)
-            let cell = row.insertCell();
-            let text = document.createTextNode("Id")
-            cell.appendChild(text);
+            
 
             let cell2 = row.insertCell();
             let text2 = document.createTextNode("Album Name");
             cell2.appendChild(text2);
 
-            let cell3 = row.insertCell();
-            let text3 = document.createTextNode("tracks");
-            cell3.appendChild(text3);
+            
 
             let cell4 = row.insertCell();
             let text4 = document.createTextNode("cover");

@@ -52,10 +52,10 @@ fetch('http://localhost:8082/playlists/read')
                 let image = dataRecord.artwork;
                 let title = dataRecord.name;
                 let description = dataRecord.description;
-                let buttonText = "Albums";
-                let buttonLink = "artistalbums.html?id="+dataRecord.id;
-                let button2Text = "Tracks";
-                let button2Link = "artisttracks.html?id="+dataRecord.id;
+                let buttonText = "View";
+                let buttonLink = "playlistview.html?id="+dataRecord.id;
+                let button2Text = "Edit";
+                let button2Link = "playlistedit.html?id="+dataRecord.id;
                 createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
                 singleIterationCheck++;
             }

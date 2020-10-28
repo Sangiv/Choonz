@@ -97,4 +97,7 @@ function createTableBody(table,dataData){
               }
 }
 
-
+function addTrackToPlaylist(){
+  
+  
+}
