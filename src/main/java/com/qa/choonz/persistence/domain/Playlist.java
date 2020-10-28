@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,10 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -44,7 +47,12 @@ public class Playlist {
 //    @JsonIgnoreProperties("playlist")
     @JsonManagedReference(value = "playlist")
 //    @JsonIgnoreProperties(value = { "tracks" })
-    private List<Track> tracks;
+    private List<Track> tracks = new ArrayList<>();
+
+    @ManyToOne
+    @JsonBackReference(value = "users")
+//    @JsonIgnoreProperties(value = { "users" })
+    private Users users;
 
     public Playlist() {
         super();
@@ -76,6 +84,12 @@ public class Playlist {
 
     public String getName() {
         return name;
+    }
+
+    public Playlist(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description, @NotNull @Size(max = 1000) String artwork) {
+        this.name = name;
+        this.description = description;
+        this.artwork = artwork;
     }
 
     public void setName(String name) {
@@ -117,7 +131,7 @@ public class Playlist {
 
     @Override
     public int hashCode() {
-        return Objects.hash(artwork, description, id, name, tracks);
+        return Objects.hash(artwork, description, id, name, tracks, users);
     }
 
     @Override
@@ -130,7 +144,8 @@ public class Playlist {
         }
         Playlist other = (Playlist) obj;
         return Objects.equals(artwork, other.artwork) && Objects.equals(description, other.description)
-                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
+                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks)
+                && Objects.equals(users, other.users);
     }
 
 }
