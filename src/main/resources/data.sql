@@ -27,12 +27,12 @@ INSERT INTO genre (name,description) VALUES
 -- ('BeerBongs and Bentleys', LOAD_FILE('resources/img/beerbong.jpg'),3,2),
 -- ('Lust for Life', LOAD_FILE('resources/img/lustforlife.jpg'),4,5);
 INSERT INTO album (name,cover, artist_id, genre_id) VALUES
-('Royalty', 'img/test-album.png',1,2),
-('X', 'img/test-album.png',1,2),
-('Starboy', 'img/test-album.png',2,1),
-('AfterHours', 'img/test-album.png',2,1),
-('BeerBongs and Bentleys', 'img/test-album.png',3,2),
-('Lust for Life', 'img/test-album.png',4,5);
+('Royalty', 'img/royalty.jpg',1,2),
+('X', 'img/xchrisbrown.jpg',1,2),
+('Starboy', 'img/starboy.jpg',2,1),
+('AfterHours', 'img/afterhours.jpg',2,1),
+('BeerBongs and Bentleys', 'img/beerbong.jpg',3,2),
+('Lust for Life', 'img/lustforlife.jpg',4,5);
 
 
 INSERT INTO track (name, duration, lyrics, album_id) VALUES
