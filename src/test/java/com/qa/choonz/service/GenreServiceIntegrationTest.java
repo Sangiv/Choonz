@@ -38,12 +38,13 @@ class GenreServiceIntegrationTest {
 
     private Long id;
     private final String name = "Pop";
+    private final String description = "Pop";
 
     
     @BeforeEach
     void init() {
         this.repo.deleteAll();
-        this.testGenre= new Genre(name);
+        this.testGenre= new Genre(name, description);
         this.testGenreWithId = this.repo.save(this.testGenre);
         this.testGenreDTO = this.mapToDTO(testGenreWithId);
         this.id = this.testGenreWithId.getId();
@@ -75,8 +76,8 @@ class GenreServiceIntegrationTest {
 
     @Test
     void testUpdate() {
-    	GenreDTO newGenre = new GenreDTO(null, "BVB");
-    	GenreDTO updatedGenre = new GenreDTO(this.id, newGenre.getName());
+    	GenreDTO newGenre = new GenreDTO(null, "BVB", "Team");
+    	GenreDTO updatedGenre = new GenreDTO(this.id, newGenre.getName(), newGenre.getDescription());
 
         assertThat(updatedGenre)
             .isEqualTo(this.service.update(newGenre, this.id));

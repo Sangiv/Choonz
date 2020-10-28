@@ -32,12 +32,21 @@ public class PlaylistDTO {
     }
 
     public PlaylistDTO(String name, String description, String artwork) {
-        this.name = name;
-        this.description = description;
-        this.artwork = artwork;
-    }
+		super();
+		this.name = name;
+		this.description = description;
+		this.artwork = artwork;
+	}
 
-    public PlaylistDTO(Long id, String name) {
+	public PlaylistDTO(Long id, String name, String description, String artwork) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.artwork = artwork;
+	}
+
+	public PlaylistDTO(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

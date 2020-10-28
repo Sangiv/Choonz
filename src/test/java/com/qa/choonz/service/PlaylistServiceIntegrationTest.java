@@ -37,13 +37,14 @@ class PlaylistServiceIntegrationTest {
     private PlaylistDTO testPlaylistDTO;
 
     private Long id;
-    private final String name = "Mix";
-
+    private final String NAME = "Mix";
+    private final String DESCRIPTION = "Mix";
+    private final String ARTWORK = "Image";
     
     @BeforeEach
     void init() {
         this.repo.deleteAll();
-        this.testPlaylist= new Playlist(name);
+        this.testPlaylist= new Playlist(NAME, DESCRIPTION, ARTWORK);
         this.testPlaylistWithId = this.repo.save(this.testPlaylist);
         this.testPlaylistDTO = this.mapToDTO(testPlaylistWithId);
         this.id = this.testPlaylistWithId.getId();
@@ -75,8 +76,8 @@ class PlaylistServiceIntegrationTest {
 
     @Test
     void testUpdate() {
-    	PlaylistDTO newPlaylist = new PlaylistDTO(null, "BVB");
-    	PlaylistDTO updatedPlaylist = new PlaylistDTO(this.id, newPlaylist.getName());
+    	PlaylistDTO newPlaylist = new PlaylistDTO(null, "BVB", "Team", "Badge");
+    	PlaylistDTO updatedPlaylist = new PlaylistDTO(this.id, newPlaylist.getName(), newPlaylist.getDescription(), newPlaylist.getArtwork());
 
         assertThat(updatedPlaylist)
             .isEqualTo(this.service.update(newPlaylist, this.id));
