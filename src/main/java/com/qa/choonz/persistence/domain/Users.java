@@ -13,8 +13,7 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +25,10 @@ public class Users {
     @Column
     private String password;
 
+
     @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "users")
-    private List<Playlist> playlist = new ArrayList<>();
+    private List<Playlist> playList = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -38,12 +38,12 @@ public class Users {
         return user_id.equals(users.user_id) &&
                 user_name.equals(users.user_name) &&
                 password.equals(users.password) &&
-                playlist.equals(users.playlist);
+                playList.equals(users.playList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, user_name, password, playlist);
+        return Objects.hash(user_id, user_name, password, playList);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Users {
                 "user_id=" + user_id +
                 ", user_name='" + user_name + '\'' +
                 ", password='" + password + '\'' +
-                ", playlist=" + playlist +
+                ", playlist=" + playList +
                 '}';
     }
 
@@ -64,6 +64,13 @@ public class Users {
     public Users( String user_name, String password) { ;
         this.user_name = user_name;
         this.password = password;
+    }
+    public List<Playlist> getPlayList() {
+        return playList;
+    }
+
+    public void setPlayList(List<Playlist> playList) {
+        this.playList = playList;
     }
 
     public Long getUser_id() {
@@ -89,16 +96,6 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Playlist> getTasks() {
-
-        return playlist;
-    }
-
-    public void setTasks(List<Playlist> playlist) {
-        this.playlist.clear();
-        this.playlist.addAll(playlist);
     }
 
 }

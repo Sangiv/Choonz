@@ -66,7 +66,7 @@ public class UserControllerIntegrationTest {
         this.testUserWithId = this.repo.saveAndFlush(this.testUsers);
         this.id = this.testUserWithId.getUser_id();
 
-        this.userDTO  = new UserDTO(this.testUsers.getUser_name(),this.testUsers.getPassword());
+        this.userDTO  = new UserDTO(this.testUsers.getUser_name(),this.testUsers.getPassword(), new ArrayList<>());
         this.userDTO.setUser_id(this.id);
     }
 
@@ -85,7 +85,8 @@ public class UserControllerIntegrationTest {
     void testRead() throws Exception {
         this.mock
                 .perform(request(HttpMethod.GET, "/users/read/" + this.id)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json(this.objectMapper.writeValueAsString(this.userDTO)));
     }
@@ -101,7 +102,7 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
+        assertEquals(this.objectMapper.writeValueAsString(usersList), content);
     }
 
     @Test
@@ -117,10 +118,10 @@ public class UserControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(updatedUsers)))
                 .andExpect(status().isAccepted())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(updatedUsers)))
+//                .andExpect(content().json(this.objectMapper.writeValueAsString(updatedUsers)))
                 .andReturn().getResponse().getContentAsString();
 
-//        assertEquals(this.objectMapper.writeValueAsString(updatedUsers), result);
+        assertEquals(this.objectMapper.writeValueAsString(updatedUsers), result);
     }
 
     @Test
