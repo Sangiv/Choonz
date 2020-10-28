@@ -16,8 +16,8 @@ fetch('http://localhost:8082/artists/read')
         let data = Object.keys(dataData[0]);
         console.log(data);
 
-        createTableHead(table,data);
-        createTableBody(table,dataData);
+        // createTableHead(table,data);
+        // createTableBody(table,dataData);
         cardData(dataData);
 
 
@@ -28,17 +28,18 @@ fetch('http://localhost:8082/artists/read')
     console.log('Fetch Error :-S', err);
   });
 
-  function createCard(id, image, title, description, buttonText, buttonLink){
+  function createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link){
     //updates cloneCard with new information
     let cards = document.querySelector("div.showcards");
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
     cloneCard.querySelector("#title").innerHTML = (title);
-    cloneCard.querySelector("#text").innerHTML = (description);
+    // cloneCard.querySelector("#text").innerHTML = (description);
     cloneCard.querySelector("#button").innerHTML = (buttonText);
     cloneCard.querySelector("#button").href = (buttonLink);
-    cloneCard.querySelector("#button2").innerHTML = ("test");
+    cloneCard.querySelector("#button2").innerHTML = (button2Text);
+    cloneCard.querySelector("#button2").href = (button2Link);
     cards.appendChild(cloneCard);
   }
 
@@ -47,16 +48,16 @@ fetch('http://localhost:8082/artists/read')
     for (let dataRecord of dataData){
 
         for (value in dataRecord){
-
             if (typeof dataRecord[value] === 'object'){
                 let id = dataRecord.id;
-                let image = "http://i.imgur.com/czM0qWd.png";
+                let image = dataRecord.albums[0].cover;
                 let title = dataRecord.name;
                 let description = dataRecord.description;
-                let buttonText = dataRecord.name;
-                let buttonLink = "genreview.html?id="+id;
-                createCard(id, image, title, description, buttonText, buttonLink);
-
+                let buttonText = "Albums";
+                let buttonLink = "artistalbums.html?id="+dataRecord.id;
+                let button2Text = "Tracks";
+                let button2Link = "artisttracks.html?id="+dataRecord.id;
+                createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
             }
 
         }
