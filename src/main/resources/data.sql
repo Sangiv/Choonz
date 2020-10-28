@@ -17,7 +17,7 @@ INSERT INTO genre (name,description) VALUES
 ('RnB', 'I like it when I am hyped'),
 ('Rock', 'I like it when I am at the gym'),
 ('Jazz', 'I like it when I am the bar'),
-('Blue', 'I like it when I am in my zone');
+('Blues', 'I like it when I am in my zone');
 
 -- INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 -- ('Royalty', LOAD_FILE('resources/img/royalty.jpg'),1,2);

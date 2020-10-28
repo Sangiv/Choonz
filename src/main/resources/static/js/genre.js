@@ -42,7 +42,7 @@ fetch('http://localhost:8082/genres/read')
 
             if (typeof dataRecord[value] === 'object'){
                 let id = dataRecord.id;
-                let image = "http://i.imgur.com/czM0qWd.png";
+                let image = "img/" + dataRecord.name + ".png";
                 let title = dataRecord.name;
                 let description = dataRecord.description;
                 let buttonText = dataRecord.name;
