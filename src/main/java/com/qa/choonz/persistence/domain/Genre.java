@@ -1,11 +1,13 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,9 +34,9 @@ public class Genre {
     @Column(unique = true)
     private String description;
 
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "genre")
-    private List<Album> albums;
+    private List<Album> albums = new ArrayList<>();
 
     public Genre() {
         super();
@@ -50,7 +52,13 @@ public class Genre {
         this.albums = albums;
     }
 
-    public Genre(@NotNull @Size(max = 100) String name) {
+    public Genre(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+	public Genre(@NotNull @Size(max = 100) String name) {
 		super();
 		this.name = name;
 	}
