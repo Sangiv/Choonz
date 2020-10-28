@@ -45,7 +45,7 @@ fetch('http://localhost:8082/tracks/read')
 
     }
     let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("Edit");
+    let editButtonTitle = document.createTextNode("Add");
     editHead.appendChild(editButtonTitle);
     row.appendChild(editHead);
 
@@ -60,7 +60,19 @@ function createTableBody(table,dataData){
 
             } else if (value == 'playlist'){
 
-            } else {
+            } else if(value == 'lyrics'){
+              let cell1 = row.insertCell();
+              let text1 = document.createElement("a");
+              text1.className = "btn btn-primary";
+              text1.innerHTML= "View";
+              text1.onclick = myfunc;
+              cell1.appendChild(text1);
+              function myfunc(){
+                let ans = dataRecord[value];
+                alert(ans);
+              }
+            }
+            else {
           let cell = row.insertCell();
           let text = document.createTextNode(dataRecord[value]);
           if (typeof dataRecord[value] === 'object'){
@@ -79,8 +91,10 @@ function createTableBody(table,dataData){
         let editButton = document.createElement("a");
         editButton.className="btn btn-primary";
         // editButton.href="userRecord.html?id="+dataRecord.id;
-        editButton.innerHTML="Edit";
+        editButton.innerHTML="Add";
         editCell.appendChild(editButton);
 
               }
 }
+
+
