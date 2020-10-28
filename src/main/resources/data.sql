@@ -5,10 +5,10 @@ INSERT INTO users (user_name,password) VALUES
 ('M Joni', '123456');
 
 INSERT INTO playlist (name,artwork, description, users_user_id) VALUES
-('Chill', 'ImageOne', 'My friend, it is good!', 1),
-('Super Chill', 'ImageTwo', 'My friend, it is very good!', 2),
-('Club Banger', 'ImageThree', 'My friend, it is very very good!',3),
-('UK Garage Mix', 'ImageFour', 'My friend, it is extremely good!',4);
+('Chill', 'img/test-playlist.png', 'My friend, it is good!', 1),
+('Super Chill', 'img/test-playlist.png', 'My friend, it is very good!', 2),
+('Club Banger', 'img/test-playlist.png', 'My friend, it is very very good!',3),
+('UK Garage Mix', 'img/test-playlist.png', 'My friend, it is extremely good!',4);
 
 INSERT INTO artist (name) VALUES ('Chris Brown'),('The Weeknd'),('Post Malone'),('Lana Del Rey');
 
@@ -17,7 +17,7 @@ INSERT INTO genre (name,description) VALUES
 ('RnB', 'I like it when I am hyped'),
 ('Rock', 'I like it when I am at the gym'),
 ('Jazz', 'I like it when I am the bar'),
-('Blue', 'I like it when I am in my zone');
+('Blues', 'I like it when I am in my zone');
 
 -- INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 -- ('Royalty', LOAD_FILE('resources/img/royalty.jpg'),1,2);
