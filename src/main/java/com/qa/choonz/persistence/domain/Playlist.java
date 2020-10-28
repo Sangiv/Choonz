@@ -86,6 +86,12 @@ public class Playlist {
         return name;
     }
 
+    public Playlist(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description, @NotNull @Size(max = 1000) String artwork) {
+        this.name = name;
+        this.description = description;
+        this.artwork = artwork;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -125,7 +131,7 @@ public class Playlist {
 
     @Override
     public int hashCode() {
-        return Objects.hash(artwork, description, id, name, tracks);
+        return Objects.hash(artwork, description, id, name, tracks, users);
     }
 
     @Override
@@ -138,7 +144,8 @@ public class Playlist {
         }
         Playlist other = (Playlist) obj;
         return Objects.equals(artwork, other.artwork) && Objects.equals(description, other.description)
-                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
+                && id == other.id && Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks)
+                && Objects.equals(users, other.users);
     }
 
 }

@@ -34,18 +34,22 @@ public class PlaylistControllerIntegrationTest {
     @Autowired
     private PlaylistRepository repo;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private ModelMapper modelMapper = new ModelMapper();
 
-    @Autowired
     private ObjectMapper objectMapper;
 
     private Playlist testPlaylist; 
     private Playlist testPlaylistWithID;
-    private PlaylistDTO PlaylistDTO;
+    private PlaylistDTO playlistDTO;
 
     private Long id;
-    private String testName;
+    private  final String TEST_NAME = "Mix";
+    private  final String TEST_ARTWORK = "Test Art";
+    private  final String TEST_DESCRIPTION = "My Mix";
+
+    private  final String UPDATE_TEST_NAME = "Another MIX";
+    private  final String UPDATE_TEST_ARTWORK = "Update Art";
+    private  final String UPDATE_TEST_DESCRIPTION = "Update Mix";
 
     private PlaylistDTO mapToDTO(Playlist playlist) {
         return this.modelMapper.map(playlist, PlaylistDTO.class);
@@ -55,35 +59,38 @@ public class PlaylistControllerIntegrationTest {
     void init() {
         this.repo.deleteAll();
 
-        this.testPlaylist = new Playlist("Mix");
-        this.testPlaylistWithID = this.repo.save(this.testPlaylist);
-        this.PlaylistDTO = this.mapToDTO(testPlaylistWithID);
-
+        this.testPlaylist = new Playlist(this.TEST_NAME, this.TEST_ARTWORK, this.TEST_DESCRIPTION);
+        this.testPlaylistWithID = this.repo.saveAndFlush(this.testPlaylist);
         this.id = this.testPlaylistWithID.getId();
-        this.testName = this.testPlaylistWithID.getName();
+
+//        this.playlistDTO = this.mapToDTO(this.testPlaylistWithID);
+        this.playlistDTO = new PlaylistDTO(this.testPlaylist.getName(),this.testPlaylist.getArtwork(),
+                this.testPlaylist.getDescription());
+        this.playlistDTO.setId(this.id);
     }
 
     @Test
     void testCreate() throws Exception {
         this.mock
-                .perform(request(HttpMethod.POST, "/playlists/create").contentType(MediaType.APPLICATION_JSON)
-                        .content(this.objectMapper.writeValueAsString(testPlaylist))
+                .perform(request(HttpMethod.POST, "/playlists/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(this.testPlaylist))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(PlaylistDTO)));
+                .andExpect(content().json(this.objectMapper.writeValueAsString(this.playlistDTO)));
     }
 
     @Test
     void testReadOne() throws Exception {
         this.mock.perform(request(HttpMethod.GET, "/playlists/read/" + this.id).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json(this.objectMapper.writeValueAsString(this.PlaylistDTO)));
+                .andExpect(content().json(this.objectMapper.writeValueAsString(this.playlistDTO)));
     }
 
     @Test
     void testReadAll() throws Exception {
         List<PlaylistDTO> playlist = new ArrayList<>();
-        playlist.add(this.PlaylistDTO);
+        playlist.add(this.playlistDTO);
 
         String content = this.mock
                 .perform(request(HttpMethod.GET, "/playlists/read").accept(MediaType.APPLICATION_JSON))
