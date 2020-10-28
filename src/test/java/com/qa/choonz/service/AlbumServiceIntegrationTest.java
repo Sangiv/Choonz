@@ -57,17 +57,20 @@ class AlbumServiceIntegrationTest {
 
     @Test
     void testReadOne() {
-//        assertThat(this.testAlbumDTO)
-//                .isEqualTo(this.service.read(this.id));
-        assertThat(this.service.read(this.testAlbumWithId.getId()))
-        .isEqualTo(this.mapToDTO(this.testAlbumWithId));
+        assertThat(this.testAlbumDTO)
+                .isEqualTo(this.service.read(this.id));
+//        assertThat(this.service.read(this.testAlbumWithId.getId()))
+//        .isEqualTo(this.mapToDTO(this.testAlbumWithId));
     }
 
     @Test
     void testReadAll() {
+//        assertThat(this.service.read())
+//                .isEqualTo(Stream.of(this.mapToDTO(testAlbumWithId))
+//                        .collect(Collectors.toList()));
         assertThat(this.service.read())
-                .isEqualTo(Stream.of(this.mapToDTO(testAlbumWithId))
-                        .collect(Collectors.toList()));
+        .isEqualTo(Stream.of(this.testAlbumDTO)
+                .collect(Collectors.toList()));
     }
 
     @Test
