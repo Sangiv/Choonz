@@ -51,6 +51,7 @@ function userLogIn(userId, password){
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
             response.status);
+            document.getElementById("login-msg").innerHTML= "Bad Attempt"
           return;
         }
         // Examine the text in the response
