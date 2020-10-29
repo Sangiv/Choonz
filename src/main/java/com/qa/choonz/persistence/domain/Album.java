@@ -31,7 +31,7 @@ public class Album {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "album")
     private List<Track> tracks = new ArrayList<>();
 
