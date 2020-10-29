@@ -53,7 +53,7 @@ public class PlaylistService {
         return this.mapToDTO(updated);
     }
 
-    public boolean delete(Long id) {
+    public boolean delete(long id) {
         if (!this.repo.existsById(id)) {
             throw new PlaylistNotFoundException();
         }

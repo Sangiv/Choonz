@@ -122,6 +122,13 @@ public class PlaylistDTO {
         this.tracks = tracks;
     }
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -151,11 +158,4 @@ public class PlaylistDTO {
                 && Objects.equals(users, other.users);
     }
 
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
-    }
 }

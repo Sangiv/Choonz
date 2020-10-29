@@ -51,9 +51,9 @@ public class PlaylistController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<PlaylistDTO> delete(@PathVariable Long id) {
-        return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<PlaylistDTO> delete(@PathVariable long id) {
+        return this.service.delete(id) ? new ResponseEntity<PlaylistDTO>(HttpStatus.NO_CONTENT)
+                : new ResponseEntity<PlaylistDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
