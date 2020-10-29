@@ -17,9 +17,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreProperties(value = { "tracks" })
 public class Album {
 
     @Id
@@ -36,7 +38,6 @@ public class Album {
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
-    @JsonBackReference(value = "artist")
     private Artist artist;
 
     @ManyToOne

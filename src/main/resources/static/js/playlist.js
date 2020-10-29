@@ -1,4 +1,4 @@
-fetch('http://localhost:8082/artists/read')
+fetch('http://localhost:8082/playlists/read')
   .then(
     function(response) {
       if (response.status !== 200) {
@@ -10,11 +10,6 @@ fetch('http://localhost:8082/artists/read')
       console.log('Fetch Success')
       response.json().then(function(dataData) {
         console.log(dataData);
-        console.log(Object.keys(dataData[0].albums[0]));
-
-        let table = document.querySelector("table");
-        let data = Object.keys(dataData[0]);
-        console.log(data);
 
         // createTableHead(table,data);
         // createTableBody(table,dataData);
@@ -35,7 +30,7 @@ fetch('http://localhost:8082/artists/read')
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
     cloneCard.querySelector("#title").innerHTML = (title);
-    // cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector("#text").innerHTML = (description);
     cloneCard.querySelector("#button").innerHTML = (buttonText);
     cloneCard.querySelector("#button").href = (buttonLink);
     cloneCard.querySelector("#button2").innerHTML = (button2Text);
@@ -46,19 +41,25 @@ fetch('http://localhost:8082/artists/read')
   function cardData(dataData){
 
     for (let dataRecord of dataData){
-
+      singleIterationCheck = 0;
+        console.log(dataRecord);
         for (value in dataRecord){
             if (typeof dataRecord[value] === 'object'){
+              if (singleIterationCheck != 0){
+
+              } else {
                 let id = dataRecord.id;
-                let image = dataRecord.albums[0].cover;
+                let image = dataRecord.artwork;
                 let title = dataRecord.name;
                 let description = dataRecord.description;
-                let buttonText = "Albums";
-                let buttonLink = "artistalbums.html?id="+dataRecord.id;
-                let button2Text = "Tracks";
-                let button2Link = "artisttracks.html?id="+dataRecord.id;
+                let buttonText = "View";
+                let buttonLink = "playlistview.html?id="+dataRecord.id;
+                let button2Text = "Edit";
+                let button2Link = "playlistedit.html?id="+dataRecord.id;
                 createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
+                singleIterationCheck++;
             }
+          }
 
         }
     }

@@ -17,14 +17,15 @@ fetch('http://localhost:8082/artists/read/'+ id)
 
       console.log('Fetch Success')
       response.json().then(function(dataData) {
-        console.log(dataData);
 
         let table = document.querySelector("table");
         let data = Object.keys(dataData.albums[0]);
         console.log(data);
+        console.log(dataData);
 
         createTableHead(table,data);
         createTableBody(table,dataData);
+        cardData(dataData);
 
 
       });
@@ -33,6 +34,37 @@ fetch('http://localhost:8082/artists/read/'+ id)
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+}
+
+function createCard(id, image, title, buttonText, buttonLink){
+  //updates cloneCard with new information
+  let cards = document.querySelector("div.showcards");
+  let cloneCard = document.querySelector("div.card").cloneNode(true);
+  cloneCard.id = ("card" + id);
+  cloneCard.querySelector("img").src=(image);
+  cloneCard.querySelector("#title").innerHTML = (title);
+  cloneCard.querySelector("#button").innerHTML = (buttonText);
+  cloneCard.querySelector("#button").href = (buttonLink);
+  cards.appendChild(cloneCard);
+}
+
+function cardData(dataData){
+  singleIterationCheck = 0;
+      for (value in dataData){
+          if (typeof dataData[value] === 'object'){
+            if (singleIterationCheck != 0){
+
+            } else {
+              let id = dataData.id;
+              let image = dataData.albums[0].cover;
+              let title = dataData.name;
+              let buttonText = "Back";
+              let buttonLink = "artist.html";
+              createCard(id, image, title, buttonText, buttonLink);
+              singleIterationCheck++;           
+            }
+        }
+      }
 }
 
   function createTableHead(table,data){
@@ -45,7 +77,9 @@ fetch('http://localhost:8082/artists/read/'+ id)
             
         } else if (keys == 'tracks') {
 
-        } else {
+        } else if (keys == 'cover'){
+
+        }  else {
             let th = document.createElement("th");
             let text = document.createTextNode(keys);
             th.appendChild(text);
@@ -55,7 +89,7 @@ fetch('http://localhost:8082/artists/read/'+ id)
 
     }
     let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("View Tracks");
+    let editButtonTitle = document.createTextNode("View Album");
     editHead.appendChild(editButtonTitle);
     row.appendChild(editHead);
 
@@ -68,13 +102,18 @@ function createTableBody(table,dataData){
             
             for(let i = 0; i < arr.length; i++){
                 let obj = arr[i];
-                console.log(obj);
                 let row = table.insertRow();
         
                 for(let prop in obj){
-                    if(prop == 'id' || prop == 'tracks'){
+                    if(prop == 'id' || prop == 'tracks' || prop == 'cover'){
 
-                    }else{
+                    } else if (prop == "artist"){
+                      
+                      let cell = row.insertCell();
+                      let text = document.createTextNode(obj.artist.name);
+                      cell.appendChild(text);
+
+                    } else{
                   // console.log(prop);
                   // console.log(obj[prop]);
                   let cell = row.insertCell();
@@ -89,12 +128,6 @@ function createTableBody(table,dataData){
                 viewButton.innerHTML="View";
                 viewCell.appendChild(viewButton);
               }
-              
-        }
-        
-
-        
-
+        }      
     }
-    
 }

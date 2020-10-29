@@ -3,12 +3,9 @@ document.querySelector("form.create-user").addEventListener("submit", function(s
     stop.preventDefault();
     let formElement  = document.querySelector("form.create-user").elements;
     
-    let first_name = formElement["first_name"].value;
-    let surname = formElement["surname"].value;
     let user_name = formElement["user_name"].value;
-    let email = formElement["email"].value
     let password = formElement["password"].value;
-    newUser(first_name, surname,user_name,email,password);
+    newUser(user_name,password);
     let msg = document.getElementById("success-create");
     msg.innerHTML="New user created Successfully!"
   })
@@ -23,25 +20,15 @@ document.querySelector("form.create-user").addEventListener("submit", function(s
     userLogIn(userId,password);
   })
 
-
-//   update user
-// document.querySelector('button[id="#updateTask"]').addEventListener("click",function(stop){
-//     stop.preventDefault();
-//     console.log("Update vlaue")
-
-// })
- 
-function newUser(first_name,surname,user_name,email,password){
+  
+function newUser(user_name,password){
 
     let dataToPost ={
-        
-            "first_name": first_name,
-            "surname": surname,
+
             "user_name": user_name,
-            "email": email,
             "password": password
     }
-    fetch( "http://localhost:8082/users", 
+    fetch( "http://localhost:8082/users/create", 
     {
     method: 'post',
     headers: {
@@ -56,6 +43,7 @@ function newUser(first_name,surname,user_name,email,password){
         console.log('Request failed', error);
     });
 }
+
 function userLogIn(userId, password){
     fetch('http://localhost:8082/users/read/'+userId)
     .then(
@@ -63,6 +51,7 @@ function userLogIn(userId, password){
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
             response.status);
+            document.getElementById("login-msg").innerHTML= "Bad Attempt"
           return;
         }
         // Examine the text in the response
@@ -72,14 +61,13 @@ function userLogIn(userId, password){
             return
           }
           var name;
-          for (let element of data1) {
-              for (key in element) {
-                if(key == 'first_name'){
-                  name= element[key];
+              for (var key in data1) {
+                if(key == 'user_name'){
+                  name= data1[key];
                   console.log(name);
                 }
                 if(key=='password'){
-                      if(password==element[key]){
+                      if(password==data1[key]){
                         console.log("Successful log in");
                         document.cookie = userId;  
                         console.log(name)
@@ -94,9 +82,8 @@ function userLogIn(userId, password){
                           document.getElementById("login-msg").innerHTML= "Login FAILED!"
                           return;
                       }
-                  }
+                }
               }
-          }
         });
       }
     )

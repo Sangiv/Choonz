@@ -25,6 +25,7 @@ fetch('http://localhost:8082/albums/read/' + id)
 
         createTableHead(table,dataData);
         createTableBody(table,dataData);
+        cardData(dataData);
 
 
       });
@@ -35,11 +36,42 @@ fetch('http://localhost:8082/albums/read/' + id)
   });
 }
 
+function createCard(id, image, title, buttonText, buttonLink, description){
+  //updates cloneCard with new information
+  let cards = document.querySelector("div.showcards");
+  let cloneCard = document.querySelector("div.card").cloneNode(true);
+  cloneCard.id = ("card" + id);
+  cloneCard.querySelector("img").src=(image);
+  cloneCard.querySelector("#title").innerHTML = (title);
+  cloneCard.querySelector('#text').innerHTML = (description);
+  cloneCard.querySelector("#button").innerHTML = (buttonText);
+  cloneCard.querySelector("#button").href = (buttonLink);
+  cards.appendChild(cloneCard);
+}
+
+function cardData(dataData){
+  singleIterationCheck = 0;
+      for (value in dataData){
+          if (typeof dataData[value] === 'object'){
+            if (singleIterationCheck != 0){
+
+            } else {
+              let id = dataData.id;
+              let image = dataData.cover;
+              let title = dataData.name;
+              let description = dataData.artist.name;
+              let buttonText = "Back";
+              let buttonLink = "album.html";
+              createCard(id, image, title, buttonText, buttonLink, description);
+              singleIterationCheck++;           
+            }
+        }
+      }
+}
+
 function createTableBody(table, dataData){
     for(let key in dataData){
-        console.log(key);
       if(key == "tracks"){
-    
         let arr = dataData[key];
         for(let i = 0; i < arr.length; i++){
           let obj = arr[i];
@@ -47,11 +79,16 @@ function createTableBody(table, dataData){
           let row = table.insertRow();
   
           for(let prop in obj){
+            if (prop == 'album'){
+
+            } else {
             // console.log(prop);
             // console.log(obj[prop]);
             let cell = row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
+            }
+
             
           }
         }
