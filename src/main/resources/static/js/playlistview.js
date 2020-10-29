@@ -67,11 +67,8 @@ function getPlaylistView(id){
                 createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
                 singleIterationCheck++;           
               }
-              
           }
-
         }
-    
   }
 
   function createTableHead(table,dataData){
