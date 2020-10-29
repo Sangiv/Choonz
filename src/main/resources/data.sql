@@ -19,13 +19,6 @@ INSERT INTO genre (name,description) VALUES
 ('Jazz', 'I like it when I am the bar'),
 ('Blues', 'I like it when I am in my zone');
 
--- INSERT INTO album (name,cover, artist_id, genre_id) VALUES
--- ('Royalty', LOAD_FILE('resources/img/royalty.jpg'),1,2);
--- ('X', LOAD_FILE('resources/img/xchrisbrown.jpg'),1,2),
--- ('Starboy', LOAD_FILE('resources/img/starboy.jpg'),2,1),
--- ('AfterHours', LOAD_FILE('resources/img/afterhours.jpg'),2,1),
--- ('BeerBongs and Bentleys', LOAD_FILE('resources/img/beerbong.jpg'),3,2),
--- ('Lust for Life', LOAD_FILE('resources/img/lustforlife.jpg'),4,5);
 INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 ('Royalty', 'img/royalty.jpg',1,2),
 ('X', 'img/xchrisbrown.jpg',1,2),
@@ -34,19 +27,9 @@ INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 ('BeerBongs and Bentleys', 'img/beerbong.jpg',3,2),
 ('Lust for Life', 'img/lustforlife.jpg',4,5);
 
-INSERT INTO track (name, duration, lyrics, album_id, artist_id, playlist_id) VALUES
-('I feel it coming', 5, 'I feel it coming', 3, 2, 1),
-('Rockstar', 5, 'I feel it coming', 5, 3, 1),
-('When I see', 5, 'When I see you eyes', 6, 4, 1),
-('Royalty', 5, 'Jude Jude Jud', 1, 1, 1),
-('Grass aint greener', 5, 'Blah blah blah', 2, 1, 1);
-
-<<<<<<< HEAD
-INSERT INTO track (name, duration, lyrics, album_id,playlist_id) VALUES
-('I feel it coming', 5, 'I feel it coming', 3,1),
-('Rockstar', 5, 'I feel it coming', 5,2),
-('When I see', 5, 'When I see you eyes', 6,3),
-('Royalty', 5, 'Jude Jude Jud', 1,1),
-('Grass aint greener', 5, 'Blah blah blah', 2,1);
-=======
->>>>>>> c598c20dd0a1347e557261271552a45bbe95c5a9
+INSERT INTO track (name, duration, lyrics, album_id, artist_id) VALUES
+('I feel it coming', 5, 'I feel it coming', 3, 2),
+('Rockstar', 5, 'I feel it coming', 5, 3),
+('When I see', 5, 'When I see you eyes', 6, 4),
+('Royalty', 5, 'Jude Jude Jud', 1, 1),
+('Grass aint greener', 5, 'Blah blah blah', 2, 1);

@@ -1,5 +1,7 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.*;
@@ -29,9 +31,16 @@ public class Track {
     @JsonBackReference(value = "artist")
     private Artist artist;
 
-    @ManyToOne
-    @JsonBackReference(value = "playlist")
-    private Playlist playlist;
+//    @ManyToOne
+//    @JsonBackReference(value = "playlist")
+//    private Playlist playlist;
+
+    @ManyToMany
+    @JoinTable(
+            name= "playlist_like",
+            joinColumns = @JoinColumn (name = "track_id"),
+            inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    private List<Playlist> playlist = new ArrayList<>();
 
     // in seconds
     private int duration;
@@ -43,17 +52,36 @@ public class Track {
         // TODO Auto-generated constructor stub
     }
 
-    public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, Playlist playlist, int duration,
-            String lyrics) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.album = album;
-        this.artist = artist;
-        this.playlist = playlist;
-        this.duration = duration;
-        this.lyrics = lyrics;
+    public List<Playlist> getPlaylist() {
+        return playlist;
     }
+
+    public void setPlaylist(List<Playlist> playlist) {
+        this.playlist = playlist;
+    }
+
+    //    public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, Playlist playlist, int duration,
+//            String lyrics) {
+//        super();
+//        this.id = id;
+//        this.name = name;
+//        this.album = album;
+//        this.artist = artist;
+//        this.playlist = playlist;
+//        this.duration = duration;
+//        this.lyrics = lyrics;
+//    }
+public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, List<Playlist> playlist, int duration,
+             String lyrics) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.album = album;
+    this.artist = artist;
+    this.playlist = playlist;
+    this.duration = duration;
+    this.lyrics = lyrics;
+}
     
     public Track(@NotNull @Size(max = 100) String name) {
         super();
@@ -84,13 +112,13 @@ public class Track {
         this.album = album;
     }
 
-    public Playlist getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(Playlist playlist) {
-        this.playlist = playlist;
-    }
+//    public Playlist getPlaylist() {
+//        return playlist;
+//    }
+//
+//    public void setPlaylist(Playlist playlist) {
+//        this.playlist = playlist;
+//    }
 
     public int getDuration() {
         return duration;

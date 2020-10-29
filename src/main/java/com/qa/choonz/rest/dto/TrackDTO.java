@@ -3,22 +3,25 @@ package com.qa.choonz.rest.dto;
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Playlist;
 
+import java.util.List;
+
 public class TrackDTO {
 
     private Long id;
     private String name;
     private Album album;
-    private Playlist playlist;
-    private int duration;
-    private String lyrics;
 
-    public TrackDTO() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public List<Playlist> getPlaylist() {
+		return playlist;
+	}
 
-	public TrackDTO(Long id, String name, Album album, Playlist playlist, int duration, String lyrics) {
-		super();
+	public void setPlaylist(List<Playlist> playlist) {
+		this.playlist = playlist;
+	}
+
+	private List<Playlist> playlist;
+
+	public TrackDTO(Long id, String name, Album album, List<Playlist> playlist, int duration, String lyrics) {
 		this.id = id;
 		this.name = name;
 		this.album = album;
@@ -26,6 +29,24 @@ public class TrackDTO {
 		this.duration = duration;
 		this.lyrics = lyrics;
 	}
+
+	private int duration;
+    private String lyrics;
+
+    public TrackDTO() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+//	public TrackDTO(Long id, String name, Album album, Playlist playlist, int duration, String lyrics) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.album = album;
+//		this.playlist = playlist;
+//		this.duration = duration;
+//		this.lyrics = lyrics;
+//	}
 
 	public TrackDTO(Long id, String name) {
 		super();
@@ -57,13 +78,13 @@ public class TrackDTO {
 		this.album = album;
 	}
 
-	public Playlist getPlaylist() {
-		return playlist;
-	}
-
-	public void setPlaylist(Playlist playlist) {
-		this.playlist = playlist;
-	}
+//	public Playlist getPlaylist() {
+//		return playlist;
+//	}
+//
+//	public void setPlaylist(Playlist playlist) {
+//		this.playlist = playlist;
+//	}
 
 	public int getDuration() {
 		return duration;
