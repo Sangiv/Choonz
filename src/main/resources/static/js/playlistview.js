@@ -111,10 +111,19 @@ function createTableBody(table, dataData){
         let row = table.insertRow();
 
         for(let prop in obj){
-          console.log(prop);
           if (prop == "duration"){
 
           } else if (prop == "lyrics"){
+
+          } else if (prop == "album"){
+           
+            let cell = row.insertCell();
+            let text = document.createTextNode(obj.album.artist.name);
+            cell.appendChild(text);
+
+            let cell2 = row.insertCell();
+            let text2 = document.createTextNode(obj.album.name);
+            cell2.appendChild(text2);
 
           } else {
           // console.log(obj[prop]);
@@ -124,78 +133,10 @@ function createTableBody(table, dataData){
 
           }
         }
-
-        let trackid = (dataData.tracks[0].id);
-
-        let artistCell = row.insertCell();
-        let artist = document.createTextNode("Artist");
-        artistCell.appendChild(artist);
-
-
-        let albumCell = row.insertCell();
-        // let album = getAlbum(trackid);
-        album = document.createTextNode(getAlbum(trackid));
-        albumCell.appendChild(album);
-
-        console.log(getAlbum(trackid));
       }
       }
   }
 }
 
-function getArtist(id){
-  fetch('http://localhost:8082/track/read/'+id)
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
-
-      console.log('Fetch Success')
-      response.json().then(function(dataData) {
-        console.log(dataData);
-
-        let table = document.querySelector("table");
-
-        cardData(dataData);
-        createTableHead(table,dataData);
-        createTableBody(table,dataData);
-
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-
-  });
-}
-
-
-var getAlbumText;
-function getAlbum(id){
-  fetch('http://localhost:8082/tracks/read/'+id)
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
-      console.log('Fetch Individual Track Success');
-
-      response.json().then(function(dataData) 
-      {
-        getAlbumText = dataData.album.name;
-        console.log(getAlbumText);
-        if (getAlbumText != undefined){
-          return getAlbumText;
-        } return ("idk man");
-      });
-    }
-  );
-
-}
 
 

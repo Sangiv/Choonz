@@ -34,10 +34,10 @@ INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 ('BeerBongs and Bentleys', 'img/beerbong.jpg',3,2),
 ('Lust for Life', 'img/lustforlife.jpg',4,5);
 
+INSERT INTO track (name, duration, lyrics, album_id, artist_id, playlist_id) VALUES
+('I feel it coming', 5, 'I feel it coming', 3, 2, 1),
+('Rockstar', 5, 'I feel it coming', 5, 3, 1),
+('When I see', 5, 'When I see you eyes', 6, 4, 1),
+('Royalty', 5, 'Jude Jude Jud', 1, 1, 1),
+('Grass aint greener', 5, 'Blah blah blah', 2, 1, 1);
 
-INSERT INTO track (name, duration, lyrics, album_id, playlist_id) VALUES
-('I feel it coming', 5, 'I feel it coming', 3, 1),
-('Rockstar', 5, 'I feel it coming', 5, 2),
-('When I see', 5, 'When I see you eyes', 6, 3),
-('Royalty', 5, 'Jude Jude Jud', 1, 2),
-('Grass aint greener', 5, 'Blah blah blah', 2, 4);
