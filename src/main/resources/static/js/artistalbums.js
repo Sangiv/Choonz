@@ -46,7 +46,7 @@ fetch('http://localhost:8082/artists/read/'+ id)
         } else if (keys == 'tracks') {
 
         } else if (keys == 'cover'){
-          console.log("test");
+
         }  else {
             let th = document.createElement("th");
             let text = document.createTextNode(keys);
@@ -74,9 +74,15 @@ function createTableBody(table,dataData){
                 let row = table.insertRow();
         
                 for(let prop in obj){
-                    if(prop == 'id' || prop == 'tracks'){
+                    if(prop == 'id' || prop == 'tracks' || prop == 'cover'){
 
-                    }else{
+                    } else if (prop == "artist"){
+                      
+                      let cell = row.insertCell();
+                      let text = document.createTextNode(obj.artist.name);
+                      cell.appendChild(text);
+
+                    } else{
                   // console.log(prop);
                   // console.log(obj[prop]);
                   let cell = row.insertCell();
@@ -91,12 +97,6 @@ function createTableBody(table,dataData){
                 viewButton.innerHTML="View";
                 viewCell.appendChild(viewButton);
               }
-              
-        }
-        
-
-        
-
+        }      
     }
-    
 }

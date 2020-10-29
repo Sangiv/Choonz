@@ -67,36 +67,41 @@ function getGenreView(id){
   }
 
 
-  function createTableBody(table, dataData){
-    for(let key in dataData){
-        console.log(key);
-      if(key == "albums"){
-        let arr = dataData[key];
-        console.log(arr);
-        for(let i = 0; i < arr.length; i++){
-          let obj = arr[i];
-        //   console.log(obj);
-          let row = table.insertRow();
-  
-          for(let prop in obj){
-            if(prop == 'tracks' || prop == 'id'){
-
-            }else{
-            // console.log(prop);
-            // console.log(obj[prop]);
-            let cell = row.insertCell();
-            let text = document.createTextNode(obj[prop]);
-            cell.appendChild(text);
+  function createTableBody(table,dataData){
+    for (let dataRecord in dataData){
+        if(dataRecord == 'albums'){
+            let arr = dataData.albums;
             
-          }}
-          let viewCell = row.insertCell();
-          let viewButton = document.createElement("a");
-          viewButton.className="btn btn-primary";
-          viewButton.href="albumview.html?id="+dataData.albums[i].id;
-          viewButton.innerHTML="View";
-          viewCell.appendChild(viewButton);
-        }
-        }
+            for(let i = 0; i < arr.length; i++){
+                let obj = arr[i];
+                console.log(obj);
+                let row = table.insertRow();
+        
+                for(let prop in obj){
+                    if(prop == 'id' || prop == 'tracks' || prop == 'cover'){
+
+                    } else if (prop == "artist"){
+                      
+                      let cell = row.insertCell();
+                      let text = document.createTextNode(obj.artist.name);
+                      cell.appendChild(text);
+
+                    } else{
+                  // console.log(prop);
+                  // console.log(obj[prop]);
+                  let cell = row.insertCell();
+                  let text = document.createTextNode(obj[prop]);
+                  cell.appendChild(text);
+                  
+                }}
+                let viewCell = row.insertCell();
+                let viewButton = document.createElement("a");
+                viewButton.className="btn btn-primary";
+                viewButton.href="albumview.html?id="+dataData.albums[i].id;
+                viewButton.innerHTML="View";
+                viewCell.appendChild(viewButton);
+              }
+        }      
     }
 }
 
@@ -120,11 +125,11 @@ function getGenreView(id){
             
 
             let cell4 = row.insertCell();
-            let text4 = document.createTextNode("cover");
+            let text4 = document.createTextNode("Artist");
             cell4.appendChild(text4);
 
             let cell5 = row.insertCell();
-            let text5 = document.createTextNode("View Tracks");
+            let text5 = document.createTextNode("View Album");
             cell5.appendChild(text5);
 
             
