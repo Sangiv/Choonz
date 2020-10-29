@@ -26,7 +26,7 @@ public class Users {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "users", fetch =  FetchType.LAZY, cascade = CascadeType.ALL,  orphanRemoval = true)
+    @OneToMany(mappedBy = "users", fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "users")
     private List<Playlist> playList = new ArrayList<>();
 

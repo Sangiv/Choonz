@@ -34,7 +34,7 @@ public class Genre {
     @Column(unique = true)
     private String description;
 
-    @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "genre")
     private List<Album> albums = new ArrayList<>();
 
