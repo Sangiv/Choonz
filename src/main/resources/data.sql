@@ -34,3 +34,12 @@ INSERT INTO track (name, duration, lyrics, album_id, artist_id, playlist_id) VAL
 ('Royalty', 5, 'Jude Jude Jud', 1, 1, 1),
 ('Grass aint greener', 5, 'Blah blah blah', 2, 1, 1);
 
+<<<<<<< HEAD
+INSERT INTO track (name, duration, lyrics, album_id,playlist_id) VALUES
+('I feel it coming', 5, 'I feel it coming', 3,1),
+('Rockstar', 5, 'I feel it coming', 5,2),
+('When I see', 5, 'When I see you eyes', 6,3),
+('Royalty', 5, 'Jude Jude Jud', 1,1),
+('Grass aint greener', 5, 'Blah blah blah', 2,1);
+=======
+>>>>>>> c598c20dd0a1347e557261271552a45bbe95c5a9

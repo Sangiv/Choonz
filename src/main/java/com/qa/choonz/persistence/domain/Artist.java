@@ -31,7 +31,7 @@ public class Artist {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "artist", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "artist")
     private List<Album> albums = new ArrayList<>();
 

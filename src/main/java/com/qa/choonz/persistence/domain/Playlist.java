@@ -43,15 +43,12 @@ public class Playlist {
     @Column(unique = true)
     private String artwork;
 
-    @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JsonIgnoreProperties("playlist")
+    @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "playlist")
-//    @JsonIgnoreProperties(value = { "tracks" })
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
     @JsonBackReference(value = "users")
-//    @JsonIgnoreProperties(value = { "users" })
     private Users users;
 
     public Playlist() {
@@ -59,8 +56,16 @@ public class Playlist {
         // TODO Auto-generated constructor stub
     }
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
     public Playlist(Long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
-			@NotNull @Size(max = 1000) String artwork, List<Track> tracks, Users users) {
+                    @NotNull @Size(max = 1000) String artwork, List<Track> tracks, Users users) {
 		super();
 		this.id = id;
 		this.name = name;

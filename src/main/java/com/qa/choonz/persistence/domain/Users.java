@@ -13,7 +13,8 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
+@EqualsAndHashCode
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +26,7 @@ public class Users {
     @Column
     private String password;
 
-
-    @OneToMany(mappedBy = "users", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users", fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "users")
     private List<Playlist> playList = new ArrayList<>();
 
@@ -65,13 +65,6 @@ public class Users {
         this.user_name = user_name;
         this.password = password;
     }
-    public List<Playlist> getPlayList() {
-        return playList;
-    }
-
-    public void setPlayList(List<Playlist> playList) {
-        this.playList = playList;
-    }
 
     public Long getUser_id() {
         return user_id;
@@ -96,6 +89,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Playlist> getPlayList() {
+        return playList;
+    }
+
+    public void setPlayList(List<Playlist> playList) {
+        this.playList = playList;
     }
 
 }
