@@ -1,11 +1,14 @@
 body{
   background-color:#16213e;
   min-height: 100vh;
-  background-image: url("src\main\resources\static\img\QA_Logo.png");
+  padding: 1 rem;
   background-repeat: no-repeat;
   background-size: cover;
 
 }
+/* ul { overflow:auto; }
+li { float:left; }
+li:last-child { float:right; } */
 p{
   color: black;
 }
@@ -16,3 +19,9 @@ td:hover{
   background-color:gray;
   cursor:pointer;
   }
+
+/* nav {
+  position:fixed;
+  top:0;
+  width:auto;
+  } */
