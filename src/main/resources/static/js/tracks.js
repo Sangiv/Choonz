@@ -111,10 +111,14 @@ function createTableBody(table,dataData){
                   console.log(albumid);
                 }
                 else if(object == 'artist'){
-                  let cell2 = row.insertCell();
-                  let artisttext = document.createTextNode(dataRecord.album.artist.name);
-                  cell2.appendChild(artisttext);
                   var artistid = dataRecord.album.artist.id;
+                  let cell2 = row.insertCell();
+                  // let box = document.createElement("a");
+                  let artisttext = document.createTextNode(dataRecord.album.artist.name);
+                  // box.href = "artistalbums.html?id=" + artistid;
+                  // box.appendChild(artisttext);
+                  cell2.appendChild(artisttext);
+                  
                 }
             }
           } else{
