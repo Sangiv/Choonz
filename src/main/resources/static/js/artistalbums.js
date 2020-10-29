@@ -45,7 +45,9 @@ fetch('http://localhost:8082/artists/read/'+ id)
             
         } else if (keys == 'tracks') {
 
-        } else {
+        } else if (keys == 'cover'){
+          console.log("test");
+        }  else {
             let th = document.createElement("th");
             let text = document.createTextNode(keys);
             th.appendChild(text);
