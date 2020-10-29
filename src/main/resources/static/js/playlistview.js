@@ -34,7 +34,7 @@ function getPlaylistView(id){
 }
 
 
-  function createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, button3Text){
+  function createCard(id, image, title, description, button2Text, button2Link, button3Text){
     //updates cloneCard with new information
     let cards = document.querySelector("div.showcards");
     let cloneCard = document.querySelector("div.card").cloneNode(true);
@@ -42,8 +42,6 @@ function getPlaylistView(id){
     cloneCard.querySelector("img").src=(image);
     cloneCard.querySelector("#title").innerHTML = (title);
     cloneCard.querySelector("#text").innerHTML = (description);
-    cloneCard.querySelector("#button").innerHTML = (buttonText);
-    cloneCard.querySelector("#button").href = (buttonLink);
     cloneCard.querySelector("#button2").innerHTML = (button2Text);
     cloneCard.querySelector("#button2").href = (button2Link);
     cloneCard.querySelector("#button3").innerHTML = (button3Text);
@@ -62,12 +60,10 @@ function getPlaylistView(id){
                 let image = dataData.artwork;
                 let title = dataData.name;
                 let description = dataData.description;
-                let buttonText = "View";
-                let buttonLink = "artistalbums.html?id="+dataData.id;
                 let button2Text = "Edit";
-                let button2Link = "artisttracks.html?id="+dataData.id;
+                let button2Link = "playlistedit.html?id="+dataData.id;
                 let button3Text = "Back";
-                createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, button3Text);
+                createCard(id, image, title, description, button2Text, button2Link, button3Text);
                 singleIterationCheck++;           
               }
           }
