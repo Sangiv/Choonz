@@ -60,12 +60,26 @@ document.getElementById("my-profile").addEventListener('click',function(stop)
 })
 
 function generateTable(data,userId){
-  for (let index = 0; index < data.length; index++) {
-    if(userId== data[index].user_id){
-      document.getElementById("user_name").value  = data[index].user_name;
-      document.getElementById("password").value  = data[index].password;
+  // for (let index = 0; index < data.length; index++) {
+  //   if(userId== data[index].user_id){
+  //     console.log(data[index].user_name);
+  //     console.log(data[index].password);
 
+  //     document.getElementById("user_name").value  = data[index].user_name;
+  //     document.getElementById("password").value  = data[index].password;
+
+  //   }   
+  // }
+  for (let key in data) {
+    console.log(key) //get key 
+    console.log(data[key]) //get value
+    console.log(data[key].user_id) // return undefined
+    if(key == "user_name"){
+      document.getElementById("user_name").value  = data[key];
     }   
+    if(key == "password"){
+      document.getElementById("password").value  = data[key];
+    }  
   }
 
 }
@@ -126,27 +140,27 @@ function deleteUser(userId){
 }
 
 // TODO: implement for better 
-// function deleteCookie( name, path, domain ) {
-//   if( get_cookie( name ) ) {
-//     document.cookie = name + "=" +
-//       ((path) ? ";path="+path:"")+
-//       ((domain)?";domain="+domain:"") +
-//       ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-//       console.log("log out successfully");
-//       window.location.href= "index.html";
-//   }
-// }
-
-
-// function get_cookie(name){
-//     return document.cookie.split(';').some(c => {
-//         return c.trim().startsWith(name + '=');
-//     });
-// }
-
-
-function deleteCookie(){
-    document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href= "index.html";
+function deleteCookie( name, path, domain ) {
+  if( get_cookie( name ) ) {
+    document.cookie = name + "=" +
+      ((path) ? ";path="+path:"")+
+      ((domain)?";domain="+domain:"") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      console.log("log out successfully");
+      window.location.href= "index.html";
+  }
 }
+
+
+function get_cookie(name){
+    return document.cookie.split(';').some(c => {
+        return c.trim().startsWith(name + '=');
+    });
+}
+
+
+// function deleteCookie(){
+//     document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+//     window.location.href= "index.html";
+// }
 

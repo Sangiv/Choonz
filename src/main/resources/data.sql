@@ -19,13 +19,6 @@ INSERT INTO genre (name,description) VALUES
 ('Jazz', 'I like it when I am the bar'),
 ('Blues', 'I like it when I am in my zone');
 
--- INSERT INTO album (name,cover, artist_id, genre_id) VALUES
--- ('Royalty', LOAD_FILE('resources/img/royalty.jpg'),1,2);
--- ('X', LOAD_FILE('resources/img/xchrisbrown.jpg'),1,2),
--- ('Starboy', LOAD_FILE('resources/img/starboy.jpg'),2,1),
--- ('AfterHours', LOAD_FILE('resources/img/afterhours.jpg'),2,1),
--- ('BeerBongs and Bentleys', LOAD_FILE('resources/img/beerbong.jpg'),3,2),
--- ('Lust for Life', LOAD_FILE('resources/img/lustforlife.jpg'),4,5);
 INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 ('Royalty', 'img/royalty.jpg',1,2),
 ('X', 'img/xchrisbrown.jpg',1,2),
