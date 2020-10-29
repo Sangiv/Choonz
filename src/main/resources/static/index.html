@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-  crossorigin="anonymous">
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/userAuth.js"></script>
   <title>Music Library</title>
 </head>
+
 <body>
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Choonz</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,21 +42,21 @@
         </class>
       </div>
     </nav>
-        <!-- search bar -->
+    <!-- search bar -->
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search a track by Id" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    
-  
-      <li>
-        <button id ="my-profile" type="button" class="btn btn-light" style = "margin-top: 9px;">
-          Guest<span class="badge badge-light"></span>
-          <!-- <span class="sr-only">unread messages</span> -->
-        </button>
-      </li>
-    </ul> <!--end of nav bar -->
-   <!--end of nav bar -->
+
+    <!-- user profile icon -->
+    <li class="nav-item" role="presentation">
+      <button id="my-profile" type="button" class="btn btn-success" data-toggle="modal" data-target="#userProfileModal">
+        Guest<span class="badge badge-light"></span>
+        <!-- <span class="sr-only">unread messages</span> -->
+      </button>
+    </li>
+  </ul>
+  <!--end of nav bar -->
 
   <div class="container">
     <div class="row">
@@ -63,20 +65,23 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Create an Account</h5>
-            <p id = "success-create" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p id="success-create" class="card-text">With supporting text below as a natural lead-in to additional
+              content.</p>
 
-            <form class="create-user" action="index.html" method="POST" >
+            <form class="create-user" action="index.html" method="POST">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
+                  <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
                 </div>
-                <input name="user_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
               </div>
               <div class="input-group">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                 </div>
-                <input name= "password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Create</button>
@@ -92,21 +97,23 @@
           <div class="card-body">
             <h5 class="card-title">Log in</h5>
             <p class="card-text">Use your credential to log in</p>
-            <form class="log-in" action="index.html" method="POST" >
+            <form class="log-in" action="index.html" method="POST">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
+                  <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
                 </div>
-                <input name="userId"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
                 </div>
-                <input name="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
               </div>
               <div class="modal-footer">
-                <p id = "login-msg" class="card-text"></p>
+                <p id="login-msg" class="card-text"></p>
                 <button type="submit" class="btn btn-primary">Log In</button>
               </div>
 
@@ -119,111 +126,76 @@
   <br>
   <!-- slide show of different playlists -->
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="1" ></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
-        </ol>
-        
-   <div class="carousel-inner">
-       <div class="carousel-item active">
-           <img src="img/afterhours.jpg" style="height:400px;" 
-           style="width:400px;" class="rounded mx-auto d-block" alt="...">
-       <div class="carousel-caption d-none d-md-block">
-           <h5>First slide label</h5>
-         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/afterhours.jpg" style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
+          alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
-    </div>
+      </div>
       <div class="carousel-item">
-          <img src="img/beerbong.jpg" style="height:400px;" 
-          style="width:400px;" class="rounded mx-auto d-block" alt="...">
-       <div class="carousel-caption d-none d-md-block">
-           <h5>Second slide label</h5>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-       </div>
-    </div>
-     <div class="carousel-item">
-       <img src="img/xchrisbrown.jpg" style="height:400px;" 
-       style="width:400px;" class="rounded mx-auto d-block" alt="...">
-       <div class="carousel-caption d-none d-md-block">
-         <h5>Third slide label</h5>
-         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <img src="img/beerbong.jpg" style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
+          alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img/lustforlife.jpg" style="height:400px;" 
-      style="width:400px;" class="rounded mx-auto d-block" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-       </div>
-   </div>
-   <div class="carousel-item">
-    <img src="img/QA_Logo.png" style="height:400px;" 
-    style="width:400px;" class="rounded mx-auto d-block" alt="...">
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Third slide label</h5>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-     </div>
- </div>
-  </div>
-<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-</a>
-<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-</a>
-</div>
-<br>
-<!-- shows all the global tracks from DB -->
-<div class="row row-cols-1 row-cols-md-6">
-  <div class="col mb-4">
-    <div class="card">
-      <img src="img/track.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Track <Title></Title></h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="img/xchrisbrown.jpg" style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
+          alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/lustforlife.jpg" style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
+          alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/QA_Logo.png" style="height:400px;" style="width:400px;" class="rounded mx-auto d-block" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
       </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="img/track.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="img/track.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="img/track.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
+  <br>
+  <!-- shows all the global tracks from DB -->
+  <div class="row row-cols-1 row-cols-md-6">
+    <div class="col mb-4">
       <div class="card">
         <img src="img/track.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <h5 class="card-title">Track <Title></Title>
+          </h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
         </div>
       </div>
     </div>
@@ -232,17 +204,185 @@
         <img src="img/track.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
         </div>
       </div>
     </div>
-    
-</div>
+<<<<<<< HEAD
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      <img src="img/track.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+=======
+    <div class="col mb-1">
+      <div class="card">
+        <img src="img/track.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content.</p>
+        </div>
+>>>>>>> 9b1f0f38dacc4fbdf3d556e2f655f7b40793b1ac
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="img/track.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="img/track.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="img/track.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
 
-<script src="js/newUser.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </div>
+
+  
+  <!-- create account modal -->
+  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Create an Account</h5>
+                <p id="success-create" class="card-text">With supporting text below as a natural lead-in to additional
+                  content.</p>
+    
+                <form class="create-user" action="index.html" method="POST">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
+                    </div>
+                    <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-default" required>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    </div>
+                    <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-default" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- message modal -->
+  <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- user message go in this heading -->
+          <h5 id="show-msg"></h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- update user profile -->
+  <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="user-profile" action="todo.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">User Name</span></>
+              </div>
+              <input id="user_name" name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password</span></l>
+              </div>
+              <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
+                required></input>
+            </div>
+            <div class="modal-footer">
+              <button id="update-user" type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="delete-user" type="submit" class="btn btn-primary">Delete Account</button>
+            <button id="log-out" type="submit" class="btn btn-primary">Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/newUser.js"></script>
+  <script src="js/crudUser.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
 
 </body>
+
 </html>
