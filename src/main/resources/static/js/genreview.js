@@ -55,7 +55,7 @@ function getGenreView(id){
 
             if (typeof dataData[value] === 'object'){
                 let id = dataData.id;
-                let image = "http://i.imgur.com/czM0qWd.png";
+                let image = "img/" + dataData.name + ".png";
                 let title = dataData.name;
                 let description = dataData.description;
                 let buttonText = "Back";
@@ -89,6 +89,12 @@ function getGenreView(id){
             cell.appendChild(text);
             
           }}
+          let viewCell = row.insertCell();
+          let viewButton = document.createElement("a");
+          viewButton.className="btn btn-primary";
+          viewButton.href="albumview.html?id="+dataData.albums[i].id;
+          viewButton.innerHTML="View";
+          viewCell.appendChild(viewButton);
         }
         }
     }
@@ -116,6 +122,12 @@ function getGenreView(id){
             let cell4 = row.insertCell();
             let text4 = document.createTextNode("cover");
             cell4.appendChild(text4);
+
+            let cell5 = row.insertCell();
+            let text5 = document.createTextNode("View Tracks");
+            cell5.appendChild(text5);
+
+            
 
 
             // Leaving it like this until I find a good way to fix it
