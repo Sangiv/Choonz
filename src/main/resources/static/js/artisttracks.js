@@ -18,15 +18,14 @@ fetch('http://localhost:8082/tracks/read/')
       console.log('Fetch Success')
       response.json().then(function(dataData) {
         console.log(dataData)
-        console.log(dataData[0].album.artist.id);
         let aid = id;
-
         let table = document.querySelector("table");
         
         
 
         createTableHead(table);
         createTableBody(table,dataData, aid);
+        cardData(dataData, aid);
 
 
       });
@@ -36,6 +35,46 @@ fetch('http://localhost:8082/tracks/read/')
     console.log('Fetch Error :-S', err);
   });
 }
+
+function createCard(id, image, title, buttonText){
+  //updates cloneCard with new information
+  let cards = document.querySelector("div.showcards");
+  let cloneCard = document.querySelector("div.card").cloneNode(true);
+  cloneCard.id = ("card" + id);
+  cloneCard.querySelector("img").src=(image);
+  cloneCard.querySelector("#title").innerHTML = (title);
+  // cloneCard.querySelector("#text").innerHTML = (description);
+  cloneCard.querySelector("#button").innerHTML = (buttonText);
+  cloneCard.querySelector("#button").onclick = function (){goBack();};
+  // cloneCard.querySelector("#button2").innerHTML = (button2Text);
+  // cloneCard.querySelector("#button2").href = (button2Link);
+  // cloneCard.querySelector("#button3").innerHTML = (button3Text);
+  // cloneCard.querySelector("#button3").onclick = function (){goBack();};
+  cards.appendChild(cloneCard);
+}
+
+function cardData(dataData, aid){
+  singleIterationCheck = 0;
+      for (let dataRecord of dataData){
+      if (dataRecord.album.artist.id == aid){
+        let newid = dataRecord.album.id;
+        for (value in dataRecord){
+          if (singleIterationCheck != 0){
+
+          } else {
+            console.log(dataRecord.album.artist.name);
+            let id = newid;
+            let image = dataRecord.album.cover;
+            let title = dataRecord.album.artist.name;
+            let buttonText = "Back";
+            createCard(id, image, title, buttonText);
+            singleIterationCheck++;
+          }
+        }
+      }
+    }
+  }
+
 
   function createTableHead(table){
     let thead = table.createTHead();
@@ -125,10 +164,7 @@ fetch('http://localhost:8082/tracks/read/')
 function createTableBody(table,dataData, aid){
   for (let dataRecord of dataData){
     if(dataRecord.album.artist.id == aid){
-      let newid = dataRecord.album.id;
-
-    
-
+      let newid = dataRecord.album.id;   
       let row = table.insertRow();
       for (value in dataRecord){
           if (value == 'id'){
@@ -165,7 +201,6 @@ function createTableBody(table,dataData, aid){
       }
       
       }
-      console.log(dataData);
       let cell3 = row.insertCell();
       let text3 = document.createElement("a");
       text3.className = "btn btn-primary";
@@ -182,3 +217,7 @@ function createTableBody(table,dataData, aid){
 
             }
 }}
+
+function goBack() {
+  window.history.back();
+}
