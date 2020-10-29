@@ -34,7 +34,7 @@ function getPlaylistView(id){
 }
 
 
-  function createCard(id, image, title, description, button2Text, button2Link, button3Text){
+  function createCard(id, image, title, description, button2Text, button2Link, button3Text, button4Text){
     //updates cloneCard with new information
     let cards = document.querySelector("div.showcards");
     let cloneCard = document.querySelector("div.card").cloneNode(true);
@@ -46,6 +46,8 @@ function getPlaylistView(id){
     cloneCard.querySelector("#button2").href = (button2Link);
     cloneCard.querySelector("#button3").innerHTML = (button3Text);
     cloneCard.querySelector("#button3").onclick = function (){goBack();};
+    cloneCard.querySelector("#button4").innerHTML = (button4Text);
+    cloneCard.querySelector("#button4").onclick = function (){window.alert("not implimented");};
     cards.appendChild(cloneCard);
   }
 
@@ -60,10 +62,11 @@ function getPlaylistView(id){
                 let image = dataData.artwork;
                 let title = dataData.name;
                 let description = dataData.description;
-                let button2Text = "Exit Edit";
+                let button2Text = "Exit Edit Mode";
                 let button2Link = "playlistview.html?id="+dataData.id;
                 let button3Text = "Back";
-                createCard(id, image, title, description, button2Text, button2Link, button3Text);
+                let button4Text = "Delete Playlist";
+                createCard(id, image, title, description, button2Text, button2Link, button3Text, button4Text);
                 singleIterationCheck++;           
               }
           }
@@ -92,6 +95,14 @@ function getPlaylistView(id){
       let cell4 = row.insertCell();
       let text4 = document.createTextNode("Album Name");
       cell4.appendChild(text4);
+
+      let cell5 = row.insertCell();
+      let text5 = document.createTextNode("Move");
+      cell5.appendChild(text5);
+
+      let cell6 = row.insertCell();
+      let text6 = document.createTextNode("Delete");
+      cell6.appendChild(text6);
       }
     }
 }
@@ -129,6 +140,19 @@ function createTableBody(table, dataData){
 
           }
         }
+        let moveCell = row.insertCell();
+        let moveButton = document.createElement("a");
+        moveButton.className = "btn btn-primary";
+        moveButton.innerHTML = "Move";
+        moveButton.onclick = function (){window.alert("not implimented");};
+        moveCell.appendChild(moveButton);
+  
+        let deleteCell = row.insertCell();
+        let deleteButton = document.createElement("a");
+        deleteButton.className="btn btn-danger";
+        deleteButton.innerHTML="Delete";
+        deleteButton.onclick = function (){window.alert("not implimented");};
+        deleteCell.appendChild(deleteButton);
       }
       }
   }
