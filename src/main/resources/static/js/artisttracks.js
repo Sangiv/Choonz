@@ -125,6 +125,7 @@ fetch('http://localhost:8082/tracks/read/')
 function createTableBody(table,dataData, aid){
   for (let dataRecord of dataData){
     if(dataRecord.album.artist.id == aid){
+      let newid = dataRecord.album.id;
 
     
 
@@ -164,11 +165,12 @@ function createTableBody(table,dataData, aid){
       }
       
       }
+      console.log(dataData);
       let cell3 = row.insertCell();
       let text3 = document.createElement("a");
       text3.className = "btn btn-primary";
       text3.innerHTML = "View";
-      text3.href = "albumview.html?id=" + dataData.id;
+      text3.href = "albumview.html?id=" + newid;
       cell3.appendChild(text3);
 
       let editCell = row.insertCell();
