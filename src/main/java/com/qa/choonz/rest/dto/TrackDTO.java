@@ -1,9 +1,10 @@
 package com.qa.choonz.rest.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Playlist;
-
-import java.util.List;
 
 public class TrackDTO {
 
@@ -19,7 +20,7 @@ public class TrackDTO {
 		this.playlist = playlist;
 	}
 
-	private List<Playlist> playlist;
+	private List<Playlist> playlist = new ArrayList<>();
 
 	public TrackDTO(Long id, String name, Album album, List<Playlist> playlist, int duration, String lyrics) {
 		this.id = id;
@@ -28,6 +29,13 @@ public class TrackDTO {
 		this.playlist = playlist;
 		this.duration = duration;
 		this.lyrics = lyrics;
+	}
+
+	public TrackDTO(Long id, String name, List<Playlist> playlist) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.playlist = playlist;
 	}
 
 	private int duration;
