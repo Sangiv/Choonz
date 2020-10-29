@@ -34,7 +34,7 @@ function getPlaylistView(id){
 }
 
 
-  function createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link){
+  function createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, button3Text){
     //updates cloneCard with new information
     let cards = document.querySelector("div.showcards");
     let cloneCard = document.querySelector("div.card").cloneNode(true);
@@ -46,6 +46,8 @@ function getPlaylistView(id){
     cloneCard.querySelector("#button").href = (buttonLink);
     cloneCard.querySelector("#button2").innerHTML = (button2Text);
     cloneCard.querySelector("#button2").href = (button2Link);
+    cloneCard.querySelector("#button3").innerHTML = (button3Text);
+    cloneCard.querySelector("#button3").onclick = function (){goBack();};
     cards.appendChild(cloneCard);
   }
 
@@ -64,7 +66,8 @@ function getPlaylistView(id){
                 let buttonLink = "artistalbums.html?id="+dataData.id;
                 let button2Text = "Edit";
                 let button2Link = "artisttracks.html?id="+dataData.id;
-                createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
+                let button3Text = "Back";
+                createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, button3Text);
                 singleIterationCheck++;           
               }
           }
@@ -135,5 +138,6 @@ function createTableBody(table, dataData){
   }
 }
 
-
-
+function goBack() {
+  window.history.back();
+}
