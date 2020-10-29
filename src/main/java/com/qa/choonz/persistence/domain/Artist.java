@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@JsonIgnoreProperties(value = { "albums" })
+//@JsonIgnoreProperties(value = { "albums" })
 public class Artist {
 
     @Id

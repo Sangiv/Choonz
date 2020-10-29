@@ -31,9 +31,8 @@ public class Track {
     private Album album;
 
     @ManyToOne
-//    @JsonIgnoreProperties("playlist")
     @JsonBackReference(value = "playlist")
-    @JsonIgnoreProperties(value = { "playlist" })
+//    @JsonIgnoreProperties(value = { "playlist" })
     private Playlist playlist;
 
     // in seconds

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@JsonIgnoreProperties(value = { "tracks" })
+//@JsonIgnoreProperties(value = { "tracks" })
 public class Playlist {
 
     @Id
@@ -44,14 +44,11 @@ public class Playlist {
     private String artwork;
 
     @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JsonIgnoreProperties("playlist")
     @JsonManagedReference(value = "playlist")
-//    @JsonIgnoreProperties(value = { "tracks" })
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
     @JsonBackReference(value = "users")
-//    @JsonIgnoreProperties(value = { "users" })
     private Users users;
 
     public Playlist() {
