@@ -37,9 +37,7 @@ fetch('http://localhost:8082/albums/read/' + id)
 
 function createTableBody(table, dataData){
     for(let key in dataData){
-        console.log(key);
       if(key == "tracks"){
-    
         let arr = dataData[key];
         for(let i = 0; i < arr.length; i++){
           let obj = arr[i];
@@ -47,11 +45,16 @@ function createTableBody(table, dataData){
           let row = table.insertRow();
   
           for(let prop in obj){
+            if (prop == 'album'){
+
+            } else {
             // console.log(prop);
             // console.log(obj[prop]);
             let cell = row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
+            }
+
             
           }
         }
