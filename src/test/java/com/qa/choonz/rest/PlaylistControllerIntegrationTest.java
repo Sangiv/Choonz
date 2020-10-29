@@ -36,18 +36,18 @@ public class PlaylistControllerIntegrationTest {
 
     private ModelMapper modelMapper = new ModelMapper();
 
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     private Playlist testPlaylist; 
     private Playlist testPlaylistWithID;
     private PlaylistDTO playlistDTO;
 
     private Long id;
-    private  final String TEST_NAME = "Mix";
+    private  final String TEST_NAME = "Test Mix";
     private  final String TEST_ARTWORK = "Test Art";
-    private  final String TEST_DESCRIPTION = "My Mix";
+    private  final String TEST_DESCRIPTION = "Test Mix";
 
-    private  final String UPDATE_TEST_NAME = "Another MIX";
+    private  final String UPDATE_TEST_NAME = "Update MIX";
     private  final String UPDATE_TEST_ARTWORK = "Update Art";
     private  final String UPDATE_TEST_DESCRIPTION = "Update Mix";
 
@@ -59,13 +59,11 @@ public class PlaylistControllerIntegrationTest {
     void init() {
         this.repo.deleteAll();
 
-        this.testPlaylist = new Playlist(this.TEST_NAME, this.TEST_ARTWORK, this.TEST_DESCRIPTION);
+        this.testPlaylist = new Playlist(this.TEST_NAME,  this.TEST_DESCRIPTION,this.TEST_ARTWORK);
         this.testPlaylistWithID = this.repo.saveAndFlush(this.testPlaylist);
         this.id = this.testPlaylistWithID.getId();
-
-//        this.playlistDTO = this.mapToDTO(this.testPlaylistWithID);
-        this.playlistDTO = new PlaylistDTO(this.testPlaylist.getName(),this.testPlaylist.getArtwork(),
-                this.testPlaylist.getDescription());
+        this.playlistDTO = new PlaylistDTO(this.testPlaylist.getName(),this.testPlaylist.getDescription(),
+                this.testPlaylist.getArtwork());
         this.playlistDTO.setId(this.id);
     }
 
@@ -101,12 +99,14 @@ public class PlaylistControllerIntegrationTest {
 
     @Test
     void testUpdate() throws Exception {
-    	PlaylistDTO newPlaylist = new PlaylistDTO(null, "Arsenal");
-    	Playlist updatedPlaylist = new Playlist(newPlaylist.getName());
+    	final PlaylistDTO newPlaylist = new PlaylistDTO(UPDATE_TEST_NAME,UPDATE_TEST_DESCRIPTION,UPDATE_TEST_ARTWORK);
+    	newPlaylist.setId(this.id);
+    	Playlist updatedPlaylist = new Playlist(newPlaylist.getName(), newPlaylist.getDescription(), newPlaylist.getArtwork());
         updatedPlaylist.setId(this.id);
 
         String result = this.mock
-                .perform(request(HttpMethod.PUT, "/playlists/update/" + this.id).accept(MediaType.APPLICATION_JSON)
+                .perform(request(HttpMethod.PUT, "/playlists/update/" + this.id)
+                        .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(newPlaylist)))
                 .andExpect(status().isAccepted()).andReturn().getResponse().getContentAsString();

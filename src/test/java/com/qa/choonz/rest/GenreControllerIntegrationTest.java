@@ -96,8 +96,8 @@ public class GenreControllerIntegrationTest {
 
     @Test
     void testUpdate() throws Exception {
-    	GenreDTO newGenre = new GenreDTO(null, "Arsenal");
-    	Genre updatedGenre = new Genre(newGenre.getName());
+    	GenreDTO newGenre = new GenreDTO(null, "Arsenal", "Team");
+    	Genre updatedGenre = new Genre(newGenre.getName(), newGenre.getDescription());
         updatedGenre.setId(this.id);
 
         String result = this.mock

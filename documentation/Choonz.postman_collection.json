@@ -1,594 +1,602 @@
 {
 	"info": {
-		"_postman_id": "3082189f-3397-4a8a-a328-f7b832d3502f",
-		"name": "Choonz",
+		"_postman_id": "7d3ad704-64a6-4027-be82-38e4d9e6c874",
+		"name": "CHOONZ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "localhost:8082/albums/create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"cover\": \"string\",\r\n  \"name\": \"string\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/albums/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"albums",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/albums/read",
+			"name": "http://localhost:8082/users/read/",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8082/albums/read",
+					"raw": "http://localhost:8082/users/read/",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8082",
 					"path": [
-						"albums",
-						"read"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/albums/read/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/albums/read/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"albums",
+						"users",
 						"read",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/albums/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"cover\": \"string2\",\r\n  \"name\": \"string2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/albums/update/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"albums",
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/albums/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/albums/delete/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"albums",
-						"delete",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/artists/create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"string\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/artists/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"artists",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/artists/read",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/artists/read",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"artists",
-						"read"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/artists/read/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/artists/read/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"artists",
-						"read",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/artists/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"string2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/artists/update/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"artists",
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/artists/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/artists/delete/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"artists",
-						"delete",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/genres/create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"string\",\r\n    \"description\": \"string\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/genres/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"genres",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/genres/read",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/genres/read",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"genres",
-						"read"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/genres/read/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/genres/read/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"genres",
-						"read",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/genres/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/genres/update/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"genres",
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/genres/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/genres/delete/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"genres",
-						"delete",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/playlists/create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "  {\r\n  \"artwork\": \"string\",\r\n  \"description\": \"string\",\r\n  \"name\": \"string\"\r\n  }\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/playlists/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"playlists",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/playlists/read",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/playlists/read",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"playlists",
-						"read"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/playlists/read/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/playlists/read/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"playlists",
-						"read",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/playlists/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/playlists/update/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"playlists",
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/playlists/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/playlists/delete/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"playlists",
-						"delete",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/tracks/create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"duration\": 1,\r\n  \"lyrics\": \"string\",\r\n  \"name\": \"string\",\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/tracks/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"tracks",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/tracks/read",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/tracks/read",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"tracks",
-						"read"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/tracks/read/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/tracks/read/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"tracks",
-						"read",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/tracks/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8082/tracks/update/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"tracks",
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8082/tracks/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8082/tracks/delete/",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"tracks",
-						"delete",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/users/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"test\",\r\n    \"password\" : \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/users/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/users/read/5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/users/read/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users",
+						"read",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/users/update/5",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/users/update/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users",
+						"update",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/users/delete/5",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/users/delete/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users",
+						"delete",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/albums/read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/albums/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"albums",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/albums/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test\",\r\n    \"description\" : \"testing\",\r\n    \"tracks\" : null,\r\n    \"artist\" : null,\r\n    \"genre\" : null,\r\n    \"cover\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/albums/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"albums",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/albums/update/7",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"update\",\r\n    \"description\" : \"update\",\r\n    \"artwork\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/albums/update/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"albums",
+						"update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/albums/delete/7",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/albums/delete/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"albums",
+						"delete",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/artists/read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/artists/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"artists",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/artists/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test\",\r\n    \"albums\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/artists/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"artists",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/artists/update/5",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"update\",\r\n    \"albums\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/artists/update/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"artists",
+						"update",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/artists/delete/5",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/artists/delete/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"artists",
+						"delete",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/genres/read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/genres/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"genres",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/genres/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test\",\r\n    \"description\" : \"test\",\r\n    \"albums\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/genres/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"genres",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/genres/update/6",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"update\",\r\n    \"description\" : \"update\",\r\n    \"albums\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/genres/update/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"genres",
+						"update",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/genres/delete/6",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/genres/delete/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"genres",
+						"delete",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/tracks/read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/tracks/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tracks",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/tracks/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test\",\r\n    \"album\" : null,\r\n    \"playlist\" : null,\r\n    \"duration\" : 1,\r\n    \"lyrics\" : \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tracks/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tracks",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/tracks/update/6",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"update\",\r\n    \"album\" : null,\r\n    \"playlist\" : null,\r\n    \"duration\" : 1,\r\n    \"lyrics\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tracks/update/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tracks",
+						"update",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/tracks/delete/6",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\" : \"update\",\r\n    \"password\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tracks/delete/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tracks",
+						"delete",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/playlists/update/5",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"update\",\r\n    \"description\" : \"update\",\r\n    \"artwork\" : \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/playlists/update/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"playlists",
+						"update",
+						"5"
 					]
 				}
 			},
