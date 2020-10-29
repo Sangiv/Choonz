@@ -35,15 +35,40 @@ fetch('http://localhost:8082/tracks/read')
             
         } else if (keys == 'playlist') {
 
-        } else {
+        } else if(keys == "album"){
+            let th = document.createElement("th");
+            let text = document.createTextNode(keys);
+            th.appendChild(text);
+            row.appendChild(th);
+
+            let th1 = document.createElement("th");
+            let text1 = document.createTextNode("Artist");
+            th1.appendChild(text1);
+            row.appendChild(th1);
+
+
+        }else {
+            
+
             let th = document.createElement("th");
             let text = document.createTextNode(keys);
             th.appendChild(text);
             row.appendChild(th);
         }
+            
 
 
     }
+    let album = document.createElement("th");
+    let albumview = document.createTextNode("View Album");
+    album.appendChild(albumview);
+    row.appendChild(album);
+
+    let artist = document.createElement("th");
+    let artistview = document.createTextNode("View Artist");
+    artist.appendChild(artistview);
+    row.appendChild(artist);
+
     let editHead = document.createElement("th");
     let editButtonTitle = document.createTextNode("Add");
     editHead.appendChild(editButtonTitle);
@@ -81,15 +106,39 @@ function createTableBody(table,dataData){
                     let albumText = document.createTextNode(dataRecord.album.name);
                   cell.appendChild(albumText);
                 }
+                else if(object == 'id'){
+                  var albumid = dataRecord.album.id;
+                  console.log(albumid);
+                }
+                else if(object == 'artist'){
+                  let cell2 = row.insertCell();
+                  let artisttext = document.createTextNode(dataRecord.album.artist.name);
+                  cell2.appendChild(artisttext);
+                  var artistid = dataRecord.album.artist.id;
+                }
             }
           } else{
             cell.appendChild(text);
           }
         }
         }
+        let albumcell = row.insertCell();
+        let albumbutton = document.createElement("a");
+        albumbutton.href = "albumview.html?id=" + albumid;
+        albumbutton.className = "btn btn-info";
+        albumbutton.innerHTML = "View";
+        albumcell.appendChild(albumbutton);
+
+        let artistcell = row.insertCell();
+        let artistbutton = document.createElement("a");
+        artistbutton.href = "artistalbums.html?id=" + artistid;
+        artistbutton.className = "btn btn-info";
+        artistbutton.innerHTML = "View";
+        artistcell.appendChild(artistbutton);
+
         let editCell = row.insertCell();
         let editButton = document.createElement("a");
-        editButton.className="btn btn-primary";
+        editButton.className="btn btn-success";
         // editButton.href="userRecord.html?id="+dataRecord.id;
         editButton.innerHTML="Add";
         editCell.appendChild(editButton);

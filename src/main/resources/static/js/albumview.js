@@ -85,7 +85,19 @@ function createTableBody(table, dataData){
           for(let prop in obj){
             if (prop == 'album'){
 
-            } else {
+            } 
+            else if(prop == 'lyrics'){
+              let cell1 = row.insertCell();
+              let text1 = document.createElement("a");
+              text1.className = "btn btn-primary";
+              text1.innerHTML= "View";
+              text1.onclick = myfunc;
+              cell1.appendChild(text1);
+              function myfunc(){
+              let ans = obj[prop];
+              alert(ans);
+            }}
+            else {
             // console.log(prop);
             // console.log(obj[prop]);
             let cell = row.insertCell();
@@ -148,3 +160,4 @@ function createTableBody(table, dataData){
       function goBack() {
         window.history.back();
       }
+      
