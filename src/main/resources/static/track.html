@@ -40,12 +40,11 @@
     </div>
     <!-- search bar -->
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search a track by Id" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="text" onkeyup = "myFunction()" id = "myInput" placeholder="Search for a track by name, album, artist..." aria-label="Search">
     </form>
 
     <!-- user profile icon -->
-    <li class="nav-item" role="presentation">
+    <li class="nav-item" role="presentation" style = "list-style-type: none;">
       <button id="my-profile" type="button" class="btn btn-success" data-toggle="modal" data-target="#userProfileModal" >
         Guest<span class="badge badge-light"></span>
         <!-- <span class="sr-only">unread messages</span> -->
@@ -58,7 +57,7 @@
 
 <h1>Tracks</h1>
 
-<table class="table table-dark table-hover"></table>
+<table id = "myTable" class="table table-dark table-hover"></table>
 
 
 
