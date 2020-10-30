@@ -36,7 +36,7 @@ fetch('http://localhost:8082/albums/read/' + id)
   });
 }
 
-function createCard(id, image, title, buttonText, buttonLink, description){
+function createCard(id, image, title, buttonText, buttonLink, description, button2Text, button2Link){
   //updates cloneCard with new information
   let cards = document.querySelector("div.showcards");
   let cloneCard = document.querySelector("div.card").cloneNode(true);
@@ -46,6 +46,8 @@ function createCard(id, image, title, buttonText, buttonLink, description){
   cloneCard.querySelector('#text').innerHTML = (description);
   cloneCard.querySelector("#button").innerHTML = (buttonText);
   cloneCard.querySelector("#button").href = (buttonLink);
+  cloneCard.querySelector("#button2").innerHTML = (button2Text);
+  cloneCard.querySelector("#button2").onclick = function (){goBack();};
   cards.appendChild(cloneCard);
 }
 
@@ -60,9 +62,11 @@ function cardData(dataData){
               let image = dataData.cover;
               let title = dataData.name;
               let description = dataData.artist.name;
-              let buttonText = "Back";
-              let buttonLink = "album.html";
-              createCard(id, image, title, buttonText, buttonLink, description);
+              let buttonText = "Artist's Albums";
+              let buttonLink = "artistalbums.html?id=" + dataData.artist.id;
+              let button2Text = "Back";
+              let button2Link = "";
+              createCard(id, image, title, buttonText, buttonLink, description, button2Text, button2Link);
               singleIterationCheck++;           
             }
         }
@@ -81,7 +85,19 @@ function createTableBody(table, dataData){
           for(let prop in obj){
             if (prop == 'album'){
 
-            } else {
+            } 
+            else if(prop == 'lyrics'){
+              let cell1 = row.insertCell();
+              let text1 = document.createElement("a");
+              text1.className = "btn btn-primary";
+              text1.innerHTML= "View";
+              text1.onclick = myfunc;
+              cell1.appendChild(text1);
+              function myfunc(){
+              let ans = obj[prop];
+              alert(ans);
+            }}
+            else {
             // console.log(prop);
             // console.log(obj[prop]);
             let cell = row.insertCell();
@@ -140,3 +156,8 @@ function createTableBody(table, dataData){
       
       
       }
+
+      function goBack() {
+        window.history.back();
+      }
+      

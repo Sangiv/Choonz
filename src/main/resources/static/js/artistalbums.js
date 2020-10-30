@@ -44,7 +44,7 @@ function createCard(id, image, title, buttonText, buttonLink){
   cloneCard.querySelector("img").src=(image);
   cloneCard.querySelector("#title").innerHTML = (title);
   cloneCard.querySelector("#button").innerHTML = (buttonText);
-  cloneCard.querySelector("#button").href = (buttonLink);
+  cloneCard.querySelector("#button").onclick = function (){goBack();};
   cards.appendChild(cloneCard);
 }
 
@@ -130,4 +130,8 @@ function createTableBody(table,dataData){
               }
         }      
     }
+}
+
+function goBack() {
+  window.history.back();
 }

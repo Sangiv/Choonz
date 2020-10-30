@@ -42,10 +42,10 @@ function getGenreView(id){
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
-    cloneCard.querySelector("h5").innerHTML = (title);
-    cloneCard.querySelector("p").innerHTML = (description);
-    cloneCard.querySelector("a").innerHTML = (buttonText);
-    cloneCard.querySelector("a").href = (buttonLink)
+    cloneCard.querySelector("#title").innerHTML = (title);
+    cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector("#button").innerHTML = (buttonText);
+    cloneCard.querySelector("#button").onclick = function (){goBack();};
     cards.appendChild(cloneCard);
   }
 
@@ -150,4 +150,8 @@ function getGenreView(id){
           }}
       
       
+      }
+
+      function goBack() {
+        window.history.back();
       }
