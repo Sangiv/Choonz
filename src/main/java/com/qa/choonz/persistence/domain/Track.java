@@ -3,18 +3,26 @@ package com.qa.choonz.persistence.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-public class Track implements Serializable {
+@JsonIgnoreProperties(value = { "playlist" })
+public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,18 +34,13 @@ public class Track implements Serializable {
     private String name;
 
     @ManyToOne
-//    @JsonBackReference(value = "album")
+    @JsonBackReference(value = "album")
     private Album album;
     
     @ManyToOne
     @JsonBackReference(value = "artist")
     private Artist artist;
 
-//    @ManyToOne
-//    @JsonBackReference(value = "playlist")
-//    private Playlist playlist;
-
-    @JsonBackReference(value = "playlist")
     @ManyToMany(mappedBy = "tracks", cascade = CascadeType.ALL)
     private List<Playlist> playlist = new ArrayList<>();
 
@@ -61,17 +64,6 @@ public class Track implements Serializable {
         this.playlist = playlist;
     }
 
-    //    public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, Playlist playlist, int duration,
-//            String lyrics) {
-//        super();
-//        this.id = id;
-//        this.name = name;
-//        this.album = album;
-//        this.artist = artist;
-//        this.playlist = playlist;
-//        this.duration = duration;
-//        this.lyrics = lyrics;
-//    }
 public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, List<Playlist> playlist, int duration,
              String lyrics) {
     super();
@@ -112,14 +104,6 @@ public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Albu
     public void setAlbum(Album album) {
         this.album = album;
     }
-
-//    public Playlist getPlaylist() {
-//        return playlist;
-//    }
-//
-//    public void setPlaylist(Playlist playlist) {
-//        this.playlist = playlist;
-//    }
 
     public int getDuration() {
         return duration;

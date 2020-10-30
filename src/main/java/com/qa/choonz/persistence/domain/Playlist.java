@@ -1,20 +1,28 @@
 package com.qa.choonz.persistence.domain;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
 public class Playlist implements Serializable {
 
     @Id
@@ -36,10 +44,6 @@ public class Playlist implements Serializable {
     @Column(unique = true)
     private String artwork;
 
-//    @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "playlist")
-//    private List<Track> tracks = new ArrayList<>();
-    @JsonManagedReference(value ="playlist")
     @ManyToMany
     @JoinTable(
             name= "playlist_track",
@@ -58,7 +62,6 @@ public class Playlist implements Serializable {
 
     public Playlist() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public Users getUsers() {
