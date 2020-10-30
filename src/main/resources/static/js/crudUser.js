@@ -31,7 +31,7 @@ document.querySelector('button[id="update-user"]').addEventListener("click",func
 //get user data in the form
 document.getElementById("my-profile").addEventListener('click',function(stop)
 { 
-  // if(user_id>0){
+   if(user_id>0){
     fetch('http://localhost:8082/users/read/' + user_id)
     .then(
       function (response) {
@@ -54,9 +54,9 @@ document.getElementById("my-profile").addEventListener('click',function(stop)
       console.log('Fetch Error :-S', err);
     });
     
-  // }else{
-  //   $('#createAccountModal').modal('show');
-  // }
+  }else{
+    $('#createAccountModal').modal('show');
+  }
 })
 
 function generateTable(data,userId){
