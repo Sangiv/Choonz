@@ -33,3 +33,6 @@ INSERT INTO track (name, duration, lyrics, album_id, artist_id) VALUES
 ('When I see', 5, 'When I see you eyes', 6, 4),
 ('Royalty', 5, 'Jude Jude Jud', 1, 1),
 ('Grass aint greener', 5, 'Blah blah blah', 2, 1);
+
+INSERT INTO playlist_track (track_id, playlist_id) VALUES
+(1,1),(1,2),(2,2),(2,1),(2,3);

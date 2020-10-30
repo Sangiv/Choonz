@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,9 +11,10 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Track {
+public class Track implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +37,11 @@ public class Track {
 //    @JsonBackReference(value = "playlist")
 //    private Playlist playlist;
 
-    @ManyToMany
-    @JoinTable(
-            name= "playlist_like",
-            joinColumns = @JoinColumn (name = "track_id"),
-            inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    @JsonBackReference(value = "playlist")
+    @ManyToMany(mappedBy = "tracks", cascade = CascadeType.ALL)
     private List<Playlist> playlist = new ArrayList<>();
+
+
 
     // in seconds
     private int duration;

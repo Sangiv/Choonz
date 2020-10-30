@@ -1,5 +1,7 @@
 package com.qa.choonz.persistence.domain;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,8 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@JsonIgnoreProperties(value = { "tracks" })
-public class Playlist {
+public class Playlist implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +39,17 @@ public class Playlist {
 //    @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @JsonManagedReference(value = "playlist")
 //    private List<Track> tracks = new ArrayList<>();
-    @ManyToMany(mappedBy = "playlist")
+    @JsonManagedReference(value ="playlist")
+    @ManyToMany
+    @JoinTable(
+            name= "playlist_track",
+            joinColumns = {@JoinColumn (name = "playlist_id", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+
+            inverseJoinColumns = {@JoinColumn(name = "track_id",
+                    referencedColumnName = "id",
+                    nullable = false, updatable = false)}
+    )
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
@@ -128,6 +139,15 @@ public class Playlist {
 
     public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
+    }
+
+    public void addTrack(Track track){
+        this.tracks.add(track);
+        track.getPlaylist().add(this);
+    }
+    public void removeTrack(Track track){
+        this.tracks.remove(track);
+        track.getPlaylist().remove(this);
     }
 
     @Override
