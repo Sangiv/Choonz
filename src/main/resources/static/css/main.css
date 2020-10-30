@@ -2,6 +2,8 @@ body{
   background-color:#16213e;
   min-height: 100vh;
   padding: 1 rem;
+  /* add this back for margin  */
+  /* margin: 3%; */
   background-repeat: no-repeat;
   background-size: cover;
 

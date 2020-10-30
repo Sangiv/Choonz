@@ -123,6 +123,9 @@
   </div>
   <br>
   <!-- slide show of different playlists -->
+  <h1><center>Latest Albums</center></h1>
+  <br>
+
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -184,71 +187,37 @@
     </a>
   </div>
   <br>
-  <!-- shows all the global tracks from DB -->
-  <div class="row row-cols-1 row-cols-md-6">
-    <div class="col mb-4">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Track <Title></Title>
-          </h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-1">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="img/track.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
 
+
+  <!-- creates template hidden card -->
+  <div hidden>
+    <div id = "cards2" class="cards2">
+    <div id ="card2" class="card" classname="card2" style="max-width: 260px; border-radius: 10%; margin: 0 auto;">
+      <img height="250" style = "border-radius: 10%; margin: 2%">
+      <div id = "body" class="card-body">
+          <h5 id = "title" class = "card-title"></h5>
+          <p id = "text" class = "card-text"></p>
+          <a id = "button" class = "btn btn-primary"></a>
+      </div>
+    </div>
+    </div>
   </div>
+
+  <h1><center>Latest Tracks</center></h1>
+  <br>
+
+  <!-- creates displayed card deck to be populard -->
+    <div class = "row" style = "text-align:center; margin: 0 auto;">
+      <div class = "col-12">
+        <div class ="card-deck" id = "card-deck">
+          </div>
+          </div>
+          </div>
+
+
+          
+ <br>
+
 
   
   <!-- create account modal -->
@@ -359,6 +328,8 @@
     </div>
   </div>
 
+
+  <script src="js/index.js"></script>
   <script src="js/newUser.js"></script>
   <script src="js/crudUser.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

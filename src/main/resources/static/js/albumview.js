@@ -62,7 +62,7 @@ function cardData(dataData){
               let image = dataData.cover;
               let title = dataData.name;
               let description = dataData.artist.name;
-              let buttonText = "Artist's Albums";
+              let buttonText = "View Artist";
               let buttonLink = "artistalbums.html?id=" + dataData.artist.id;
               let button2Text = "Back";
               let button2Link = "";
