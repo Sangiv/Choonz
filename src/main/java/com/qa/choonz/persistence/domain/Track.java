@@ -1,15 +1,27 @@
 package com.qa.choonz.persistence.domain;
 
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIgnoreProperties(value = { "playlist" })
 public class Track {
 
     @Id
@@ -22,16 +34,17 @@ public class Track {
     private String name;
 
     @ManyToOne
-//    @JsonBackReference(value = "album")
+    @JsonBackReference(value = "album")
     private Album album;
     
     @ManyToOne
     @JsonBackReference(value = "artist")
     private Artist artist;
 
-    @ManyToOne
-    @JsonBackReference(value = "playlist")
-    private Playlist playlist;
+    @ManyToMany(mappedBy = "tracks", cascade = CascadeType.ALL)
+    private List<Playlist> playlist = new ArrayList<>();
+
+
 
     // in seconds
     private int duration;
@@ -43,17 +56,25 @@ public class Track {
         // TODO Auto-generated constructor stub
     }
 
-    public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, Playlist playlist, int duration,
-            String lyrics) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.album = album;
-        this.artist = artist;
-        this.playlist = playlist;
-        this.duration = duration;
-        this.lyrics = lyrics;
+    public List<Playlist> getPlaylist() {
+        return playlist;
     }
+
+    public void setPlaylist(List<Playlist> playlist) {
+        this.playlist = playlist;
+    }
+
+public Track(Long id, @NotNull @Size(max = 100) String name, Artist artist, Album album, List<Playlist> playlist, int duration,
+             String lyrics) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.album = album;
+    this.artist = artist;
+    this.playlist = playlist;
+    this.duration = duration;
+    this.lyrics = lyrics;
+}
     
     public Track(@NotNull @Size(max = 100) String name) {
         super();
@@ -82,14 +103,6 @@ public class Track {
 
     public void setAlbum(Album album) {
         this.album = album;
-    }
-
-    public Playlist getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(Playlist playlist) {
-        this.playlist = playlist;
     }
 
     public int getDuration() {

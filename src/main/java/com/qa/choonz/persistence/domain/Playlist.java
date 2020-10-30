@@ -1,28 +1,29 @@
 package com.qa.choonz.persistence.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@JsonIgnoreProperties(value = { "tracks" })
-public class Playlist {
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
+public class Playlist implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +44,16 @@ public class Playlist {
     @Column(unique = true)
     private String artwork;
 
-    @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "playlist")
+    @ManyToMany
+    @JoinTable(
+            name= "playlist_track",
+            joinColumns = {@JoinColumn (name = "playlist_id", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+
+            inverseJoinColumns = {@JoinColumn(name = "track_id",
+                    referencedColumnName = "id",
+                    nullable = false, updatable = false)}
+    )
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
@@ -53,7 +62,6 @@ public class Playlist {
 
     public Playlist() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public Users getUsers() {
@@ -134,6 +142,15 @@ public class Playlist {
 
     public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
+    }
+
+    public void addTrack(Track track){
+        this.tracks.add(track);
+        track.getPlaylist().add(this);
+    }
+    public void removeTrack(Track track){
+        this.tracks.remove(track);
+        track.getPlaylist().remove(this);
     }
 
     @Override
