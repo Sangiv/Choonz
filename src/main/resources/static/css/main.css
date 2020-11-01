@@ -8,18 +8,20 @@ body{
   background-size: cover;
 
 }
-/* ul { overflow:auto; }
-li { float:left; }
-li:last-child { float:right; } */
 p{
   color: black;
 }
 h1{
   color:#ede68a
 }
+thead{
+  font-size: x-large;
+}
 td:hover{
   background-color:gray;
   cursor:pointer;
-  }
-
-  
+}
+td{
+  font-size: medium;
+  background-color: rgba(255, 255, 255, 0.1);
+}
