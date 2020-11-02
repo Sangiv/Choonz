@@ -36,19 +36,37 @@ function getPlaylistView(id){
 
   function createCard(id, image, title, description, button2Text, button2Link, button3Text){
     //updates cloneCard with new information
-    let cards = document.querySelector("div.showcards");
-    let cloneCard = document.querySelector("div.card").cloneNode(true);
+    let cards = document.querySelector("#showcards");
+    let cloneCard = document.querySelector("#globalPlaylist").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
     cloneCard.querySelector("#title").innerHTML = (title);
     cloneCard.querySelector("#text").innerHTML = (description);
-    cloneCard.querySelector("#button2").innerHTML = (button2Text);
-    cloneCard.querySelector("#button2").href = (button2Link);
     cloneCard.querySelector("#button3").innerHTML = (button3Text);
     cloneCard.querySelector("#button3").onclick = function (){goBack();};
     cards.appendChild(cloneCard);
   }
 
+  // function cardData(dataData){
+  //   singleIterationCheck = 0;
+  //       for (value in dataData){
+  //           if (typeof dataData[value] === 'object'){
+  //             if (singleIterationCheck != 0){
+
+  //             } else {
+  //               let id = dataData.id;
+  //               let image = dataData.artwork;
+  //               let title = dataData.name;
+  //               let description = dataData.description;
+  //               let button2Text = "Edit";
+  //               let button2Link = "playlistedit.html?id="+dataData.id;
+  //               let button3Text = "Back";
+  //               createCard(id, image, title, description, button2Text, button2Link, button3Text);
+  //               singleIterationCheck++;           
+  //             }
+  //         }
+  //       }
+  // }
   function cardData(dataData){
     singleIterationCheck = 0;
         for (value in dataData){

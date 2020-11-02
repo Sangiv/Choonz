@@ -59,6 +59,60 @@
   <body>
     <!-- /main -->
     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <!-- left side content -->
+          <h1>Playlists</h1>
+
+          <div hidden>
+            <!-- <div id="cards" class="cards">
+              <div id="card" class="card" classname="card" style="width: 18rem">
+                <img width="250" height="250">
+                <div id="body" class="card-body">
+                  <h5 id="title" class="card-title"></h5>
+                  <p id="text" class="card-text"></p>
+                  <a id="button2" class="btn btn-primary"></a>
+                  <a id="button3" class="btn btn-dark"></a>
+                </div>
+              </div>
+            </div> -->
+         
+            <div  id = "globalPlaylist"  class="card">
+              <img class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 id="title" class="card-title"></h5>
+                <p id="text" class="card-text"></p>
+                <a id="button3" class="btn btn-dark"></a>
+                <!-- a button to delete the whole playlist -->
+                <button id="deletePlay" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          
+          
+          </div>
+    
+    
+    
+          <!-- <div class="card-columns" style="float: left;">
+            <div id="showcards" class="showcards"></div>
+          </div> -->
+
+          <div id="showcards">
+          </div>
+  
+        </div>
+        <div class="col-sm-8">
+          <!-- all the table contents -->
+          <h1>Track List</h1>
+          <table class="table table-dark table-hover"></table>
+        </div>
+        
+      </div>
+    </div> <!--end of main container class-->
+
+
+    <!-- <div class="container-fluid">
+
       <h1>Playlists</h1>
 
       <div hidden>
@@ -84,7 +138,7 @@
       <h1>Track List</h1>
       <table class="table table-dark table-hover"></table>
 
-    </div>
+    </div> -->
 
     <script src="js/playlistview.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

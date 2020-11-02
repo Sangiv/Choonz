@@ -18,7 +18,7 @@ p{
 h1{
   color:#ede68a
 }
-td:hover{
+tr:hover{
   background-color:gray;
   cursor:pointer;
   }
