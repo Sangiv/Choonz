@@ -42,6 +42,7 @@ function getPlaylistView(id){
     cloneCard.querySelector("img").src=(image);
     cloneCard.querySelector("#title").innerHTML = (title);
     cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector("#button2").innerHTML = (button2Text);
     cloneCard.querySelector("#button3").innerHTML = (button3Text);
     cloneCard.querySelector("#button3").onclick = function (){goBack();};
     cards.appendChild(cloneCard);

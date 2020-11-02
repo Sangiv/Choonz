@@ -14,7 +14,13 @@ document.getElementById("createNewPlayBtn").addEventListener('click', function (
   createNewPlaylist(user_id, play_name, play_art, play_description);
 })
 
+document.getElementById("confirmedDeleteBtn").addEventListener('click', function(stop){
+  //get playlist id
+  //then do a fetch delete
+  console.log("delete me")
 
+
+})
 
 fetch('http://localhost:8082/playlists/read')
   .then(
@@ -228,12 +234,13 @@ function populateUserPlayWithData(play_id, play_name, play_art, play_description
   card_body.querySelector("#viewMyPlayBtn").href = ("playlistview.html?id="+play_id);
   
   // card_body.querySelector("#addToMyPlayBtn").href = ("track.html/");
-  card_body.querySelector("#addToMyPlayBtn").href = ("playlist.html");
+  card_body.querySelector("#addToMyPlayBtn").href = ("track.html");
 
 
 
   card_holder.append(card_body)
 }
+
 
 //get current user's id
 function get_cookie_value(name) {

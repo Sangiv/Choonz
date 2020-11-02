@@ -20,9 +20,9 @@ h1{
 }
 
 thead{
-  font-size: x-large;
+  font-size: large;
 }
-td:hover{
+tr:hover{
   background-color:gray;
   cursor:pointer;
   }
@@ -46,6 +46,7 @@ h1:after {
   -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
 }
 td{
-  font-size: medium;
+  font-family: 'Roboto', sans-serif;
+  /* font-size: medium; */
   background-color: rgba(10, 10, 10, 0.5);
 }

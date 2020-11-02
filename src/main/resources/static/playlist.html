@@ -108,7 +108,7 @@
                     
                     <a id= "viewMyPlayBtn" class="btn btn-primary"  >View</a>
                     <a id = "addToMyPlayBtn" class="btn btn-secondary" >Add</a>
-                    <button id = "deleteMyPlayBtn" class="btn btn-danger" >Delete</button>
+                    <button id = "deleteMyPlayBtn" class="btn btn-danger" data-toggle="modal" data-target="#deletePlayModal" >Delete</button>
                   </div>
     
               </div>
@@ -214,6 +214,27 @@
               <button id="createNewPlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- delete warning modal -->
+  <div class="modal fade" id="deletePlayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Playlist</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- user message go in this heading -->
+          <h3 id="show-msg">Are you sure you want to delete the whole playlist?</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button id="confirmedDeleteBtn" type="button" class="btn btn-warning" data-dismiss="modal">Yes</button>
         </div>
       </div>
     </div>

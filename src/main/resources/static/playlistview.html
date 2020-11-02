@@ -76,39 +76,42 @@
                 </div>
               </div>
             </div> -->
-         
-            <div  id = "globalPlaylist"  class="card">
+
+            <div id="globalPlaylist" class="card">
               <img class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 id="title" class="card-title"></h5>
                 <p id="text" class="card-text"></p>
+                <button id="button2" class="btn btn-secondary" data-toggle="modal"
+                  data-target="#editPlayModal"></button>
                 <a id="button3" class="btn btn-dark"></a>
                 <!-- a button to delete the whole playlist -->
                 <button id="deletePlay" class="btn btn-danger">Delete</button>
               </div>
             </div>
-          
-          
+
+
           </div>
-    
-    
-    
+
+
+
           <!-- <div class="card-columns" style="float: left;">
             <div id="showcards" class="showcards"></div>
           </div> -->
 
           <div id="showcards">
           </div>
-  
+
         </div>
         <div class="col-sm-8">
           <!-- all the table contents -->
           <h1>Track List</h1>
           <table class="table table-dark table-hover"></table>
         </div>
-        
+
       </div>
-    </div> <!--end of main container class-->
+    </div>
+    <!--end of main container class-->
 
 
     <!-- <div class="container-fluid">
@@ -139,6 +142,56 @@
       <table class="table table-dark table-hover"></table>
 
     </div> -->
+
+    <!-- edit current playlist modal -->
+    <div class="modal fade" id="editPlayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Mode</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="card-text">Use a unique name for your playlist</p>
+            <form class="log-in" action="playlist.html" method="POST">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+                <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+                </div>
+                <input id="description" name="name" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Artworks</label>
+                </div>
+                <select class="custom-select" id="artwork" required>
+                  <option selected>Choose...</option>
+                  <option value="img/sports.jpg">Sports</option>
+                  <option value="img/study.jpg">Study</option>
+                  <option value="img/party.jpg">Party</option>
+                  <option value="img/work.jpg">Work</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="updatePlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/playlistview.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
