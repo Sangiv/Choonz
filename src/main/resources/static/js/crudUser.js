@@ -5,7 +5,7 @@ document.querySelector('button[id="logOutBtn"]').addEventListener("click", funct
 })
 // updated variable;
 var update_user_name, update_password
-var user_id = get_cookie_value("user_id")
+var user_id = get_cookie_value("user_id") //1
 
 
 //put user new data in the data
