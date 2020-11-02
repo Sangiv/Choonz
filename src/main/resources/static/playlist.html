@@ -78,8 +78,9 @@
 <!--end of nav bar -->
 <body>
 <!-- /main -->
-
-<h1>Playlists</h1>
+<div class="container-fluid">
+<h1>Global Playlists</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewPlaylistModal"><i class="fas fa-plus-square">Create New Playlist</i></button>
 
 <table class="table table-dark table-hover"></table>
 
@@ -104,6 +105,79 @@
 </div>
 
 <p></p>
+</div> <!-- end of guestLogged div-->
+</div> <!-- end of contain fluid div-->
+<div class="container-fluid">
+<div id="guestLoggedInBtn"> 
+
+<h1>Global Playlists</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewPlaylistModal"><i class="fas fa-plus-square">Create New Playlist</i></button>
+
+<table class="table table-dark table-hover"></table>
+
+<div hidden>
+  <div id = "cards" class="cards">
+  <div id ="card" class="card" classname="card" style="width: 18rem">
+    <img width="250" height="250">
+    <div id = "body" class="card-body">
+        <h5 id = "title" class = "card-title"></h5>
+        <p id = "text" class = "card-text"></p>
+        <a id = "button" class = "btn btn-primary"></a>
+        <a id = "button2" class = "btn btn-secondary"></a>
+    </div>
+  </div>
+  </div>
+</div>
+
+<p></p>
+
+<div class="card-columns">
+<div id ="showcards" class = "showcards"></div>
+</div>
+
+<p></p>
+</div> <!-- end of contain fluid div-->
+
+<div class="container-fluid">
+  <h1>User Playlists</h1>
+</div>
+
+  <!-- create new playlist modal -->
+  <div class="modal fade" id="createNewPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create New</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="card-text">Use a unique name for your new playlist</p>
+          <form class="log-in" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input id ="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+              </div>
+              <input id ="description" name="name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button id="createNewPlayBtn"type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+            </div>      
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
     <script src="js/userAuth.js"></script>
     <script src= "js/playlist.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,3 +1,20 @@
+// if the user is guest then
+//   restrict edit 
+//   only permit view
+// else if the user is valied with right id then
+//   give all the access in the playlist view and edit
+var user_id = get_cookie_value("user_id");
+document.getElementById("createNewPlayBtn").addEventListener('click', function(stop){
+  var play_name = document.getElementById("name").value;
+  var play_description = document.getElementById("description").value;
+  var play_art = "img/test-playlist.png";
+
+  console.log(play_name, play_description, play_art, user_id)
+  createNewPlaylist(user_id, play_name, play_art, play_description);
+})
+
+
+
 fetch('http://localhost:8082/playlists/read')
   .then(
     function(response) {
@@ -131,4 +148,36 @@ for (let dataRecord of dataData){
     
 
             }
+}
+
+function createNewPlaylist(user_id, playlist_name, play_art, playlist_discription){
+  let dataToPost = {
+    "name": playlist_name,
+    "artwork": play_art,
+    "discription": playlist_discription,
+    "users": {
+      "users_id" : user_id
+    }
+  }
+  fetch("http://localhost:8082/playlists/create", {
+    method: 'post',
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(dataToPost)
+  })
+  .then(function (data) {
+    console.log('Request succeeded with JSON response', data);
+  })
+  .catch(function (error) {
+    console.log('Request failed', error);
+  });
+
+}
+
+//get current user's id
+function get_cookie_value(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
 }
