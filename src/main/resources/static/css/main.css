@@ -8,8 +8,12 @@ body{
   background-size: cover;
 
 }
+h1{
+  font-family: 'Roboto', sans-serif;
+}
 p{
   color: black;
+  font-family: 'Roboto', sans-serif;
 }
 h1{
   color:#ede68a
@@ -29,7 +33,7 @@ td:hover{
 h1:after {
   content:' ';
   display:block;
-  border:1px solid #d0d0d0;
+  border:1px solid #ede68a;
   border-radius:4px;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
