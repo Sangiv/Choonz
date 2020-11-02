@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+    <script src="https://kit.fontawesome.com/a7c821f628.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
@@ -43,13 +43,37 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search CHOONZ..." aria-label="Search" size="130%">
     </form>
 
-    <!-- user profile icon -->
-    <li class="nav-item" role="presentation" style = "list-style-type: none;">
-      <button id="my-profile" type="button" class="btn btn-success" data-toggle="modal" data-target="#userProfileModal" >
-        Guest<span class="badge badge-light"></span>
-        <!-- <span class="sr-only">unread messages</span> -->
-      </button>
-    </li>
+      <!-- guest profile icon -->
+      <div id="guestLoggedInBtn">
+        <li class="nav-item" role="presentation" style = "list-style-type: none;">
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle">GUEST- LOGIN</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+              <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
+              <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >Create Account</button>
+            </div>
+          </div>
+        </li>
+        </div>
+  
+        <!-- user profile icon -->
+        <div id="userLoggedInBtn">
+  
+          <li class="nav-item" role="presentation" style = "list-style-type: none;">
+            <div class="btn-group">
+              <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle">USER</i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
+                <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
+                <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
+              </div>
+            </div>
+          </li>
+        </div>
   </nav>
 <!--end of nav bar -->
 <body>
@@ -80,8 +104,7 @@
 </div>
 
 <p></p>
-
-
+    <script src="js/userAuth.js"></script>
     <script src= "js/playlist.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

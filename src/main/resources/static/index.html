@@ -10,7 +10,7 @@
     href="https://fonts.googleapis.com/css?family=Tangerine">
 
   <link rel="stylesheet" href="css/main.css">
-  <script src="js/userAuth.js"></script>
+  <script src="https://kit.fontawesome.com/a7c821f628.js" crossorigin="anonymous"></script>
   <title>Music Library</title>
 </head>
 
@@ -44,81 +44,39 @@
         </class>
       </div>
 
-      <!-- user profile icon -->
+      <!-- guest profile icon -->
+      <div id="guestLoggedInBtn">
       <li class="nav-item" role="presentation" style = "list-style-type: none;">
-        <button id="my-profile" type="button" class="btn btn-success" data-toggle="modal" data-target="#createAccountModal" >
-          Guest- Log In<span class="badge badge-light"></span>
-          <!-- <span class="sr-only">unread messages</span> -->
-        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle">GUEST- LOGIN</i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+            <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
+            <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >Create Account</button>
+          </div>
+        </div>
       </li>
-    </nav>
-  <!--end of nav bar -->
-
-  <!--<div class="container">
-    <div class="row">
-      create account
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Create an Account</h5>
-            <p id="success-create" class="card-text">With supporting text below as a natural lead-in to additional
-              content.</p>
-
-            <form class="create-user" action="index.html" method="POST">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
-                </div>
-                <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                </div>
-                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Create</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div> -->
-  <!-- sign in -->
-
-  <!-- <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Log in</h5>
-            <p class="card-text">Use your credential to log in</p>
-            <form class="log-in" action="index.html" method="POST">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
-                </div>
-                <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
-                </div>
-                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="modal-footer">
-                <p id="login-msg" class="card-text"></p>
-                <button type="submit" class="btn btn-primary">Log In</button>
-              </div>
-
-            </form>
-          </div>
-        </div>
       </div>
-    </div>
-  </div>-->
+
+      <!-- user profile icon -->
+      <div id="userLoggedInBtn">
+
+        <li class="nav-item" role="presentation" style = "list-style-type: none;">
+          <div class="btn-group">
+            <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle">USER</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+              <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
+              <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
+              <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
+            </div>
+          </div>
+        </li>
+      </div>
+      </nav>
+  <!--end of nav bar -->
   <br>
   <!-- slide show of different playlists -->
   <h1>
@@ -238,14 +196,14 @@
           <form class="create-user" action="index.html" method="POST">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"> </i> User Name</span>
               </div>
               <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"> </i> Password</span>
               </div>
               <input name="password" type="password" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
@@ -308,21 +266,59 @@
               <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
                 required></input>
             </div>
-            <div class="modal-footer">
-              <button id="update-user" type="submit" class="btn btn-primary">Update</button>
-            </div>
           </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="delete-user" type="submit" class="btn btn-primary">Delete Account</button>
-            <button id="log-out" type="submit" class="btn btn-primary">Log out</button>
+            <button id="delete-user" type="submit" class="btn btn-danger">Delete Account</button>
+            <button id="update-user" type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- user log in modal -->
+  <div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <!-- <h5 class="card-title">Log in</h5> -->
+            <p class="card-text">Use your credential to log in</p>
+            <form class="log-in" action="index.html" method="POST">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
+                </div>
+                <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
+                </div>
+                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="modal-footer">
+                <p id="login-msg" class="card-text"></p>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Log In</button>
+              </div>
+        
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+  <script src="js/userAuth.js"></script>
   <script src="js/index.js"></script>
   <script src="js/newUser.js"></script>
   <script src="js/crudUser.js"></script>
