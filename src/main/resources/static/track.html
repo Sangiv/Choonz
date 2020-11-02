@@ -10,6 +10,7 @@
     <title>Choonz Tracks</title>
 </head>
 <body>
+  <div id="gradient" />
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="#">Choonz</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -52,17 +53,42 @@
     </li>
   </nav>
 <!--end of nav bar -->
-  <body>
+
 <!-- /main -->
 
-<h1>Tracks</h1>
+<div class="container">
+<h1 style="padding: 2%; font-size: 350%;">Tracks</h1>
 
-<table id = "myTable" class="table table-dark table-hover"></table>
+<table id="myTable" class="table table-dark table-bordered"></table>
+</div>
 
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Which playlist would you like to add to?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id = "user">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
     <script src= "js/tracks.js"></script>
+    <script src="js/userAuth.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
