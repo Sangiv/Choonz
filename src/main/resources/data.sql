@@ -5,10 +5,10 @@ INSERT INTO users (user_name,password) VALUES
 ('M Joni', '123456');
 
 INSERT INTO playlist (name,artwork, description, users_user_id) VALUES
-('Chill', 'img/test-playlist.png', 'My friend, it is good!', 1),
-('Super Chill', 'img/test-playlist2.png', 'My friend, it is very good!', 2),
-('Club Banger', 'img/test-playlist3.png', 'My friend, it is very very good!',3),
-('UK Garage Mix', 'img/test-playlist4.png', 'My friend, it is extremely good!',4);
+('Chill', 'img/work.jpg', 'My friend, it is good!', 1),
+('Super Chill', 'img/study.jpg', 'My friend, it is very good!', 2),
+('Club Banger', 'img/party.jpg', 'My friend, it is very very good!',3),
+('UK Garage Mix', 'img/sports.jpg', 'My friend, it is extremely good!',4);
 
 INSERT INTO artist (name) VALUES ('Chris Brown'),('The Weeknd'),('Post Malone'),('Lana Del Rey');
 
