@@ -33,45 +33,55 @@ fetch('http://localhost:8082/tracks/read')
     for (let keys of data){
 
         if (keys == 'id'){
+        
+        } else if(keys == "name"){
+          let th = document.createElement("th");
+          let text = document.createTextNode("TITLE");
+          th.appendChild(text);
+          row.appendChild(th);
             
         } else if (keys == 'playlist') {
 
         } else if(keys == "album"){
             let th = document.createElement("th");
-            let text = document.createTextNode(keys);
+            let text = document.createTextNode("ALBUM");
             th.appendChild(text);
             row.appendChild(th);
 
             let th1 = document.createElement("th");
-            let text1 = document.createTextNode("Artist");
+            let text1 = document.createTextNode("ARTIST");
             th1.appendChild(text1);
             row.appendChild(th1);
 
 
-        }else {
-            
-
-            let th = document.createElement("th");
-            let text = document.createTextNode(keys);
-            th.appendChild(text);
-            row.appendChild(th);
-        }
+        } else if(keys == "duration"){
+          let th = document.createElement("th");
+          let text = document.createTextNode("DURATION");
+          th.appendChild(text);
+          row.appendChild(th);
+        
+        } else if(keys == "lyrics"){
+          let th = document.createElement("th");
+          let text = document.createTextNode("LYRICS");
+          th.appendChild(text);
+          row.appendChild(th);
+      }
             
 
 
     }
     let album = document.createElement("th");
-    let albumview = document.createTextNode("View Album");
+    let albumview = document.createTextNode("VIEW ALBUM");
     album.appendChild(albumview);
     row.appendChild(album);
 
     let artist = document.createElement("th");
-    let artistview = document.createTextNode("View Artist");
+    let artistview = document.createTextNode("VIEW ARTIST");
     artist.appendChild(artistview);
     row.appendChild(artist);
 
     let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("Add");
+    let editButtonTitle = document.createTextNode("ADD");
     editHead.appendChild(editButtonTitle);
     row.appendChild(editHead);
 

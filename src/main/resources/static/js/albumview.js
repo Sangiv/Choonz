@@ -123,21 +123,25 @@ function createTableBody(table, dataData){
             //     console.log(obj[0].name);
             // }
             // console.log(arr)
-            let cell = row.insertCell();
-            let text = document.createTextNode("Id")
-            cell.appendChild(text);
+            let id = document.createElement("th");
+            let idText = document.createTextNode("ID");
+            id.appendChild(idText);
+            row.appendChild(id);
 
-            let cell2 = row.insertCell();
-            let text2 = document.createTextNode("Track Name");
-            cell2.appendChild(text2);
-
-            let cell3 = row.insertCell();
-            let text3 = document.createTextNode("Duration");
-            cell3.appendChild(text3);
-
-            let cell4 = row.insertCell();
-            let text4 = document.createTextNode("Lyrics");
-            cell4.appendChild(text4);
+            let title = document.createElement("th");
+            let titleText = document.createTextNode("TITLE");
+            title.appendChild(titleText);
+            row.appendChild(title);
+        
+            let duration = document.createElement("th");
+            let durationText = document.createTextNode("DURATION");
+            duration.appendChild(durationText);
+            row.appendChild(duration);
+        
+            let lyrics = document.createElement("th");
+            let lyricsText = document.createTextNode("LYRICS");
+            lyrics.appendChild(lyricsText);
+            row.appendChild(lyrics);
 
 
             // Leaving it like this until I find a good way to fix it

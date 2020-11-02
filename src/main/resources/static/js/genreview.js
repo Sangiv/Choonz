@@ -111,29 +111,21 @@ function getGenreView(id){
       
         for(let keys in dataData){
           if(keys == "albums"){
-            // let arr = dataData[keys];
-            // for(obj in arr){
-            //     console.log(obj[0].name);
-            // }
-            // console.log(arr)
             
+            let album = document.createElement("th");
+            let albumText = document.createTextNode("ALBUM");
+            album.appendChild(albumText);
+            row.appendChild(album);
 
-            let cell2 = row.insertCell();
-            let text2 = document.createTextNode("Album Name");
-            cell2.appendChild(text2);
+            let artist = document.createElement("th");
+            let artistText = document.createTextNode("ARTIST");
+            artist.appendChild(artistText);
+            row.appendChild(artist);
 
-            
-
-            let cell4 = row.insertCell();
-            let text4 = document.createTextNode("Artist");
-            cell4.appendChild(text4);
-
-            let cell5 = row.insertCell();
-            let text5 = document.createTextNode("View Album");
-            cell5.appendChild(text5);
-
-            
-
+            let viewalbum = document.createElement("th");
+            let viewalbumText = document.createTextNode("VIEW ALBUM");
+            viewalbum.appendChild(viewalbumText);
+            row.appendChild(viewalbum);
 
             // Leaving it like this until I find a good way to fix it
             
