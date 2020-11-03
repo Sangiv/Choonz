@@ -66,15 +66,16 @@
 
           <div hidden>
             <div id="globalPlaylist" class="card">
-              <img class="card-img-top" alt="...">
-              <div class="card-body">
+              <img id="play-img" class="card-img-top" alt="...">
+              <div id = "playlist-card" class="card-body">
                 <h5 id="title" class="card-title"></h5>
                 <p id="text" class="card-text"></p>
-                <button id="editPlaylistBtn" class="btn btn-primary">Edit</button>
-                <a id="backBtn" class="btn btn-secondary"></a>
+                <button id="editPlaylistBtn" class="btn btn-secondary" data-toggle="modal"
+                  data-target="#editPlayModal">Edit</button>
+                <a id="backBtn" class="btn btn-dark"></a>
                 <!-- a button to delete the whole playlist -->
                 <button id="deletePlay" class="btn btn-danger" data-toggle="modal"
-                data-target="#deletePlayModal">Delete</button>
+                  data-target="#deletePlayModal">Delete</button>
               </div>
             </div>
 
@@ -96,8 +97,7 @@
     <!--end of main container class-->
 
     <!-- edit current playlist modal -->
-    <div class="modal fade" id="editPlayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
+    <div class="modal fade" id="editPlayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -144,32 +144,32 @@
         </div>
       </div>
     </div>
-      <!-- delete warning modal -->
-  <div class="modal fade" id="deletePlayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Playlist</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <!-- user message go in this heading -->
-          <h3 id="show-msg">Are you sure you want to delete the whole playlist?</h3>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button id="confirmedDeleteBtn" type="button" class="btn btn-warning" data-dismiss="modal">Yes</button>
+    <!-- delete warning modal -->
+    <div class="modal fade" id="deletePlayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Playlist</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- user message go in this heading -->
+            <h3 id="show-msg">Are you sure you want to delete the whole playlist?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button id="confirmedDeleteBtn" type="button" class="btn btn-warning" data-dismiss="modal">Yes</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-    <script src="js/playlistview.js"></script>
+  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
+    <script src="js/playlistview.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
