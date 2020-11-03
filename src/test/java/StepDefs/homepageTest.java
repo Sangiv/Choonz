@@ -1,4 +1,4 @@
-package com.qa.choonz.cuke.stepdefs;
+package StepDefs;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,8 +31,8 @@ public class homepageTest {
         assertEquals("Google", driver.getTitle());
 	}
 
-	@When("I enter the {string}")
-	public void i_enter_the(String webAddress) {
+	@When("I enter the web address")
+	public void i_enter_the_web_address() {
 		driver.get("http://localhost:8082/index.html");
 	}
 
