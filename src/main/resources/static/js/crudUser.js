@@ -5,7 +5,7 @@ document.querySelector('button[id="logOutBtn"]').addEventListener("click", funct
 })
 // updated variable;
 var update_user_name, update_password
-var user_id = get_cookie_value("user_id")
+var user_id = get_cookie_value("user_id") //1
 
 
 //put user new data in the data
@@ -155,9 +155,3 @@ function get_cookie_value(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
-
-
-// function deleteCookie(){
-//     document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-//     window.location.href= "index.html";
-// }
