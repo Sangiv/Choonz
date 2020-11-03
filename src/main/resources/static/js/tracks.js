@@ -156,13 +156,14 @@ function createTableBody(table,dataData){
         artistcell.appendChild(artistbutton);
 
         let editCell = row.insertCell();
-        let editButton = document.createElement("button");
+        let editButton = document.createElement("a");
         editButton.className="btn btn-success";
         // editButton.href="userRecord.html?id="+dataRecord.id;
         editButton.innerHTML="Add";
         editButton.id = dataRecord.id;
-        editButton.setAttribute('data-toggle', 'modal');
-        editButton.setAttribute('data-target', '#exampleModal');
+        editButton.href = "addtoplaylist.html?id=" + dataRecord.id;
+        // editButton.setAttribute('data-toggle', 'modal');
+        // editButton.setAttribute('data-target', '#exampleModal');
         editCell.appendChild(editButton);
 
         
@@ -254,7 +255,7 @@ function get_cookie_value(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
-setid();
+
 function setid(){
   fetch('http://localhost:8082/tracks/read')
   .then(
