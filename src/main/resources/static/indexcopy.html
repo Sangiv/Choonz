@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
+  <script src="https://kit.fontawesome.com/a7c821f628.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
   <title>Music Library</title>
 </head>
 
@@ -22,7 +24,7 @@
 
     <ul class="navbar-nav  w-100 justify-content-center px-3 py-md-3">
 
-      <a class="navbar-brand" href="#">Choonz</a>
+      <a class="navbar-brand" href="index.html" style="color: #ede68a; font-size: 30px; font-weight: 700;">Choonz</a>
 
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -83,6 +85,238 @@
     </ul>
   </div>
 </nav>
+
+  <!-- slide show of different playlists -->
+  <h1>
+    <center>Latest Albums</center>
+  </h1>
+  <br>
+
+  <!-- hidden empty carousel slide to clone -->
+  <div hidden id = "hidden">
+    <div id = "carousel-template">
+      <a id = "imagelink">
+      <img style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
+        alt="...">
+      </a>
+      <div class="carousel-caption">
+        <h5 id = "title" style = 
+        "text-shadow:
+        -2px -2px 0 black,  
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;">
+         <a id = "albumlink" style = "color: white; text-decoration: none; background-color: none;"></a>
+        </h5>
+        <p id = "text" style = 
+        "color: black; text-decoration: none; background-color: none;
+        text-shadow:
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;">
+         <a id = "artistlink" style = "color: black; text-decoration: none; background-color: none;"></a>
+        </p>
+      </div>
+  </div>
+  </div>
+
+  <!-- creates 6 slide carouel for latest albums -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+    </ol>
+
+    <div id = "carousel-inner" class="carousel-inner"></div>
+
+
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <br>
+
+
+  <!-- creates template hidden card -->
+  <div hidden>
+    <div id="cards2" class="cards2">
+      <div id="card2" class="card" classname="card2" style="max-width: 260px; border-radius: 10%; margin: 0 auto;">
+        <a id = "imagelink">
+          <img height="250" width ="250" style="min-width: 10;border-radius: 10%; margin: 2%">
+        </a>
+
+        <div id="body" class="card-body">
+          <h5 id="title" class="card-title"><a id = "titlelink" style = "color: white; text-decoration: none; background-color: none;"></a></h5>
+          <p id="text" class="card-text"><a id = "textlink"  style = "color: whitesmoke; text-decoration: none; background-color: none;"></a></p>
+          <a id="button" class="btn btn-primary"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1>
+    <center>Latest Tracks</center>
+  </h1>
+  <br>
+
+  <!-- creates displayed card deck to be populard -->
+  <div class="row" style="text-align:center; margin: 0 auto;">
+    <div class="col-12">
+      <div class="card-deck" id="card-deck">
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+
+  <!-- create account modal -->
+  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <p id="success-create" class="card-text">With supporting text below as a natural lead-in to additional
+          content.</p>
+        <div class="modal-body">
+          <form class="create-user" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"> </i> User Name</span>
+              </div>
+              <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"> </i> Password</span>
+              </div>
+              <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- message modal -->
+  <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- user message go in this heading -->
+          <h5 id="show-msg"></h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- update user profile -->
+  <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="user-profile" action="todo.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">User Name</span></>
+              </div>
+              <input id="user_name" name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password</span></l>
+              </div>
+              <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
+                required></input>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="delete-user" type="submit" class="btn btn-danger">Delete Account</button>
+            <button id="update-user" type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- user log in modal -->
+  <div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <!-- <h5 class="card-title">Log in</h5> -->
+            <p class="card-text">Use your credential to log in</p>
+            <form class="log-in" action="index.html" method="POST">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
+                </div>
+                <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
+                </div>
+                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="modal-footer">
+                <p id="login-msg" class="card-text"></p>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Log In</button>
+              </div>
+        
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/userAuth.js"></script>
   <script src="js/index.js"></script>
