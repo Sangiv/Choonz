@@ -46,7 +46,7 @@ fetch('http://localhost:8082/tracks/read')
             for (value in dataRecord){
 
                 if (typeof dataRecord[value] === 'object'){
-                    if (dataRecord[value].id > mostRecent){
+                    if (dataRecord.id > mostRecent){
                         if (singleIterationCheck != 0){
     
                         } else {
@@ -103,7 +103,7 @@ fetch('http://localhost:8082/tracks/read')
           if (carouselCount < 6){
               for (value in dataRecord){
                   if (typeof dataRecord[value] === 'object'){
-                      if (dataRecord[value].id > mostRecent){
+                      if (dataRecord.id > mostRecent){
                           if (singleIterationCheck != 0){
 
                           } else {
