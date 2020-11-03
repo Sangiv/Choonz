@@ -77,6 +77,31 @@ public class navigateFromHomeTest {
 		assertEquals("Albums", driver.getTitle());
 	}
 	
+	@When("I click the Genre tab")
+	public void i_click_the_Genre_tab() {
+		driver.get("http://localhost:8082/index.html");
+		assertTrue(driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[5]/a")).isDisplayed());
+	}
+
+	@Then("I will land on the Genre Page")
+	public void i_will_land_on_the_Genre_Page() {
+		driver.get("http://localhost:8082/index.html");
+		driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[5]/a")).click();
+		assertEquals("Music Library", driver.getTitle());
+	}
+	
+	@When("I click the Track tab")
+	public void i_click_the_Track_tab() {
+		driver.get("http://localhost:8082/index.html");
+		assertTrue(driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[6]/a")).isDisplayed());
+	}
+
+	@Then("I will land on the Track Page")
+	public void i_will_land_on_the_Track_Page() {
+		driver.get("http://localhost:8082/index.html");
+		driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[6]/a")).click();
+		assertEquals("Choonz Tracks", driver.getTitle());
+	}
 	@After
 	public void fin() {
 		driver.close();

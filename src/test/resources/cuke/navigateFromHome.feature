@@ -14,3 +14,16 @@ Feature: Can I navigate to other pages from the HomePage?
 	  Given I am on the HomePage
     When I click the Album tab
     Then I will land on the Album Page
+    
+  Scenario: Access the Genre page
+	  Given I am on the HomePage
+    When I click the Genre tab
+    Then I will land on the Genre Page
+
+  Scenario: Access the Track page
+	  Given I am on the HomePage
+    When I click the Track tab
+    Then I will land on the Track Page
+    
+    
+    
