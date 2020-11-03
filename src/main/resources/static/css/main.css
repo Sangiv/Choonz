@@ -50,3 +50,11 @@ td{
   /* font-size: medium; */
   background-color: rgba(10, 10, 10, 0.5);
 }
+
+.card{
+  background-color: #363a3b ;
+
+}
+.card-body{
+  color: #fff;
+}

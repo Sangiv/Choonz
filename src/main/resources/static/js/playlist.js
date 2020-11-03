@@ -1,8 +1,3 @@
-// if the user is guest then
-//   restrict edit 
-//   only permit view
-// else if the user is valied with right id then
-//   give all the access in the playlist view and edit
 var user_id = get_cookie_value("user_id");
 
 document.getElementById("createNewPlayBtn").addEventListener('click', function (stop) {
