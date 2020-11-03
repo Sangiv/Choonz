@@ -1,60 +1,21 @@
-body{
-  background-color:#16213e;
-  min-height: 100vh;
-  padding: 1 rem;
-  /* add this back for margin  */
-  /* margin: 3%; */
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-h1{
-  font-family: 'Roboto', sans-serif;
-}
-p{
-  color: white;
-  font-family: 'Roboto', sans-serif;
-}
-h1{
-  color:#ede68a
+.navbar {
+  padding:0rem;
+  margin-bottom:2rem;
+  padding-top: 10;
+  padding-bottom: 10;
 }
 
-thead{
-  font-size: large;
-}
-tr:hover{
-  background-color:gray;
-  cursor:pointer;
-  }
-/* hide log in/ log out button  */
-#guestLoggedInBtn{
-  display: none;
-}
-#userLoggedInBtn{
-  display: none;
-}
+.dropdown .dropdown-menu {
+  border-radius:0;
+ }
 
-h1:after {
-  content:' ';
-  display:block;
-  border:1px solid #ede68a;
-  border-radius:4px;
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
-  box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-  -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-  -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-}
-td{
-  font-family: 'Roboto', sans-serif;
-  /* font-size: medium; */
-  background-color: rgba(10, 10, 10, 0.5);
-}
 
-.card{
-  background-color: #363a3b ;
+/* Medium devices (tablets, 768px and up) 
+The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  border-radius:0;
+ }
 }
-.card-body{
-  color: #fff;
-}
-
