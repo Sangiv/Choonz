@@ -173,6 +173,7 @@ function createNewPlaylist(user_id, playlist_name, play_art, playlist_descriptio
     })
     .then(function (data) {
       console.log('Request succeeded with JSON response', data);
+      window.location.href = "playlist.html"
     })
     .catch(function (error) {
       console.log('Request failed', error);
