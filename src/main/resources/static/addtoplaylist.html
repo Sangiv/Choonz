@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <title>Artist's Albums</title>
+    <title>Choonz Tracks</title>
 </head>
 <body>
+  <div id="gradient">
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="#">Choonz</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -24,8 +25,8 @@
         <li class="nav-item">
           <a class="nav-link" href="playlist.html">Playlists</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="artist.html">Artists<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="artist.html">Artists</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="album.html">Albums</a>
@@ -33,14 +34,14 @@
         <li class="nav-item">
           <a class="nav-link" href="genre.html">Genres</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="track.html">Tracks</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="track.html">Tracks<span class="sr-only">(current)</span></a>
         </li>
       </class>
     </div>
     <!-- search bar -->
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search CHOONZ..." aria-label="Search" size="130%">
+      <input class="form-control mr-sm-2" type="text" id = "myInput" onkeyup="myFunction()" placeholder="Search CHOONZ..." aria-label="Search" size="130%">
     </form>
 
     <!-- user profile icon -->
@@ -54,46 +55,40 @@
 <!--end of nav bar -->
 
 <!-- /main -->
+
 <div class="container">
-  <h1 style="font-size: 350%; text-align: center;">Artist</h1>
+<h1 style="padding: 2%; font-size: 350%;">Your playlists:</h1>
+
+<table id="myTable" class="table table-dark table-bordered"></table>
+</div>
+
+<!-- Button trigger modal -->
 
 
-    <div hidden >
-      <div id = "cards" class="cards">
-        <div id ="card" class="card" classname="card" style="width: 18rem;">
-          <img width="250" height="250">
-          <div id = "body" class="card-body">
-              <h5 id = "title" class = "card-title"></h5>
-              <p id = "text" class = "card-text"></p>
-              <a id = "button" class = "btn btn-secondary"></a>
-          </div>
-        </div>
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Which playlist would you like to add to?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id = "user">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-
-
-  <p></p>
-    <div class="card-columns">
-    <div id ="showcards" class = "showcards"></div>
   </div>
-</div>
-<br>
-<br>
-
-<div class="container">
-<h1>Albums</h1>
-
-<table class="table table-dark table-bordered"></table>
-</div>
-
-<br>
-<br>
-
-</div>
+</div> -->
 
 
 
-    <script src= "js/artistalbums.js"></script>
+    <script src= "js/addtoplaylist.js"></script>
+    <script src="js/userAuth.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

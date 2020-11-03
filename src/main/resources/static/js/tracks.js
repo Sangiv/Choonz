@@ -1,3 +1,4 @@
+let user_id = get_cookie_value("user_id");
 fetch('http://localhost:8082/tracks/read')
   .then(
     function(response) {
@@ -87,13 +88,17 @@ fetch('http://localhost:8082/tracks/read')
 }
 
 function createTableBody(table,dataData){
+  
     for (let dataRecord of dataData){
+      
 
         let row = table.insertRow();
         for (value in dataRecord){
             if (value == 'id'){
+              
 
             } else if (value == 'playlist'){
+
 
             } else if(value == 'lyrics'){
               let cell1 = row.insertCell();
@@ -155,9 +160,25 @@ function createTableBody(table,dataData){
         editButton.className="btn btn-success";
         // editButton.href="userRecord.html?id="+dataRecord.id;
         editButton.innerHTML="Add";
+        editButton.id = dataRecord.id;
+        editButton.href = "addtoplaylist.html?id=" + dataRecord.id;
+        // editButton.setAttribute('data-toggle', 'modal');
+        // editButton.setAttribute('data-target', '#exampleModal');
         editCell.appendChild(editButton);
 
-              }
+        
+        
+        
+
+        
+
+
+    }
+        
+        add(user_id);
+        
+
+        
 }
 
 function myFunction() {
@@ -188,4 +209,79 @@ function myFunction() {
 }
 
 
+function add(user_id){
+  fetch('http://localhost:8082/users/read/' + user_id)
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      console.log('Fetch Success')
+      response.json().then(function(userdata) {
+        for (let dataRecord in userdata){
+          if(dataRecord == 'playList'){
+              let arr = userdata.playList;
+              
+              for(let i = 0; i < arr.length; i++){
+                console.log(userdata.playList[i]);
+                  let pname = userdata.playList[i].name;
+                  let pid = userdata.playList[i].id;
+                  let user = document.getElementById("user");
+                  let but = document.createElement("a");
+                  but.className = "btn btn-success";
+                  but.innerHTML = pid + ". " + pname;   
+                  user.appendChild(but);
+                  user.append(' ');
+                  
+              }}}
+        
+        
+
+
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+  
+}
+
+function get_cookie_value(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function setid(){
+  fetch('http://localhost:8082/tracks/read')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      console.log('Fetch Success')
+      response.json().then(function(userdata) {
+        let id = document.getElementById(2);
+        console.log(id);
+        console.log(id.attributes.id);
+
+        
+        
+
+
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+  
+}
 
