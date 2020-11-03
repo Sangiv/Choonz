@@ -1,9 +1,11 @@
 package StepDefs;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +16,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class homepageTest {
+public class playlistpageTest {
 	
 	private static WebDriver driver;
 	
@@ -26,21 +28,23 @@ public class homepageTest {
         driver.manage().window().setSize(new Dimension(1366, 768));
 	}
 	
-	@Given("I have my Chrome open")
-	public void i_have_my_Chrome_open() {
-		driver.get("https://google.com");		
-        assertEquals("Google", driver.getTitle());
-	}
-
-	@When("I enter the web address")
-	public void i_enter_the_web_address() {
-		driver.get("http://localhost:8082/index.html");
-	}
-
-	@Then("I will land on the HomePage")
-	public void i_will_land_on_the_HomePage() {
+	@Given("I am on the HomePage")
+	public void i_am_on_the_HomePage() {
 		driver.get("http://localhost:8082/index.html");
 		assertEquals("Music Library", driver.getTitle());
+	}
+
+	@When("I click the playlist tab")
+	public void i_click_the_playlist_tab() {
+		driver.get("http://localhost:8082/index.html");
+		assertTrue(driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[2]/a")).isDisplayed());
+	}
+
+	@Then("I will land on the Playlist Page")
+	public void i_will_land_on_the_Playlist_Page() {
+		driver.get("http://localhost:8082/index.html");
+		driver.findElement(By.xpath("//*[@id=\"navbarNav\"]/class/li[2]/a")).click();
+		assertEquals("Playlist", driver.getTitle());
 	}
 	
 	@After
