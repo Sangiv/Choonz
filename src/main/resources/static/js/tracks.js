@@ -34,7 +34,7 @@ for (let param of params) {
   if (urlinput != null){
     var millisecondsToWait = 500;
     setTimeout(function() {
-    document.getElementById('myInput').value = urlinput;
+    document.getElementById('searchField').value = urlinput;
     myFunction();
     }, millisecondsToWait);
   }
@@ -198,7 +198,7 @@ function createTableBody(table,dataData){
 function myFunction() {
   // Declare variables
   let input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById("searchField");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
