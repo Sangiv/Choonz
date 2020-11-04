@@ -1,7 +1,7 @@
 // log out from the current account
 document.querySelector('button[id="logOutBtn"]').addEventListener("click", function (stop) {
   stop.preventDefault();
-  deleteCookie("user_id", "/src/main/resources/static");
+  deleteCookie("user_id", "/");
 })
 // updated variable;
 var update_user_name, update_password

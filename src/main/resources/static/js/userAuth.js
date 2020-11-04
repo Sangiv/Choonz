@@ -4,10 +4,10 @@ let userAuth =document.cookie;
 var userBtn = document.getElementById("userLoggedInBtn");
 var guestBtn = document.getElementById("guestLoggedInBtn");
 
-//if user logged in then change hidden button button
+//if user logged in then change hidden button
 if(userAuth != ""){
-    console.log("Inner Session started")
     if(window.getComputedStyle(guestBtn).display === "none"){
+        console.log("Inner Session started")
         guestBtn.style.display = "none";
         userBtn.style.display = "block";
     }
