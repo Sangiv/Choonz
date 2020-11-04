@@ -10,7 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 		 features = "src/test/resources/cuke",
 		 glue = {"StepDefs"},
 		 monochrome = true,
-		 plugin = {"pretty", "html:target/reports/htmlReports"}
+		 plugin = {"pretty", "html:target/reports/htmlReports"},
+		 tags = "@Ignore"
 		 )
 public class SeleniumTestRunner {
 
