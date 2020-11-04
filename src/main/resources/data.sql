@@ -35,15 +35,15 @@ INSERT INTO album (name,cover, artist_id, genre_id) VALUES
 
 
 INSERT INTO track (name, duration, lyrics, album_id, artist_id) VALUES
-('I feel it coming', 5, 'I feel it coming', 3, 2),
-('Rockstar', 5, 'I feel it coming', 5, 3),
-('When I see', 5, 'When I see you eyes', 6, 4),
-('Royalty', 5, 'Jude Jude Jud', 1, 1),
-('Grass aint greener', 5, 'Blah blah blah', 2, 1),
-('Lonely Boy', 5, 'Woaaawoaa I got a love that keeps me waiting', 7, 5),
-('Ghost Town', 5, 'I cut my hand on a stove', 8, 6),
-('Ultralight Beam', 5, 'we on a ultralight beam', 9, 6),
-('Dark Fantasy', 5, 'You might think youve peeped the scene', 10, 6);
+('I feel it coming', 269, 'I feel it coming', 3, 2),
+('Rockstar', 220, 'I feel it coming', 5, 3),
+('When I see', 298, 'When I see you eyes', 6, 4),
+('Royalty', 263, 'Jude Jude Jud', 1, 1),
+('Grass aint greener', 293, 'Blah blah blah', 2, 1),
+('Lonely Boy', 194, 'Woaaawoaa I got a love that keeps me waiting', 7, 5),
+('Ghost Town', 272, 'I cut my hand on a stove', 8, 6),
+('Ultralight Beam', 321, 'we on a ultralight beam', 9, 6),
+('Dark Fantasy', 281, 'You might think youve peeped the scene', 10, 6);
 
 INSERT INTO playlist_track (track_id, playlist_id) VALUES
 (1,1),(1,2),(2,2),(2,1),(2,3);

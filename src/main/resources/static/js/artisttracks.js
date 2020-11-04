@@ -133,7 +133,14 @@ function createTableBody(table,dataData, aid){
               let ans = dataRecord[value];
               alert(ans);
             }
-          }
+          }else if (value == 'duration'){
+            let mins = Math.floor((dataRecord.duration)/60);
+            let secs = (dataRecord.duration % 60);
+            let duration = (mins + " m " + secs + " s");
+            let cell3 = row.insertCell();
+            let durationtext = document.createTextNode(duration);
+            cell3.appendChild(durationtext);
+        }
           else {
         let cell = row.insertCell();
         let text = document.createTextNode(dataRecord[value]);
