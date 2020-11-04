@@ -154,7 +154,13 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
     for(let param of params){
         var trackid = param[1];
     }
-    trackids.push(trackid);
+    let trackint = parseInt(trackid);
+    trackids.push(trackint);
+    console.log(trackids);
+    console.log(trackint);
+    let unique = Array.from(new Set(trackids));
+    console.log(unique);
+    
     // var newtrackids = [];
     // for (let i = 0; i < trackids.length; i++){
     //     newtrackids.push('id :' + trackids[i]);
@@ -174,11 +180,11 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
  
   // var json_prefix = "'\"name\" :  First half, \"tracks\" : ["; 
  
-  for (let i = 0; i < trackids.length; i++) {
-    if (trackids.length == 1 || trackids.length - 1 == i) {
-      json_prefix = json_prefix.concat("{\"id\" : " + trackids[i].toString() + "}"+json_sufffix);
+  for (let i = 0; i < unique.length; i++) {
+    if (unique.length == 1 || unique.length - 1 == i) {
+      json_prefix = json_prefix.concat("{\"id\" : " + unique[i].toString() + "}"+json_sufffix);
     } else {
-      json_prefix = json_prefix.concat("{\"id\" : " + trackids[i].toString() + "},")
+      json_prefix = json_prefix.concat("{\"id\" : " + unique[i].toString() + "},")
     }
   }
   console.log(json_prefix);
