@@ -26,6 +26,20 @@ fetch('http://localhost:8082/tracks/read')
     console.log('Fetch Error :-S', err);
   });
 
+const params = new URLSearchParams(window.location.search);
+
+for (let param of params) {
+  let urlinput = param[1];
+  console.log(urlinput);
+  if (urlinput != null){
+    var millisecondsToWait = 500;
+    setTimeout(function() {
+    document.getElementById('searchField').value = urlinput;
+    myFunction();
+    }, millisecondsToWait);
+  }
+}
+
   function createTableHead(table,data){
     let thead = table.createTHead();
     let row = thead.insertRow();
@@ -184,10 +198,11 @@ function createTableBody(table,dataData){
 function myFunction() {
   // Declare variables
   let input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById("searchField");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
+  console.log(filter);
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
@@ -204,7 +219,6 @@ function myFunction() {
         tr[i].style.display = "none";
       }
     }
-    
   }
 }
 
