@@ -1,5 +1,5 @@
 function search(){
     searchLink = "/track.html?search=" + document.getElementById('searchField').value;
-    console.log("test");
-    window.location.replace(searchLink);
+    window.location.href = searchLink;
+    return false;
   }
