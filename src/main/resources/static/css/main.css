@@ -4,16 +4,22 @@
   padding-top: 10;
   padding-bottom: 10;
   font-size: 20px !important;
-  
+}
+
+#searchField{
+  margin: auto;
+  width: 30vw;
+}
+
+.nav-link{
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .dropdown .dropdown-menu {
   border-radius:0;
  }
 
-
-/* Medium devices (tablets, 768px and up) 
-The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {  
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -32,13 +38,16 @@ body{
   background-size: cover;
 
 }
+
 h1{
   font-family: 'Roboto', sans-serif;
 }
+
 p{
   color: white;
   font-family: 'Roboto', sans-serif;
 }
+
 h1{
   color:#ede68a
 }
@@ -46,17 +55,21 @@ h1{
 thead{
   font-size: large;
 }
+
 tr:hover{
   background-color:gray;
   cursor:pointer;
   }
-/* hide log in/ log out button  */
+
 #guestLoggedInBtn{
   display: none;
 }
+
 #userLoggedInBtn{
   display: none;
 }
+
+
 
 h1:after {
   content:' ';
@@ -69,6 +82,7 @@ h1:after {
   -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
   -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
 }
+
 td{
   font-family: 'Roboto', sans-serif;
   /* font-size: medium; */
@@ -78,6 +92,7 @@ td{
 .card{
   background-color: #363a3b ;
 }
+
 .card-body{
   color: #fff;
 }
