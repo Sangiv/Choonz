@@ -101,3 +101,8 @@ td{
 .card-body{
   color: #fff;
 }
+
+div.center {
+  margin: 0 auto;
+  float: none; 
+}
