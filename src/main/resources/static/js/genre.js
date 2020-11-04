@@ -27,7 +27,9 @@ fetch('http://localhost:8082/genres/read')
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
-    cloneCard.querySelector("#title").innerHTML = (title);
+    cloneCard.querySelector('#imageLink').href = (buttonLink);
+    cloneCard.querySelector("#titlelink").innerHTML = (title);
+    cloneCard.querySelector("#titlelink").href = (buttonLink);
     cloneCard.querySelector("#text").innerHTML = (description);
     cloneCard.querySelector("#button").innerHTML = (buttonText);
     cloneCard.querySelector("#button").href = (buttonLink);
@@ -45,7 +47,7 @@ fetch('http://localhost:8082/genres/read')
                 let image = "img/" + dataRecord.name + ".png";
                 let title = dataRecord.name;
                 let description = dataRecord.description;
-                let buttonText = dataRecord.name;
+                let buttonText = "View";
                 let buttonLink = "genreview.html?id="+id;
                 createCard(id, image, title, description, buttonText, buttonLink);
 

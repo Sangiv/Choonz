@@ -125,6 +125,13 @@ function createTableBody(table,dataData){
                 let ans = dataRecord[value];
                 alert(ans);
               }
+            } else if (value == 'duration'){
+                let mins = Math.floor((dataRecord.duration)/60);
+                let secs = (dataRecord.duration % 60);
+                let duration = (mins + " m " + secs + " s");
+                let cell3 = row.insertCell();
+                let durationtext = document.createTextNode(duration);
+                cell3.appendChild(durationtext);
             }
             else {
           let cell = row.insertCell();
@@ -137,7 +144,6 @@ function createTableBody(table,dataData){
                 }
                 else if(object == 'id'){
                   var albumid = dataRecord.album.id;
-                  console.log(albumid);
                 }
                 else if(object == 'artist'){
                   var artistid = dataRecord.album.artist.id;
@@ -147,7 +153,6 @@ function createTableBody(table,dataData){
                   // box.href = "artistalbums.html?id=" + artistid;
                   // box.appendChild(artisttext);
                   cell2.appendChild(artisttext);
-                  
                 }
             }
           } else{
