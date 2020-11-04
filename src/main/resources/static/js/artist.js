@@ -34,8 +34,9 @@ fetch('http://localhost:8082/artists/read')
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
-    cloneCard.querySelector("#title").innerHTML = (title);
-    // cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector('#imglink').href = (buttonLink);
+    cloneCard.querySelector("#titlelink").innerHTML = (title);
+    cloneCard.querySelector("#titlelink").href = (buttonLink);
     cloneCard.querySelector("#button").innerHTML = (buttonText);
     cloneCard.querySelector("#button").href = (buttonLink);
     cloneCard.querySelector("#button2").innerHTML = (button2Text);
