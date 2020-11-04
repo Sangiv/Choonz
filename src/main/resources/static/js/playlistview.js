@@ -4,22 +4,22 @@ var edit_play_btn = document.getElementById("editPlaylistBtn");
 var isMyCookie = document.cookie;
 
 //if user logged in then change hidden button
-if(isMyCookie != ""){
+if (isMyCookie != "") {
   //   $(document).ready(function() {
   //     $(play_del_btn).show();
   //     $(add_track_btn).show();
   //     $(edit_play_btn).show();
-      
+
   // });
 }
-else{
-    $(document).ready(function() {
-      $(play_del_btn).hide();
-      $(add_track_btn).hide();
-      $(edit_play_btn).hide();
+else {
+  $(document).ready(function () {
+    $(play_del_btn).hide();
+    $(add_track_btn).hide();
+    $(edit_play_btn).hide();
 
   });
-   
+
 }
 const params = new URLSearchParams(window.location.search);
 for (let param of params) {
@@ -39,7 +39,7 @@ $('#editPlayModal').on('shown.bs.modal', function (e) {
   document.getElementById("description").value = tempDiv.querySelector("#text").innerHTML
 
 
-  // var arr = $('#track_table tr').find('td:first').map(function () {
+  // var arr = $('#myTable tr').find('td:first').map(function () {
   //   return $(this).text()
   // }).get()
 
@@ -68,40 +68,24 @@ document.getElementById("updatePlayBtn").addEventListener('click', function (sto
 
   console.log(playlist_id);
   //get all track id in json string and insert into the function
-  var arr = $('#track_table tr').find('td:first').map(function () {
+  var arr = $('#myTable tr').find('td:first').map(function () {
     return $(this).text()
   }).get()
 
   let collected_set = new Set();
   if (!arr.length <= 1) {
     for (var i = 1; i < arr.length; i++) {
-      // let temp = {
-      //   "id": parseInt(arr[i])
-      // };
       let temp = parseInt(arr[i]);
       collected_set.add(temp);
     }
   }
-  
-  // let json_sufffix = "]}'"
-  // let array = Array.from(collected_set);
-  // var json_prefix = "'\"name\" :  First half, \"tracks\" : ["; 
-  // for (let i = 0; i < array.length; i++) {
-  //   //  console.log(json_prefix.concat("\"id\" : "+array[i].toString()+" , "));
-  //   if (array.length == 1 || array.length - 1 == i) {
-  //     json_prefix = json_prefix.concat("{\"id\" : " + array[i].toString() + "}");
-  //   } else {
-  //     json_prefix = json_prefix.concat("{\"id\" : " + array[i].toString() + "},")
-  //   }
-  // }
+
   update_playlist_info(playlist_id, updated_name, updated_description, updated_artwork, collected_set);
 
 })
 
 //delete the playlist upon clicking yes button
 document.getElementById("confirmedDeleteBtn").addEventListener('click', function (stop) {
-  //get playlist id
-  //then do a fetch delete
   console.log("delete the play list")
   deleteFullPlaylist(playlist_id);
 })
@@ -142,7 +126,6 @@ function getPlaylistView(id) {
 
         console.log('Fetch Success')
         response.json().then(function (dataData) {
-          console.log(dataData);
           cardData(dataData);
 
           let table = document.querySelector("table");
@@ -227,43 +210,160 @@ function createTableBody(table, dataData) {
       let arr = dataData[key];
       for (let i = 0; i < arr.length; i++) {
         let obj = arr[i];
-        let row = table.insertRow();
+        let playlist_t_row = table.insertRow();
+
 
         for (let prop in obj) {
 
-          // if (prop === "id") {
-          //   track_arr_id.push(obj.id);
-
-
-          // }
           if (prop == "duration") {
+            let delete_track = playlist_t_row.insertCell();
+            let delete_track_btn = document.createElement("BUTTON");
+            delete_track_btn.innerHTML = "DELETE"
+            delete_track_btn.className = "btn btn-light"
+            delete_track_btn.id = obj.id
+
+            delete_track_btn.addEventListener('click', function(){
+              // get_latest_tracks(obj.id);
+              update_play_single_track_removal(playlist_id,obj.id);
+            });
+            delete_track.append(delete_track_btn);
 
           } else if (prop == "lyrics") {
 
           } else if (prop == "album") {
 
-            let cell = row.insertCell();
-            let text = document.createTextNode(obj.album.artist.name);
-            cell.appendChild(text);
+            let artist_cell = playlist_t_row.insertCell();
+            let artist_name = document.createTextNode(obj.album.artist.name);
+            artist_cell.appendChild(artist_name);
 
-            let cell2 = row.insertCell();
-            let text2 = document.createTextNode(obj.album.name);
-            cell2.appendChild(text2);
+            let album_cell = playlist_t_row.insertCell();
+            let album_name = document.createTextNode(obj.album.name);
+            album_cell.appendChild(album_name);
 
           } else {
-            // console.log(obj[prop]);
-            let cell = row.insertCell();
+            let cell = playlist_t_row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
 
           }
-        }
-      }
-    }
-  }
+        }//end of inner loop
+
+        //adds three drop down option end of the table
+        // let delete_track = playlist_t_row.insertCell();
+        // let val = document.querySelector("#showEditOption").cloneNode(true)
+        // delete_track.append(val);
+
+
+        //hide the first column[ID] of the table
+        $('#myTable tr').find('td:first').map(function () {
+          $(this).hide()
+        })
+      } //end of second loop
+    } //end of first if 
+  } // main for loop
+
+  //workspace [mjoni]
+  // $('#myTable tr').find('td:first').map(function () {
+  //   console.log("table row")
+  //   let val = document.querySelector("#showEditOption").cloneNode(true)
+  //   $('#myTable tr').append(val)
+  // })
+
 
 }
 
+function delete_single_track(track_id) {
+  
+
+}
+function get_latest_tracks(track_id){
+
+  let current_track_arr = $('#myTable tr').find('td:first').map(function () {
+    return $(this).text()
+  }).get()
+
+  let collected_set = new Set();
+  if (!current_track_arr.length <= 1) {
+    for (var i = 1; i < current_track_arr.length; i++) {
+      let temp = parseInt(current_track_arr[i]);
+      collected_set.add(temp);
+    }
+  }
+  current_track_arr = Array.from(collected_set);
+  // current_track_arr = [1,3,2,7,5,6]
+  for (id in current_track_arr) {
+    if(track_id === current_track_arr[id] ){
+      console.log("found it")
+      current_track_arr.splice(id,1);
+      break;
+    }
+  }
+  // console.log(track_id)
+  // let new_arr=[];
+  // $.each(current_track_arr, function(i, track_id){
+  //     if($.inArray(track_id, new_arr) === -1)  return new_arr.push(track_id);
+  //     if($.inArray(track_id, current_track_arr) === -1) current_track_arr.pop(track_id);
+  //     console.log(new_arr)
+
+  // });
+  // console.log(new_arr)
+
+  return current_track_arr;
+}
+
+function update_play_single_track_removal(playlist_id, track_id) {
+
+  let v = document.querySelector("#showcards")
+  let updated_name = v.querySelector("#title").innerHTML
+  let updated_description =v.querySelector("#text").innerHTML
+  let updated_artwork = v.querySelector("#play-img").src
+  
+
+  let json_sufffix = "]}'"
+  let new_arr = get_latest_tracks(track_id); // remove selected track and get the rest
+
+
+  var json_prefix = '{"name": \"' + updated_name + '\","description":\"' + updated_description + '\","artwork" :\"' +
+    updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[';
+
+  if(new_arr.length===0){
+    json_prefix = json_prefix.concat(json_sufffix);
+  }else{
+    for (let i = 0; i < new_arr.length; i++) {
+      if (new_arr.length == 1 || new_arr.length - 1 == i) {
+        json_prefix = json_prefix.concat("{\"id\" : " + new_arr[i].toString() + "}" + json_sufffix);
+      } else {
+        json_prefix = json_prefix.concat("{\"id\" : " + new_arr[i].toString() + "},")
+      }
+    }
+  }
+  console.log(json_prefix);
+
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: JSON.parse(JSON.stringify(json_prefix)),
+    redirect: 'follow'
+  };
+
+  fetch("http://localhost:8082/playlists/update/" + playlist_id, requestOptions)
+
+    .then(function (data) {
+
+      console.log('Request succeeded with JSON response', data);
+      window.location.href = "playlistview.html?id=" + playlist_id;
+      // document.getElementById("show-msg").innerHTML = "User details Updated";
+      // $('#messageModal').modal('show');
+
+    })
+    .catch(function (error) {
+      console.log('Request failed', error);
+    });
+}
 
 function update_playlist_info(id, updated_play_name, updated_description, updated_artwork, collected_set) {
 
@@ -273,23 +373,23 @@ function update_playlist_info(id, updated_play_name, updated_description, update
   //   updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[{"id":3}, {"id" : 4}]}';
 
   var json_prefix = '{"name": \"' + updated_play_name + '\","description":\"' + updated_description + '\","artwork" :\"' +
-  updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[';
- 
+    updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[';
+
   // var json_prefix = "'\"name\" :  First half, \"tracks\" : ["; 
- 
+
   for (let i = 0; i < array.length; i++) {
     if (array.length == 1 || array.length - 1 == i) {
-      json_prefix = json_prefix.concat("{\"id\" : " + array[i].toString() + "}"+json_sufffix);
+      json_prefix = json_prefix.concat("{\"id\" : " + array[i].toString() + "}" + json_sufffix);
     } else {
       json_prefix = json_prefix.concat("{\"id\" : " + array[i].toString() + "},")
     }
   }
   console.log(json_prefix);
-  
+
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  
+
 
   console.log(json_prefix);
   // let dataToUpdate = {
@@ -316,7 +416,7 @@ function update_playlist_info(id, updated_play_name, updated_description, update
     .then(function (data) {
 
       console.log('Request succeeded with JSON response', data);
-      window.location.href = "playlistview.html?id="+playlist_id;
+      window.location.href = "playlistview.html?id=" + playlist_id;
       // document.getElementById("show-msg").innerHTML = "User details Updated";
       // $('#messageModal').modal('show');
 
