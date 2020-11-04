@@ -49,10 +49,10 @@ public class albumpageTest {
 		driver.get("http://localhost:8082/album.html");
 		
         List<WebElement> results;
-        results = driver.findElements(By.xpath("/html/body/div/div[2]"));
+        results = driver.findElements(By.xpath("//*[@id=\"showcards\"]"));
         
         results.get(0).findElement(By.id("button")).click();
-        assertEquals("View tracks", driver.getTitle());
+        assertEquals("Albums", driver.getTitle());
 	}
 
 	@Then("I will be able to view the tracks in the Album")
@@ -73,8 +73,8 @@ public class albumpageTest {
 		assertTrue(driver.findElement(By.xpath("//*[@id=\"button\"]")).isDisplayed());
 	}
 
-	@Then("I will be able on the Artist page of that Album")
-	public void i_will_be_able_on_the_Artist_page_of_that_Album() {
+	@Then("I will be on the Artist page of that Album")
+	public void i_will_be_on_the_Artist_page_of_that_Album() {
 		driver.get("http://localhost:8082/albumview.html");
 		driver.findElement(By.xpath("//*[@id=\"button\"]")).click();
 		assertEquals("Artist's Albums", driver.getTitle());

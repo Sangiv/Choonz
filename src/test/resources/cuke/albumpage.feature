@@ -10,7 +10,7 @@ Feature: Can I access the feature within the Album page?
   Scenario: Go to Artist Page
     Given I am on the Album view page
     When I click to view the Artist
-    Then I will be able on the Artist page of that Album
+    Then I will be on the Artist page of that Album
     
   Scenario: Go back to Albums
     Given I am on the Album view page
