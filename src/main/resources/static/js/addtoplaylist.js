@@ -154,11 +154,42 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
     for(let param of params){
         var trackid = param[1];
     }
-    var newtrackids = [];
-    for (let i = 0; i < trackids.length; i++){
-        newtrackids.push(",{id :" + trackids[i] + "}");
+    trackids.push(trackid);
+    // var newtrackids = [];
+    // for (let i = 0; i < trackids.length; i++){
+    //     newtrackids.push('id :' + trackids[i]);
+        
+    // }
+    // console.log(newtrackids);
+    // let pj = JSON.stringify(newtrackids);
+    // console.log(pj);
+
+    let json_sufffix = "]}'"
+  
+  // var json_prefix = '{"name": \"' + updated_play_name + '\","description":\"' + updated_description + '\","artwork" :\"' +
+  //   updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[{"id":3}, {"id" : 4}]}';
+
+  var json_prefix = '{"name": \"' + updated_play_name + '\","description":\"' + updated_description + '\","artwork" :\"' +
+  updated_artwork + '\", "users": {"user_id" :' + get_cookie_value("user_id") + '}, "tracks":[';
+ 
+  // var json_prefix = "'\"name\" :  First half, \"tracks\" : ["; 
+ 
+  for (let i = 0; i < trackids.length; i++) {
+    if (trackids.length == 1 || trackids.length - 1 == i) {
+      json_prefix = json_prefix.concat("{\"id\" : " + trackids[i].toString() + "}"+json_sufffix);
+    } else {
+      json_prefix = json_prefix.concat("{\"id\" : " + trackids[i].toString() + "},")
     }
-    console.log(newtrackids);
+  }
+  console.log(json_prefix);
+
+    
+
+    
+
+    
+    
+    
 
     
     
@@ -166,20 +197,21 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
   
-    let dataToUpdate = {
-      "name": updated_play_name,
-      "artwork" : updated_artwork,
-      "description": updated_description,
-      "tracks" : [{id : trackid}],
-      "users": {
+    // let dataToUpdate = {
+    //   "name": updated_play_name,
+    //   "artwork" : updated_artwork,
+    //   "description": updated_description,
+    //   "tracks" : newtrackids,
+    //   "users": {
   
-        "user_id" : get_cookie_value("user_id")
-      }
-    }
+    //     "user_id" : get_cookie_value("user_id")
+    //   }
+    // }
+    // console.log(dataToUpdate);
     var requestOptions = {
       method: 'PUT',
       headers: myHeaders,
-      body: JSON.stringify(dataToUpdate),
+      body: JSON.parse(JSON.stringify(json_prefix)),
       redirect: 'follow'
     };
   
