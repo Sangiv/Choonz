@@ -79,9 +79,7 @@ function createTableBody(table, dataData){
         let arr = dataData[key];
         for(let i = 0; i < arr.length; i++){
           let obj = arr[i];
-        //   console.log(obj);
           let row = table.insertRow();
-  
           for(let prop in obj){
             if (prop == 'album'){
 
@@ -96,16 +94,20 @@ function createTableBody(table, dataData){
               function myfunc(){
               let ans = obj[prop];
               alert(ans);
-            }}
+            }} 
+            else if (prop == 'duration'){
+                let mins = Math.floor((obj.duration)/60);
+                let secs = (obj.duration % 60);
+                let duration = (mins + " m " + secs + " s");
+                let cell3 = row.insertCell();
+                let durationtext = document.createTextNode(duration);
+                cell3.appendChild(durationtext);
+            }
             else {
-            // console.log(prop);
-            // console.log(obj[prop]);
             let cell = row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
             }
-
-            
           }
         }
         }
@@ -153,14 +155,8 @@ function createTableBody(table, dataData){
             // let text = document.createTextNode(data[keys]);
             // console.log(data[keys]);
             
-              
-
-      
-          }}
-      
-      
+          }}      
       }
-
       function goBack() {
         window.history.back();
       }
