@@ -16,6 +16,15 @@
   margin-right: 1vw;
 }
 
+.navbar-nav > .active > a {
+  background-color: #16213e; 
+  border: 2px solid #ffff99;
+  border-radius: 10px;   
+}
+/* .nav-item > a:hover {
+  color: rgb(94, 255, 0);
+} */
+
 .dropdown .dropdown-menu {
   border-radius:0;
  }
@@ -100,9 +109,4 @@ td{
 
 .card-body{
   color: #fff;
-}
-
-div.center {
-  margin: 0 auto;
-  float: none; 
 }
