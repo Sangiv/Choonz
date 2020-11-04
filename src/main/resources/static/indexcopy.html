@@ -28,38 +28,39 @@
 
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin: 10px;">Search</button>
 
-      <div id="guestLoggedInBtn">
-        <li class="nav-item" role="presentation" style = "list-style-type: none;">
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-circle">GUEST- LOGIN</i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-              <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
-              <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >Create Account</button>
-            </div>
-          </div>
-        </li>
-        </div>
-
-        <div id="userLoggedInBtn">
-
+        <div id="guestLoggedInBtn">
           <li class="nav-item" role="presentation" style = "list-style-type: none;">
             <div class="btn-group">
-              <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle">USER</i>
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle">GUEST- LOGIN</i>
               </button>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
-                <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
-                <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
+                <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
+                <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >Create Account</button>
               </div>
             </div>
           </li>
-        </div>
+          </div>
+  
+          <div id="userLoggedInBtn">
+            <li class="nav-item" role="presentation" style = "list-style-type: none;">
+              <div class="btn-group">
+                <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user-circle">USER</i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                  <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
+                  <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
+                  <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
+                </div>
+              </div>
+            </li>
+          </div>
+      </form>
+
+
     </ul>
     <ul class="navbar-nav justify-content-center w-100 bg-secondary px-3 py-md-3">
         <class class="navbar-nav">
@@ -176,8 +177,6 @@
       </div>
     </div>
   </div>
-
-
 
   <br>
 
