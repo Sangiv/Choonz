@@ -21,6 +21,12 @@ fetch('http://localhost:8082/tracks/read')
     console.log('Fetch Error :-S', err);
   });
 
+function search(){
+  searchLink = "/track.html?search=" + document.getElementById('searchField').value;
+  console.log("test");
+  window.location.replace(searchLink);
+}
+
   function createCard(id, image, title, description, buttonText, buttonLink, artistLink){
     //updates cloneCard with new information
     let cards = document.querySelector("#card-deck");
