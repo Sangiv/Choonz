@@ -1,3 +1,26 @@
+var play_del_btn = document.getElementById("deletePlay");
+var add_track_btn = document.getElementById("addToMyPlayBtn");
+var edit_play_btn = document.getElementById("editPlaylistBtn");
+var isMyCookie = document.cookie;
+
+//if user logged in then change hidden button
+if(isMyCookie != ""){
+  //   $(document).ready(function() {
+  //     $(play_del_btn).show();
+  //     $(add_track_btn).show();
+  //     $(edit_play_btn).show();
+      
+  // });
+}
+else{
+    $(document).ready(function() {
+      $(play_del_btn).hide();
+      $(add_track_btn).hide();
+      $(edit_play_btn).hide();
+
+  });
+   
+}
 const params = new URLSearchParams(window.location.search);
 for (let param of params) {
   let id = param[1];

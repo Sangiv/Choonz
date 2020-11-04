@@ -1,5 +1,31 @@
 var user_id = get_cookie_value("user_id");
 
+var userBtn = document.getElementById("userLoggedInSection");
+var guestBtn = document.getElementById("guestLoggedInSection");
+var isMyCookie = document.cookie;
+
+//if user logged in then change hidden button
+if(isMyCookie != ""){
+    // window.onload = function() {
+    //   userBtn.style.display = 'block';
+    //   guestBtn.style.display = 'block';
+    // };
+    $(document).ready(function() {
+      $(guestBtn).show();
+      $(userBtn).show();
+
+  });
+}
+else{
+    $(document).ready(function() {
+      $(guestBtn).show();
+      $(userBtn).hide();
+
+  });
+   
+}
+
+
 document.getElementById("createNewPlayBtn").addEventListener('click', function (stop) {
   var play_name = document.getElementById("name").value;
   var play_description = document.getElementById("description").value;
@@ -29,9 +55,6 @@ fetch('http://localhost:8082/playlists/read')
       console.log('Fetch Success')
       response.json().then(function (dataData) {
         console.log(dataData);
-
-        // createTableHead(table,data);
-        // createTableBody(table,dataData);
         cardData(dataData);
 
 
@@ -43,7 +66,7 @@ fetch('http://localhost:8082/playlists/read')
   });
 
 function cardData(dataData) {
-
+  //TODO: get only other's playlist when user logged in
   for (let dataRecord of dataData) {
     singleIterationCheck = 0;
     for (value in dataRecord) {
@@ -57,10 +80,11 @@ function cardData(dataData) {
           let description = dataRecord.description;
           let buttonText = "View";
           let buttonLink = "playlistview.html?id=" + dataRecord.id;
-          let button2Text = "Edit My Playlist";
-          let button2Link = "playlistedit.html?id=" + dataRecord.id;
-          let deletBtn = dataRecord.id;
-          createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, deletBtn);
+          // let button2Text = "Edit My Playlist";
+          // let button2Link = "playlistedit.html?id=" + dataRecord.id;
+          // let deletBtn = dataRecord.id;
+          // createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, deletBtn);
+          createCard(id, image, title, description, buttonText, buttonLink);
           singleIterationCheck++;
         }
       }
@@ -69,7 +93,7 @@ function cardData(dataData) {
   }
 }
 
-function createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, deletePlayBtn) {
+function createCard(id, image, title, description, buttonText, buttonLink) {
   //updates cloneCard with new information
   let cards = document.getElementById("showcards");
   let cloneCard = document.querySelector("#globalPlaylist").cloneNode(true);
@@ -81,77 +105,10 @@ function createCard(id, image, title, description, buttonText, buttonLink, butto
   cloneCard.querySelector("#text").innerHTML = (description);
   cloneCard.querySelector("#button").innerHTML = (buttonText);
   cloneCard.querySelector("#button").href = (buttonLink);
-  cloneCard.querySelector("#button2").innerHTML = (button2Text);
-  cloneCard.querySelector("#button2").href = (button2Link);
-
-  cloneCard.querySelector("#deletePlay").innerHTML = (deletePlayBtn);
+  // cloneCard.querySelector("#button2").innerHTML = (button2Text);
+  // cloneCard.querySelector("#button2").href = (button2Link);
+  // cloneCard.querySelector("#deletePlay").innerHTML = (deletePlayBtn);
   cards.appendChild(cloneCard);
-}
-
-function createTableHead(table, data) {
-  let thead = table.createTHead();
-  let row = thead.insertRow();
-
-  for (let keys of data) {
-    // console.log(keys);
-    if (keys == 'id') {
-
-    } else {
-      let th = document.createElement("th");
-      let text = document.createTextNode(keys);
-      th.appendChild(text);
-      row.appendChild(th);
-    }
-
-
-  }
-  let editHead = document.createElement("th");
-  let editButtonTitle = document.createTextNode("View Tracks");
-  editHead.appendChild(editButtonTitle);
-  row.appendChild(editHead);
-
-}
-
-function createTableBody(table, dataData) {
-  for (let dataRecord of dataData) {
-    console.log(dataRecord.name);
-
-    let row = table.insertRow();
-    for (value in dataRecord) {
-
-      // console.log(value);
-      if (value == 'id') {
-
-      } else if (value == 'tracks') {
-
-      } else if (value == 'name') {
-        let cell = row.insertCell();
-        let text = document.createTextNode(dataRecord.name)
-        cell.appendChild(text);
-        // let text = document.createTextNode(dataRecord[value]);
-
-
-      }
-
-
-    }
-    let viewCell = row.insertCell();
-    let viewButton = document.createElement("a");
-    viewButton.className = "btn btn-primary";
-    viewButton.href = "artistalbums.html?id=" + dataRecord.id;
-    viewButton.innerHTML = "View";
-    viewCell.appendChild(viewButton);
-
-    let viewCell2 = row.insertCell();
-    let viewButton2 = document.createElement("a");
-    viewButton2.className = "btn btn-primary";
-    viewButton2.href = "artisttracks.html?id=" + dataRecord.id;
-    viewButton2.innerHTML = "View";
-    viewCell2.appendChild(viewButton2);
-
-
-
-  }
 }
 
 function createNewPlaylist(user_id, playlist_name, play_art, playlist_description) {
