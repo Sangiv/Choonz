@@ -157,6 +157,7 @@ function createTableHead(table, data){
             a2.innerHTML = "Add";
             a2.className = "btn btn-primary";
             a2.onclick = function(){myfunc(updated_play_name[i], updated_artwork[i], updated_description[i], playlist_id[i], trackids[i]);}
+            
             cell2.appendChild(a2);
 
             
@@ -241,7 +242,7 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
       body: JSON.parse(JSON.stringify(json_prefix)),
       redirect: 'follow'
     };
-  
+    
     fetch("http://localhost:8082/playlists/update/" + playlist_id, requestOptions)
   
       .then(function (data) {
@@ -258,6 +259,8 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
       });
     
 }
+
+
 
 function goBack() {
   window.history.back();

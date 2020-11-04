@@ -46,9 +46,12 @@ fetch('http://localhost:8082/artists/read')
   function cardData(dataData){
 
     for (let dataRecord of dataData){
-
+        singleIterationCheck = 0;
         for (value in dataRecord){
             if (typeof dataRecord[value] === 'object'){
+              if(singleIterationCheck != 0){
+
+              } else {
                 let id = dataRecord.id;
                 let image = dataRecord.albums[0].cover;
                 let title = dataRecord.name;
@@ -58,7 +61,8 @@ fetch('http://localhost:8082/artists/read')
                 let button2Text = "Tracks";
                 let button2Link = "artisttracks.html?id="+dataRecord.id;
                 createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
-            }
+                singleIterationCheck++;
+            }}
 
         }
     }
