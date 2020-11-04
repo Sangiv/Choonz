@@ -69,7 +69,12 @@ tr:hover{
   display: none;
 }
 
-
+#guestLoggedInService{
+  display: none;
+}
+#userLoggedInService{
+  display: none;
+}
 
 h1:after {
   content:' ';

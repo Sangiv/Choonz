@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <script src="https://kit.fontawesome.com/a7c821f628.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
   <title>Playlists</title>
+
 </head>
 
 <body>
@@ -89,99 +90,74 @@
   <!--end of nav bar -->
 
   <div class="container-fluid">
+    <!-- my playlist section -->
 
-   
+    <div id="userLoggedInSection">    
+    <h1>
+      My Playlists
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewPlaylistModal"
+        style="float: right">
+        <i class="fas fa-plus-square">Create New Playlist</i>
+      </button>
+    </h1>
 
-      <!-- my playlist section -->
-      <h1>My Playlists <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewPlaylistModal" style="float: right;"><i
-        class="fas fa-plus-square">Create New Playlist</i></button></h1>
-        
-        <div hidden>
-          <div  id = "myPlaylist"  class="col mb-4">
-            <div class="card">
-              <img class="card-img-top" alt="...">
-              <div class="card-body">
-                
-                <h5  id="title" class="card-title"></h5>
-                <p class="card-text"></p>
-                <!-- <button style="width: 100%;" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+    <div hidden>
+      <div id="myPlaylist" class="col mb-4">
+        <div class="card">
+          <img class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 id="title" class="card-title"></h5>
+            <p class="card-text"></p>
+            <!-- <button style="width: 100%;" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a id= "viewMyPlayBtn" class="dropdown-item" type="button" >View Playlist</a>
                   <a id = "addToMyPlayBtn" class="dropdown-item" type="button" >Add New Tracks</a>
                   <a id = "deleteMyPlayBtn" class="dropdown-item" type="button" >Delete Playlist</a>
                 </div> -->
-                    
-                <a id= "viewMyPlayBtn" class="btn btn-primary"  >View</a>
-                <a id = "addToMyPlayBtn" class="btn btn-secondary" >Add</a>
-                <button id = "deleteMyPlayBtn" class="btn btn-danger" data-toggle="modal" data-target="#deletePlayModal" >Delete</button>
-              </div>
-              
-            </div>
+
+            <a id="viewMyPlayBtn" class="btn btn-primary">View</a>
+            <a id="addToMyPlayBtn" class="btn btn-secondary">Add</a>
+            <button id="deleteMyPlayBtn" class="btn btn-danger" data-toggle="modal" data-target="#deletePlayModal">
+              Delete
+            </button>
           </div>
-          
         </div>
-        
-        <div id="showMycards"  class="row row-cols-1 row-cols-md-6">
-        </div>
-        <!-- end of my playlist section -->
-        
-      
-        
-        
+      </div>
+    </div>
 
+    <div id="showMycards" class="row row-cols-1 row-cols-md-6"></div>
+  </div>
+    <!-- end of my playlist section -->
 
-  <!-- global playlist section -->
-  <div hidden>
-
-    
+    <!-- global playlist section -->
+    <div id="guestLoggedInSection">    
     <h1>Global Playlists</h1>
-    
-    <!-- <table class="table table-dark table-hover"></table> -->
-    
+
     <div hidden>
-      
-      <!-- other's code -->
-      <!-- <div id="cards" class="cards">
-        <div id="card" class="card" classname="card" style="width: 18rem">
-          <img width="250" height="250">
-          <div id="body" class="card-body">
+      <div id="globalPlaylist" class="col mb-4">
+        <div class="card">
+          <img class="card-img-top" alt="..." />
+          <div class="card-body">
             <h5 id="title" class="card-title"></h5>
             <p id="text" class="card-text"></p>
             <a id="button" class="btn btn-primary"></a>
-            <a id="button2" class="btn btn-secondary"></a>
-            <a id="deletePlay" class="btn btn-danger"></a>
+            <!-- <a id="button2" class="btn btn-secondary"></a>
+                <a id="deletePlay" class="btn btn-danger"></a> -->
           </div>
         </div>
-      </div> -->
-      <!-- my section of code -->
-      <!-- <div class="row row-cols-1 row-cols-md-6"> -->
-        <div id = "globalPlaylist"  class="col mb-4">
-          <div  class="card">
-            <img class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 id="title" class="card-title"></h5>
-                <p id="text" class="card-text"></p>
-                <a id="button" class="btn btn-primary"></a>
-                <a id="button2" class="btn btn-secondary"></a>
-                <a id="deletePlay" class="btn btn-danger"></a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- </div> -->
-        </div>
-        
-        
-        
-        <div id="showcards"  class="row row-cols-1 row-cols-md-6">
-        </div>
-        <!-- end of guestLogged div-->
       </div>
-</div>
-<!-- create new playlist modal -->
-<div class="modal fade" id="createNewPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+    </div>
+
+    <div id="showcards" class="row row-cols-1 row-cols-md-6"></div>
+    </div>
+    <!-- end of guestLogged div-->
+  </div>
+  <!--end of main container -->
+
+  <!-- create new playlist modal -->
+  <div class="modal fade" id="createNewPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -198,14 +174,14 @@ aria-hidden="true">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
               <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
+                aria-describedby="inputGroup-sizing-default" required />
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
               </div>
               <input id="description" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
+                aria-describedby="inputGroup-sizing-default" required />
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -220,8 +196,12 @@ aria-hidden="true">
               </select>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button id="createNewPlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Close
+              </button>
+              <button id="createNewPlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+                Create
+              </button>
             </div>
           </form>
         </div>
@@ -240,24 +220,32 @@ aria-hidden="true">
         </div>
         <div class="modal-body">
           <!-- user message go in this heading -->
-          <h3 id="show-msg">Are you sure you want to delete the whole playlist?</h3>
+          <h3 id="show-msg">
+            Are you sure you want to delete the whole playlist?
+          </h3>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button id="confirmedDeleteBtn" type="button" class="btn btn-warning" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+          <button id="confirmedDeleteBtn" type="button" class="btn btn-warning" data-dismiss="modal">
+            Yes
+          </button>
         </div>
       </div>
     </div>
   </div>
+  
   <script src="js/userAuth.js"></script>
   <script src="js/search.js"></script>
   <script src="js/playlist.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
   </script>
+  <script src="js/playlist.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>

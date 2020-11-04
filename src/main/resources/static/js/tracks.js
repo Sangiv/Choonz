@@ -189,7 +189,7 @@ function createTableBody(table,dataData){
 
     }
         
-        add(user_id);
+        // add(user_id);
         
 
         

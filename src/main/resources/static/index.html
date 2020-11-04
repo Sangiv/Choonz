@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
   <script src="https://kit.fontawesome.com/a7c821f628.js" crossorigin="anonymous"></script>
@@ -85,6 +85,7 @@
             </li>
           </class>
       </ul>
+
     </div>
   </nav>
   <!--end of nav bar -->
@@ -96,32 +97,29 @@
   <br>
 
   <!-- hidden empty carousel slide to clone -->
-  <div hidden id = "hidden">
-    <div id = "carousel-template">
-      <a id = "imagelink">
-      <img style="height:400px;" style="width:400px;" class="rounded mx-auto d-block"
-        alt="...">
+  <div hidden id="hidden">
+    <div id="carousel-template">
+      <a id="imagelink">
+        <img style="height:400px;" style="width:400px;" class="rounded mx-auto d-block" alt="...">
       </a>
       <div class="carousel-caption">
-        <h5 id = "title" style = 
-        "text-shadow:
+        <h5 id="title" style="text-shadow:
         -2px -2px 0 black,  
          2px -2px 0 black,
         -2px  2px 0 black,
          2px  2px 0 black;">
-         <a id = "albumlink" style = "color: white; text-decoration: none; background-color: none;"></a>
+          <a id="albumlink" style="color: white; text-decoration: none; background-color: none;"></a>
         </h5>
-        <p id = "text" style = 
-        "color: black; text-decoration: none; background-color: none;
+        <p id="text" style="color: black; text-decoration: none; background-color: none;
         text-shadow:
         -1px -1px 0 white,  
          1px -1px 0 white,
         -1px  1px 0 white,
          1px  1px 0 white;">
-         <a id = "artistlink" style = "color: black; text-decoration: none; background-color: none;"></a>
+          <a id="artistlink" style="color: black; text-decoration: none; background-color: none;"></a>
         </p>
       </div>
-  </div>
+    </div>
   </div>
 
   <!-- creates 6 slide carouel for latest albums -->
@@ -135,7 +133,7 @@
       <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
     </ol>
 
-    <div id = "carousel-inner" class="carousel-inner"></div>
+    <div id="carousel-inner" class="carousel-inner"></div>
 
 
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -154,13 +152,15 @@
   <div hidden>
     <div id="cards2" class="cards2">
       <div id="card2" class="card" classname="card2" style="max-width: 260px; border-radius: 10%; margin: 0 auto;">
-        <a id = "imagelink">
-          <img height="250" width ="250" style="min-width: 10;border-radius: 10%; margin: 2%">
+        <a id="imagelink">
+          <img height="250" width="250" style="min-width: 10;border-radius: 10%; margin: 2%">
         </a>
 
         <div id="body" class="card-body">
-          <h5 id="title" class="card-title"><a id = "titlelink" style = "color: white; text-decoration: none; background-color: none;"></a></h5>
-          <p id="text" class="card-text"><a id = "textlink"  style = "color: whitesmoke; text-decoration: none; background-color: none;"></a></p>
+          <h5 id="title" class="card-title"><a id="titlelink"
+              style="color: white; text-decoration: none; background-color: none;"></a></h5>
+          <p id="text" class="card-text"><a id="textlink"
+              style="color: whitesmoke; text-decoration: none; background-color: none;"></a></p>
           <a id="button" class="btn btn-primary"></a>
         </div>
       </div>
@@ -197,14 +197,16 @@
           <form class="create-user" action="index.html" method="POST">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"> </i> User Name</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"> </i> User
+                  Name</span>
               </div>
               <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"> </i> Password</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"> </i>
+                  Password</span>
               </div>
               <input name="password" type="password" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
@@ -287,30 +289,30 @@
           </button>
         </div>
         <div class="modal-body">
-            <!-- <h5 class="card-title">Log in</h5> -->
-            <p class="card-text">Use your credential to log in</p>
-            <form class="log-in" action="index.html" method="POST">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
-                </div>
-                <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
+          <!-- <h5 class="card-title">Log in</h5> -->
+          <p class="card-text">Use your credential to log in</p>
+          <form class="log-in" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
               </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
-                </div>
-                <input name="password" type="password" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" required>
+              <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
               </div>
-              <div class="modal-footer">
-                <p id="login-msg" class="card-text"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Log In</button>
-              </div>
-        
-            </form>
+              <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+
+          </form>
         </div>
       </div>
     </div>
