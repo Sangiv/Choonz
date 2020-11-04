@@ -25,14 +25,14 @@
           <a class="navbar-brand" href="index.html" style="color: #ede68a; font-size: 30px; font-weight: 700;">Choonz</a>
     
           <form class="form-inline">
-            <input id="searchField" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input id="searchField" class="form-control mr-sm-2" type="search" onsearch="search()" placeholder="Search" aria-label="Search">
             <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" onclick="search()" type="button" style="margin: 10px;">Search</button>
     
             <div id="guestLoggedInBtn">
               <li class="nav-item" role="presentation" style = "list-style-type: none;">
                 <div class="btn-group">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle">GUEST- LOGIN</i>
+                    Guest-Login
                   </button>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                     <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
@@ -46,7 +46,7 @@
                 <li class="nav-item" role="presentation" style = "list-style-type: none;">
                   <div class="btn-group">
                     <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-user-circle">USER</i>
+                      User
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                       <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
