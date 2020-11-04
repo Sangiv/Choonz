@@ -73,6 +73,11 @@ function createTableHead(table, data){
 
 
   function createTableBody(table, dataData){
+    let trackids = [];
+    let playlist_id = [];
+    let updated_artwork = [];
+    let updated_description = [];
+    let updated_play_name = [];
     for(let key in dataData){
         
       if(key == "playList"){
@@ -83,13 +88,14 @@ function createTableHead(table, data){
           
           
           let row = table.insertRow();
+          let innerid = [];
   
           for(let prop in obj){
             if (prop == 'users'){
 
             } 
             else if(prop == 'tracks'){
-                var trackids = [];
+                
                 let arr1 = obj[prop];
                 
                 for (let i = 0; i < arr1.length; i++){
@@ -97,32 +103,36 @@ function createTableHead(table, data){
                     console.log(obj1);
                     
                     for(let prop in obj1){
+                      
                         if(prop == 'id'){
-                            trackids.push(obj.tracks[i].id);
+                          
+                            innerid.push(obj.tracks[i].id);
+                            
                             
                         }
+                        
                     }
                 }
-                console.log(trackids);
+                
 
 
 
             }
             else if(prop == 'id'){
-                var playlist_id = obj.id;
+                playlist_id.push(obj.id);
             }
             else if(prop == 'artwork'){
-                var updated_artwork = obj.artwork;
+                updated_artwork.push(obj.artwork);
             }
             else if(prop == 'description'){
-                var updated_description = obj.description;
+                updated_description.push(obj.description);
             }
             else if(prop == 'name'){
                 let cell = row.insertCell();
                 let text = document.createTextNode(obj[prop]);
                 cell.appendChild(text);
-
-                var updated_play_name = obj.name;
+                updated_play_name.push(obj.name);
+                
 
             }
            
@@ -134,18 +144,29 @@ function createTableHead(table, data){
             
 
             
-
+            
             
           }
+            trackids.push(innerid);
+
+            console.log(trackids);
+
+
             let cell2 = row.insertCell();
             let a2 = document.createElement('a');
             a2.innerHTML = "Add";
             a2.className = "btn btn-primary";
-            a2.onclick = function(){myfunc(updated_play_name, updated_artwork, updated_description, playlist_id, trackids);}
+            a2.onclick = function(){myfunc(updated_play_name[i], updated_artwork[i], updated_description[i], playlist_id[i], trackids[i]);}
             cell2.appendChild(a2);
+
+            
+
+            
         }
+        
         }
     }
+    
 }
 
 function myfunc(updated_play_name, updated_artwork, updated_description, playlist_id, trackids){
@@ -238,3 +259,6 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
     
 }
 
+function goBack() {
+  window.history.back();
+}
