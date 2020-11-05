@@ -1,10 +1,10 @@
-
 const params = new URLSearchParams(window.location.search);
 
 for(let param of params){
     let id = param[1];
     getSingleRecord(id);
 }
+
 function getSingleRecord(id){
 fetch('http://localhost:8082/albums/read/' + id)
   .then(
@@ -14,20 +14,12 @@ fetch('http://localhost:8082/albums/read/' + id)
           response.status);
         return;
       }
-
       console.log('Fetch Success')
       response.json().then(function(dataData) {
-        console.log(dataData);
-
         let table = document.querySelector("table");
-        // let data = Object.keys(dataData);
-        // console.log(data);
-
         createTableHead(table,dataData);
         createTableBody(table,dataData);
         cardData(dataData);
-
-
       });
     }
   )
@@ -157,7 +149,7 @@ function createTableBody(table, dataData){
             
           }}      
       }
-      function goBack() {
-        window.history.back();
-      }
+function goBack() {
+  window.history.back();
+}
       
