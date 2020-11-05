@@ -119,12 +119,14 @@ function createTableBody(table,dataData){
               let text1 = document.createElement("a");
               text1.className = "btn btn-primary";
               text1.innerHTML= "View";
-              text1.onclick = myfunc;
+              
+              
+              
+              // text1.onclick = function(){lyricsfunc(lyricsALL[i]);}
+              text1.onclick = function(){lyricsfunc(dataRecord[value], text1);}
               cell1.appendChild(text1);
-              function myfunc(){
-                let ans = dataRecord[value];
-                alert(ans);
-              }
+
+              
             } else if (value == 'duration'){
                 let mins = Math.floor((dataRecord.duration)/60);
                 let secs = (dataRecord.duration % 60);
@@ -186,7 +188,7 @@ function createTableBody(table,dataData){
         editCell.appendChild(editButton);
 
         
-        
+       
         
 
         
@@ -303,3 +305,9 @@ function setid(){
   
 }
 
+function lyricsfunc(chicken, text1){
+  text1.setAttribute('data-toggle', 'modal');
+  text1.setAttribute('data-target', '#lyricModal');
+  document.querySelector("#lyricText").innerHTML = chicken;
+
+}

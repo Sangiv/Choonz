@@ -81,12 +81,9 @@ function createTableBody(table, dataData){
               let text1 = document.createElement("a");
               text1.className = "btn btn-primary";
               text1.innerHTML= "View";
-              text1.onclick = myfunc;
+              text1.onclick = function(){lyricsfunc(obj[prop], text1);}
               cell1.appendChild(text1);
-              function myfunc(){
-              let ans = obj[prop];
-              alert(ans);
-            }} 
+              } 
             else if(prop == 'id'){
 
             }
@@ -152,4 +149,11 @@ function createTableBody(table, dataData){
 function goBack() {
   window.history.back();
 }
-      
+
+
+function lyricsfunc(chicken, text1){
+  text1.setAttribute('data-toggle', 'modal');
+  text1.setAttribute('data-target', '#lyricModal');
+  document.querySelector("#lyricText").innerHTML = chicken;
+
+}

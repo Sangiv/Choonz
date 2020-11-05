@@ -127,12 +127,9 @@ function createTableBody(table,dataData, aid){
             let text1 = document.createElement("a");
             text1.className = "btn btn-primary";
             text1.innerHTML= "View";
-            text1.onclick = myfunc;
+            text1.onclick = function(){lyricsfunc(dataRecord[value], text1);}
             cell1.appendChild(text1);
-            function myfunc(){
-              let ans = dataRecord[value];
-              alert(ans);
-            }
+            
           }else if (value == 'duration'){
             let mins = Math.floor((dataRecord.duration)/60);
             let secs = (dataRecord.duration % 60);
@@ -178,4 +175,11 @@ function createTableBody(table,dataData, aid){
 
 function goBack() {
   window.history.back();
+}
+
+function lyricsfunc(chicken, text1){
+  text1.setAttribute('data-toggle', 'modal');
+  text1.setAttribute('data-target', '#lyricModal');
+  document.querySelector("#lyricText").innerHTML = chicken;
+
 }
