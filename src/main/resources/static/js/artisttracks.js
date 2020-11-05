@@ -1,3 +1,6 @@
+var user_id = get_cookie_value("user_id");
+var isMyCookie = document.cookie;
+
 const params = new URLSearchParams(window.location.search);
 
 for(let param of params){
@@ -105,17 +108,21 @@ function cardData(dataData, aid){
     viewalbum.appendChild(viewalbumText);
     row.appendChild(viewalbum);
 
-    let add = document.createElement("th");
-    let addText = document.createTextNode("ADD");
-    add.appendChild(addText);
-    row.appendChild(add);
+    if (isMyCookie != ""){
+      let add = document.createElement("th");
+      let addText = document.createTextNode("ADD");
+      add.appendChild(addText);
+      row.appendChild(add);
+    }
+
 
 }
 
 function createTableBody(table,dataData, aid){
   for (let dataRecord of dataData){
     if(dataRecord.album.artist.id == aid){
-      let newid = dataRecord.album.id;   
+      let newid = dataRecord.album.id;  
+      let tid = dataRecord.id; 
       let row = table.insertRow();
       for (value in dataRecord){
           if (value == 'id'){
@@ -127,12 +134,9 @@ function createTableBody(table,dataData, aid){
             let text1 = document.createElement("a");
             text1.className = "btn btn-primary";
             text1.innerHTML= "View";
-            text1.onclick = myfunc;
+            text1.onclick = function(){lyricsfunc(dataRecord[value], text1);}
             cell1.appendChild(text1);
-            function myfunc(){
-              let ans = dataRecord[value];
-              alert(ans);
-            }
+            
           }else if (value == 'duration'){
             let mins = Math.floor((dataRecord.duration)/60);
             let secs = (dataRecord.duration % 60);
@@ -166,16 +170,31 @@ function createTableBody(table,dataData, aid){
       text3.href = "albumview.html?id=" + newid;
       cell3.appendChild(text3);
 
-      let editCell = row.insertCell();
-      let editButton = document.createElement("a");
-      editButton.className="btn btn-primary";
-      // editButton.href="userRecord.html?id="+dataRecord.id;
-      editButton.innerHTML="Add";
-      editCell.appendChild(editButton);
-
+      if (isMyCookie != ""){
+        let editCell = row.insertCell();
+        let editButton = document.createElement("a");
+        editButton.className="btn btn-primary";
+        editButton.href="addtoplaylist.html?id=" + tid;
+        editButton.innerHTML="Add";
+        editCell.appendChild(editButton);
+      }
             }
 }}
 
 function goBack() {
   window.history.back();
+}
+
+function lyricsfunc(chicken, text1){
+  text1.setAttribute('data-toggle', 'modal');
+  text1.setAttribute('data-target', '#lyricModal');
+  document.querySelector("#lyricText").innerHTML = chicken;
+
+}
+
+//get current user's id
+function get_cookie_value(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
 }
