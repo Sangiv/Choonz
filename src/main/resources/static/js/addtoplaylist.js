@@ -8,10 +8,6 @@ function get_cookie_value(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-
-
-
-
 function getUserPlaylists(user_id){
 fetch('http://localhost:8082/users/read/' + user_id)
   .then(
@@ -69,8 +65,7 @@ function createTableHead(table, data){
       }}
   
   
-  }
-
+}
 
   function createTableBody(table, dataData){
     let trackids = [];
@@ -131,26 +126,10 @@ function createTableHead(table, data){
                 let cell = row.insertCell();
                 let text = document.createTextNode(obj[prop]);
                 cell.appendChild(text);
-                updated_play_name.push(obj.name);
-                
-
+                updated_play_name.push(obj.name);           
             }
-           
-            
-            // console.log(prop);
-            // console.log(obj[prop]);
-            
-            
-            
-
-            
-            
-            
           }
             trackids.push(innerid);
-
-            console.log(trackids);
-
 
             let cell2 = row.insertCell();
             let a2 = document.createElement('a');
@@ -159,15 +138,9 @@ function createTableHead(table, data){
             a2.onclick = function(){myfunc(updated_play_name[i], updated_artwork[i], updated_description[i], playlist_id[i], trackids[i]);}
             
             cell2.appendChild(a2);
-
-            
-
-            
         }
-        
-        }
+      }
     }
-    
 }
 
 function myfunc(updated_play_name, updated_artwork, updated_description, playlist_id, trackids){
@@ -211,17 +184,6 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
   }
   console.log(json_prefix);
 
-    
-
-    
-
-    
-    
-    
-
-    
-    
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
   
@@ -250,17 +212,19 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
         console.log('Request succeeded with JSON response', data);
         // document.getElementById("show-msg").innerHTML = "User details Updated";
         // $('#messageModal').modal('show');
+        window.alert("Successfully added!");
         goBack();
+        
+  
       })
       .catch(function (error) {
         console.log('Request failed', error);
         // document.getElementById("show-msg").innerHTML = "Failed to Update user";
         // $('#messageModal').modal('show');
+        window.alert("Request failed" + error);
       });
     
 }
-
-
 
 function goBack() {
   window.history.back();

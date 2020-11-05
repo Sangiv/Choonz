@@ -227,7 +227,6 @@ function myFunction() {
   }
 }
 
-
 function add(user_id){
   fetch('http://localhost:8082/users/read/' + user_id)
   .then(
