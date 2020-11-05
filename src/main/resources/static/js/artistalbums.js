@@ -78,6 +78,18 @@ function cardData(dataData){
         } else if (keys == 'tracks') {
 
         } else if (keys == 'cover'){
+        
+        } else if(keys == "name"){
+          let th = document.createElement("th");
+          let text = document.createTextNode("NAME");
+          th.appendChild(text);
+          row.appendChild(th);
+        
+        } else if(keys == "artist"){
+          let th = document.createElement("th");
+          let text = document.createTextNode("ARTIST");
+          th.appendChild(text);
+          row.appendChild(th);
 
         }  else {
             let th = document.createElement("th");
@@ -89,7 +101,7 @@ function cardData(dataData){
 
     }
     let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("View Album");
+    let editButtonTitle = document.createTextNode("VIEW ALBUM");
     editHead.appendChild(editButtonTitle);
     row.appendChild(editHead);
 

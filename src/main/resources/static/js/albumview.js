@@ -1,10 +1,10 @@
-
 const params = new URLSearchParams(window.location.search);
 
 for(let param of params){
     let id = param[1];
     getSingleRecord(id);
 }
+
 function getSingleRecord(id){
 fetch('http://localhost:8082/albums/read/' + id)
   .then(
@@ -14,20 +14,12 @@ fetch('http://localhost:8082/albums/read/' + id)
           response.status);
         return;
       }
-
       console.log('Fetch Success')
       response.json().then(function(dataData) {
-        console.log(dataData);
-
         let table = document.querySelector("table");
-        // let data = Object.keys(dataData);
-        // console.log(data);
-
         createTableHead(table,dataData);
         createTableBody(table,dataData);
         cardData(dataData);
-
-
       });
     }
   )
@@ -62,7 +54,7 @@ function cardData(dataData){
               let image = dataData.cover;
               let title = dataData.name;
               let description = dataData.artist.name;
-              let buttonText = "Artist's Albums";
+              let buttonText = "View Artist";
               let buttonLink = "artistalbums.html?id=" + dataData.artist.id;
               let button2Text = "Back";
               let button2Link = "";
@@ -79,9 +71,7 @@ function createTableBody(table, dataData){
         let arr = dataData[key];
         for(let i = 0; i < arr.length; i++){
           let obj = arr[i];
-        //   console.log(obj);
           let row = table.insertRow();
-  
           for(let prop in obj){
             if (prop == 'album'){
 
@@ -96,16 +86,23 @@ function createTableBody(table, dataData){
               function myfunc(){
               let ans = obj[prop];
               alert(ans);
-            }}
+            }} 
+            else if(prop == 'id'){
+
+            }
+            else if (prop == 'duration'){
+                let mins = Math.floor((obj.duration)/60);
+                let secs = (obj.duration % 60);
+                let duration = (mins + " m " + secs + " s");
+                let cell3 = row.insertCell();
+                let durationtext = document.createTextNode(duration);
+                cell3.appendChild(durationtext);
+            }
             else {
-            // console.log(prop);
-            // console.log(obj[prop]);
             let cell = row.insertCell();
             let text = document.createTextNode(obj[prop]);
             cell.appendChild(text);
             }
-
-            
           }
         }
         }
@@ -123,21 +120,22 @@ function createTableBody(table, dataData){
             //     console.log(obj[0].name);
             // }
             // console.log(arr)
-            let cell = row.insertCell();
-            let text = document.createTextNode("Id")
-            cell.appendChild(text);
+            
 
-            let cell2 = row.insertCell();
-            let text2 = document.createTextNode("Track Name");
-            cell2.appendChild(text2);
-
-            let cell3 = row.insertCell();
-            let text3 = document.createTextNode("Duration");
-            cell3.appendChild(text3);
-
-            let cell4 = row.insertCell();
-            let text4 = document.createTextNode("Lyrics");
-            cell4.appendChild(text4);
+            let title = document.createElement("th");
+            let titleText = document.createTextNode("TITLE");
+            title.appendChild(titleText);
+            row.appendChild(title);
+        
+            let duration = document.createElement("th");
+            let durationText = document.createTextNode("DURATION");
+            duration.appendChild(durationText);
+            row.appendChild(duration);
+        
+            let lyrics = document.createElement("th");
+            let lyricsText = document.createTextNode("LYRICS");
+            lyrics.appendChild(lyricsText);
+            row.appendChild(lyrics);
 
 
             // Leaving it like this until I find a good way to fix it
@@ -149,15 +147,9 @@ function createTableBody(table, dataData){
             // let text = document.createTextNode(data[keys]);
             // console.log(data[keys]);
             
-              
-
-      
-          }}
-      
-      
+          }}      
       }
-
-      function goBack() {
-        window.history.back();
-      }
+function goBack() {
+  window.history.back();
+}
       
