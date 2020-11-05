@@ -87,11 +87,12 @@
 <!--end of nav bar -->
   <body>
     <div class="container">
+      
       <h1>Genres</h1>
 
       <div hidden>
         <div id = "cards" class="cards">
-        <div id ="card" class="card" classname="card" style="width: 18rem">
+        <div id ="card" class="card" classname="card" style="max-width: 18rem; width: auto;">
           <a id="imageLink"><img width="250" height="250" class="card-img-top"></a>
           <div id = "body" class="card-body">
               <h5 id = "title" class = "card-title"><a id="titlelink"
@@ -105,8 +106,11 @@
 
       <p></p>
       
-      <div class="card-columns" style="text-align:center; margin: 0 auto;">
-      <div id ="showcards" class = "showcards"></div>
+      <div class="d-flex p-2">
+        <div class="card-columns" style="text-align:center; margin: 0 auto;">
+          <div id ="showcards" class = "showcards">
+          </div>
+        </div>
       </div>
 
       <p></p>
