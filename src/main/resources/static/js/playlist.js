@@ -100,7 +100,9 @@ function createCard(id, image, title, description, view_btn, view_btn_link) {
   cloneCard.id = ("globalCard" + id);
   
   cloneCard.querySelector("img").src = (image);
+  cloneCard.querySelector("#imglink").href = (view_btn_link);
   cloneCard.querySelector("#title").innerHTML = (title);
+  cloneCard.querySelector("#titlelink").href = (view_btn_link);
   cloneCard.querySelector("#text").innerHTML = (description);
   cloneCard.querySelector("#button").innerHTML = (view_btn);
   cloneCard.querySelector("#button").href = (view_btn_link);
@@ -181,7 +183,9 @@ function populateUserPlayWithData(play_id, play_name, play_art, play_description
   let card_body = document.querySelector("#myPlaylist").cloneNode(true);
 
   card_body.querySelector("img").src = (play_art);
+  card_body.querySelector("#imglink").href = ("playlistview.html?id="+play_id);
   card_body.querySelector("#title").innerHTML = (play_name);
+  card_body.querySelector("#titlelink").href = ("playlistview.html?id="+play_id);
   card_body.querySelector("p").innerHTML = (play_description);
   card_body.querySelector("#viewMyPlayBtn").href = ("playlistview.html?id="+play_id);
   
