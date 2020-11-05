@@ -66,7 +66,6 @@ fetch('http://localhost:8082/playlists/read')
   });
 
 function cardData(dataData) {
-  //TODO: get only other's playlist when user logged in
   for (let dataRecord of dataData) {
     singleIterationCheck = 0;
     for (value in dataRecord) {

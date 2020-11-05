@@ -3,6 +3,7 @@ var add_track_btn = document.getElementById("addToMyPlayBtn");
 var edit_play_btn = document.getElementById("editPlaylistBtn");
 var isMyCookie = document.cookie;
 
+var user_id = get_cookie_value("user_id")
 //if user logged in then change hidden button
 if (isMyCookie != "") {
   //   $(document).ready(function() {
@@ -234,9 +235,9 @@ function createTableBody(table, dataData) {
         for (let prop in obj) {
 
           if (prop == "duration") {
-            if(dataData.users.user_id != user_id){
+            // if(dataData.users.user_id != user_id){
               
-            }
+            // }
             let delete_track = playlist_t_row.insertCell();
             let delete_track_btn = document.createElement("BUTTON");
             delete_track_btn.innerHTML = "Remove"

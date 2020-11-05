@@ -124,10 +124,6 @@ function createTableBody(table,dataData){
               let text1 = document.createElement("a");
               text1.className = "btn btn-primary";
               text1.innerHTML= "View";
-              
-              
-              
-              // text1.onclick = function(){lyricsfunc(lyricsALL[i]);}
               text1.onclick = function(){lyricsfunc(dataRecord[value], text1);}
               cell1.appendChild(text1);
 
