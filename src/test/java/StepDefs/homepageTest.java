@@ -40,7 +40,7 @@ public class homepageTest {
 	@Then("I will land on the HomePage")
 	public void i_will_land_on_the_HomePage() {
 		driver.get("http://localhost:8082/index.html");
-		assertEquals("Music Library", driver.getTitle());
+		assertEquals("Choonz", driver.getTitle());
 	}
 	
 	@After
