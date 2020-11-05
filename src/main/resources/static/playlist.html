@@ -92,7 +92,7 @@
   <div class="container-fluid">
     <!-- my playlist section -->
 
-    <div id="userLoggedInSection">    
+    <div id="userLoggedInSection" class="container">    
     <h1>
       My Playlists
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewPlaylistModal"
@@ -103,7 +103,7 @@
 
     <div hidden>
       <div id="myPlaylist" class="col mb-4">
-        <div class="card">
+        <div class="card" style="width: 18rem">
           <img class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 id="title" class="card-title"></h5>
@@ -126,17 +126,24 @@
       </div>
     </div>
 
-    <div id="showMycards" class="row row-cols-1 row-cols-md-6"></div>
+    <div class="d-flex p-2">
+      <div class="card-columns" style="text-align:center; margin: 0 auto;">
+        <div id ="showMycards" class = "showcards">
+        </div>
+      </div>
+    </div>
+    <!-- <div id="showMycards" class="row row-cols-1 row-cols-md-6"></div> -->
   </div>
+
     <!-- end of my playlist section -->
 
     <!-- global playlist section -->
-    <div id="guestLoggedInSection">    
+    <div id="guestLoggedInSection" class="container">    
     <h1>Global Playlists</h1>
 
     <div hidden>
       <div id="globalPlaylist" class="col mb-4">
-        <div class="card">
+        <div class="card" style="width: 18rem">
           <img class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 id="title" class="card-title"></h5>
@@ -149,7 +156,11 @@
       </div>
     </div>
 
-    <div id="showcards" class="row row-cols-1 row-cols-md-6"></div>
+    <div class="d-flex p-2">
+      <div class="card-columns" style="text-align:center; margin: 0 auto;">
+        <div id ="showcards" class = "showcards">
+        </div>
+      </div>
     </div>
     <!-- end of guestLogged div-->
   </div>
