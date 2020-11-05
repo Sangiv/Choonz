@@ -115,7 +115,8 @@ function cardData(dataData, aid){
 function createTableBody(table,dataData, aid){
   for (let dataRecord of dataData){
     if(dataRecord.album.artist.id == aid){
-      let newid = dataRecord.album.id;   
+      let newid = dataRecord.album.id;  
+      let tid = dataRecord.id; 
       let row = table.insertRow();
       for (value in dataRecord){
           if (value == 'id'){
@@ -166,7 +167,7 @@ function createTableBody(table,dataData, aid){
       let editCell = row.insertCell();
       let editButton = document.createElement("a");
       editButton.className="btn btn-primary";
-      // editButton.href="userRecord.html?id="+dataRecord.id;
+      editButton.href="addtoplaylist.html?id=" + tid;
       editButton.innerHTML="Add";
       editCell.appendChild(editButton);
 
