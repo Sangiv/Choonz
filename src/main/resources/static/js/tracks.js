@@ -1,4 +1,6 @@
 let user_id = get_cookie_value("user_id");
+var isMyCookie = document.cookie;
+
 fetch('http://localhost:8082/tracks/read')
   .then(
     function(response) {
@@ -94,10 +96,13 @@ for (let param of params) {
     artist.appendChild(artistview);
     row.appendChild(artist);
 
-    let editHead = document.createElement("th");
-    let editButtonTitle = document.createTextNode("ADD");
-    editHead.appendChild(editButtonTitle);
-    row.appendChild(editHead);
+    if (isMyCookie != ""){
+      let editHead = document.createElement("th");
+      let editButtonTitle = document.createTextNode("ADD");
+      editHead.appendChild(editButtonTitle);
+      row.appendChild(editHead);
+    }
+
 
 }
 
@@ -176,30 +181,19 @@ function createTableBody(table,dataData){
         artistbutton.innerHTML = "View";
         artistcell.appendChild(artistbutton);
 
-        let editCell = row.insertCell();
-        let editButton = document.createElement("a");
-        editButton.className="btn btn-success";
-        // editButton.href="userRecord.html?id="+dataRecord.id;
-        editButton.innerHTML="Add";
-        editButton.id = dataRecord.id;
-        editButton.href = "addtoplaylist.html?id=" + dataRecord.id;
-        // editButton.setAttribute('data-toggle', 'modal');
-        // editButton.setAttribute('data-target', '#exampleModal');
-        editCell.appendChild(editButton);
-
-        
-       
-        
-
-        
-
-
-    }
-        
-        // add(user_id);
-        
-
-        
+        if (isMyCookie != ""){
+          let editCell = row.insertCell();
+          let editButton = document.createElement("a");
+          editButton.className="btn btn-success";
+          // editButton.href="userRecord.html?id="+dataRecord.id;
+          editButton.innerHTML="Add";
+          editButton.id = dataRecord.id;
+          editButton.href = "addtoplaylist.html?id=" + dataRecord.id;
+          // editButton.setAttribute('data-toggle', 'modal');
+          // editButton.setAttribute('data-target', '#exampleModal');
+          editCell.appendChild(editButton);
+        }
+    }     
 }
 
 function myFunction() {
