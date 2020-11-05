@@ -53,7 +53,8 @@ fetch('http://localhost:8082/playlists/read')
 
       console.log('Fetch Success')
       response.json().then(function (dataData) {
-        console.log(dataData);
+        console.log(dataData)
+        
         cardData(dataData);
 
 
@@ -72,7 +73,15 @@ function cardData(dataData) {
       if (typeof dataRecord[value] === 'object') {
         if (singleIterationCheck != 0) {
 
-        } else {
+        }
+
+        else if(dataRecord.users.user_id == user_id){
+
+        }
+
+         else {
+          
+
           let id = dataRecord.id;
           let image = dataRecord.artwork;
           let title = dataRecord.name;

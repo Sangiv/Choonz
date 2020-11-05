@@ -95,6 +95,9 @@ function createTableBody(table, dataData){
               let ans = obj[prop];
               alert(ans);
             }} 
+            else if(prop == 'id'){
+
+            }
             else if (prop == 'duration'){
                 let mins = Math.floor((obj.duration)/60);
                 let secs = (obj.duration % 60);
@@ -125,10 +128,7 @@ function createTableBody(table, dataData){
             //     console.log(obj[0].name);
             // }
             // console.log(arr)
-            let id = document.createElement("th");
-            let idText = document.createTextNode("ID");
-            id.appendChild(idText);
-            row.appendChild(id);
+            
 
             let title = document.createElement("th");
             let titleText = document.createTextNode("TITLE");

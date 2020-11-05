@@ -126,6 +126,7 @@ function getPlaylistView(id) {
 
         console.log('Fetch Success')
         response.json().then(function (dataData) {
+          console.log(dataData);
           cardData(dataData);
 
           let table = document.querySelector("table");
@@ -142,8 +143,9 @@ function getPlaylistView(id) {
 }
 
 
-function createCard(id, image, title, description,) {
+function createCard(id, image, title, description, dataData) {
   //updates cloneCard with new information
+  
   let cards = document.querySelector("#showcards");
   let cloneCard = document.querySelector("#globalPlaylist").cloneNode(true);
   cloneCard.id = ("card" + id);
@@ -154,7 +156,13 @@ function createCard(id, image, title, description,) {
     goBack();
   };
   cloneCard.querySelector("#backBtn").innerHTML = "Back";
+  if(dataData.users.user_id != user_id){
+    cloneCard.querySelector("#deletePlay").remove();
+    cloneCard.querySelector("#editPlaylistBtn").remove();
+    cloneCard.querySelector("#addToMyPlayBtn").remove();
+  }
   cards.appendChild(cloneCard);
+
 }
 
 function cardData(dataData) {
@@ -168,7 +176,7 @@ function cardData(dataData) {
         let image = dataData.artwork;
         let title = dataData.name;
         let description = dataData.description;
-        createCard(id, image, title, description);
+        createCard(id, image, title, description, dataData);
         singleIterationCheck++;
       }
     }
@@ -182,23 +190,29 @@ function createTableHead(table, dataData) {
   for (let value in dataData) {
     if (value == 'tracks') {
 
-      let cell = row.insertCell()
-      let text = document.createTextNode("ID")
+      let cell = document.createElement("th");
+      let text = document.createTextNode("TITLE")
+      cell.appendChild(text);
+      row.appendChild(cell);
       cell.className = ("hide_id");
 
-      cell.appendChild(text);
+      
 
-      let cell2 = row.insertCell();
-      let text2 = document.createTextNode("Track Name");
+      let cell1 = document.createElement("th");
+      let text1 = document.createTextNode("ARTIST")
+      cell1.appendChild(text1);
+      row.appendChild(cell1);
+
+      let cell2 = document.createElement("th");
+      let text2 = document.createTextNode("ALBUM")
       cell2.appendChild(text2);
-
-      let cell3 = row.insertCell();
-      let text3 = document.createTextNode("Artist Name");
+      row.appendChild(cell2);
+      if(dataData.users.user_id == user_id){
+      let cell3 = document.createElement("th");
+      let text3 = document.createTextNode("REMOVE")
       cell3.appendChild(text3);
-
-      let cell4 = row.insertCell();
-      let text4 = document.createTextNode("Album Name");
-      cell4.appendChild(text4);
+      row.appendChild(cell3);
+      }
     }
   }
 }
@@ -216,10 +230,12 @@ function createTableBody(table, dataData) {
         for (let prop in obj) {
 
           if (prop == "duration") {
+            if(dataData.users.user_id != user_id){
+            }else{
             let delete_track = playlist_t_row.insertCell();
             let delete_track_btn = document.createElement("BUTTON");
-            delete_track_btn.innerHTML = "DELETE"
-            delete_track_btn.className = "btn btn-light"
+            delete_track_btn.innerHTML = "Remove"
+            delete_track_btn.className = "btn btn-danger"
             delete_track_btn.id = obj.id
 
             delete_track_btn.addEventListener('click', function(){
@@ -227,7 +243,7 @@ function createTableBody(table, dataData) {
               update_play_single_track_removal(playlist_id,obj.id);
             });
             delete_track.append(delete_track_btn);
-
+          }
           } else if (prop == "lyrics") {
 
           } else if (prop == "album") {

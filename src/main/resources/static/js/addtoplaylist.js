@@ -250,7 +250,7 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
         console.log('Request succeeded with JSON response', data);
         // document.getElementById("show-msg").innerHTML = "User details Updated";
         // $('#messageModal').modal('show');
-  
+        goBack();
       })
       .catch(function (error) {
         console.log('Request failed', error);
