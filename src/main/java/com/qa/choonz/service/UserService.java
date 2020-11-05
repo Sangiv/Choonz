@@ -26,19 +26,9 @@ public class UserService {
     private UserDTO mapToDTO(Users users){
         return this.mapper.map(users, UserDTO.class);
     }
-    private Users mapFromDTO(UserDTO userDTO){
-        return this.mapper.map(userDTO, Users.class);
-    }
-    //create
-//    public UserDTO createUser(UserDTO userDTO){
-//        Users toSave = this.mapFromDTO(userDTO);
-//        Users saved = this.repo.save(toSave);
-//        return this.mapToDTO(saved);
-//    }
     public UserDTO createUser(Users user){
         Users created = this.repo.save(user);
-        UserDTO mapped = this.mapToDTO(created);
-        return mapped;
+        return this.mapToDTO(created);
     }
     //readAll
     public List<UserDTO> readAllUsers(){

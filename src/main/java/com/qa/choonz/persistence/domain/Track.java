@@ -1,6 +1,5 @@
 package com.qa.choonz.persistence.domain;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
 @JsonIgnoreProperties(value = { "playlist" })
@@ -44,16 +42,12 @@ public class Track {
     @ManyToMany(mappedBy = "tracks", cascade = CascadeType.ALL)
     private List<Playlist> playlist = new ArrayList<>();
 
-
-
-    // in seconds
     private int duration;
 
     private String lyrics;
 
     public Track() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public List<Playlist> getPlaylist() {

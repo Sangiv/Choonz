@@ -43,18 +43,7 @@ public class TrackDTO {
 
     public TrackDTO() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-//	public TrackDTO(Long id, String name, Album album, Playlist playlist, int duration, String lyrics) {
-//		super();
-//		this.id = id;
-//		this.name = name;
-//		this.album = album;
-//		this.playlist = playlist;
-//		this.duration = duration;
-//		this.lyrics = lyrics;
-//	}
 
 	public TrackDTO(Long id, String name) {
 		super();
@@ -86,14 +75,6 @@ public class TrackDTO {
 		this.album = album;
 	}
 
-//	public Playlist getPlaylist() {
-//		return playlist;
-//	}
-//
-//	public void setPlaylist(Playlist playlist) {
-//		this.playlist = playlist;
-//	}
-
 	public int getDuration() {
 		return duration;
 	}
@@ -112,16 +93,14 @@ public class TrackDTO {
 
 	@Override
 	public String toString() {
-//		return "TrackDTO [id=" + id + ", name=" + name + ", album=" + album + ", playlist=" + playlist + ", duration="
-//				+ duration + ", lyrics=" + lyrics + "]";
-	
-	
-	StringBuilder builder = new StringBuilder();
-    builder.append("TrackDTO [id=").append(id).append(", name=").append(name).append(", album=")
-            .append(album).append(", playlist=").append(playlist).append(", duration=").append(duration).append(", lyrics=").append(lyrics)
-            .append("]");
-    return builder.toString();
-    
+		return "TrackDTO{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", album=" + album +
+				", playlist=" + playlist +
+				", duration=" + duration +
+				", lyrics='" + lyrics + '\'' +
+				'}';
 	}
 
 	@Override
@@ -172,7 +151,7 @@ public class TrackDTO {
 			return false;
 		return true;
 	}
-    
-    
+
+
 
 }
