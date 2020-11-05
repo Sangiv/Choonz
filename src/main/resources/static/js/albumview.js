@@ -35,7 +35,8 @@ function createCard(id, image, title, buttonText, buttonLink, description, butto
   cloneCard.id = ("card" + id);
   cloneCard.querySelector("img").src=(image);
   cloneCard.querySelector("#title").innerHTML = (title);
-  cloneCard.querySelector('#text').innerHTML = (description);
+  cloneCard.querySelector('#textlink').innerHTML = (description);
+  cloneCard.querySelector('#textlink').href = (buttonLink);
   cloneCard.querySelector("#button").innerHTML = (buttonText);
   cloneCard.querySelector("#button").href = (buttonLink);
   cloneCard.querySelector("#button2").innerHTML = (button2Text);
