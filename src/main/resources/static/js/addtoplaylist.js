@@ -213,6 +213,8 @@ function myfunc(updated_play_name, updated_artwork, updated_description, playlis
         // document.getElementById("show-msg").innerHTML = "User details Updated";
         // $('#messageModal').modal('show');
         window.alert("Successfully added!");
+        goBack();
+        
   
       })
       .catch(function (error) {
