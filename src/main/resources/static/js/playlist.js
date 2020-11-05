@@ -10,14 +10,14 @@ if(isMyCookie != ""){
     //   userBtn.style.display = 'block';
     //   guestBtn.style.display = 'block';
     // };
-    $(document).ready(function() {
+    $(this).ready(function() {
       $(guestBtn).show();
       $(userBtn).show();
 
   });
 }
 else{
-    $(document).ready(function() {
+    $(this).ready(function() {
       $(guestBtn).show();
       $(userBtn).hide();
 
@@ -31,17 +31,16 @@ document.getElementById("createNewPlayBtn").addEventListener('click', function (
   var play_description = document.getElementById("description").value;
   var play_art = document.getElementById("artwork").value;
 
-  console.log(play_name, play_description, play_art, user_id)
   createNewPlaylist(user_id, play_name, play_art, play_description);
 })
 
-document.getElementById("confirmedDeleteBtn").addEventListener('click', function(stop){
-  //get playlist id
-  //then do a fetch delete
-  console.log("delete me")
+// document.getElementById("confirmedDeleteBtn").addEventListener('click', function(stop){
+//   //get playlist id
+//   //then do a fetch delete
+//   console.log("delete me")
 
 
-})
+// })
 
 fetch('http://localhost:8082/playlists/read')
   .then(
@@ -78,13 +77,13 @@ function cardData(dataData) {
           let image = dataRecord.artwork;
           let title = dataRecord.name;
           let description = dataRecord.description;
-          let buttonText = "View";
-          let buttonLink = "playlistview.html?id=" + dataRecord.id;
+          let view_btn = "View";
+          let view_btn_link = "playlistview.html?id=" + dataRecord.id;
           // let button2Text = "Edit My Playlist";
           // let button2Link = "playlistedit.html?id=" + dataRecord.id;
           // let deletBtn = dataRecord.id;
           // createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link, deletBtn);
-          createCard(id, image, title, description, buttonText, buttonLink);
+          createCard(id, image, title, description, view_btn, view_btn_link);
           singleIterationCheck++;
         }
       }
@@ -93,7 +92,7 @@ function cardData(dataData) {
   }
 }
 
-function createCard(id, image, title, description, buttonText, buttonLink) {
+function createCard(id, image, title, description, view_btn, view_btn_link) {
   //updates cloneCard with new information
   let cards = document.getElementById("showcards");
   let cloneCard = document.querySelector("#globalPlaylist").cloneNode(true);
@@ -103,8 +102,8 @@ function createCard(id, image, title, description, buttonText, buttonLink) {
   cloneCard.querySelector("img").src = (image);
   cloneCard.querySelector("#title").innerHTML = (title);
   cloneCard.querySelector("#text").innerHTML = (description);
-  cloneCard.querySelector("#button").innerHTML = (buttonText);
-  cloneCard.querySelector("#button").href = (buttonLink);
+  cloneCard.querySelector("#button").innerHTML = (view_btn);
+  cloneCard.querySelector("#button").href = (view_btn_link);
   // cloneCard.querySelector("#button2").innerHTML = (button2Text);
   // cloneCard.querySelector("#button2").href = (button2Link);
   // cloneCard.querySelector("#deletePlay").innerHTML = (deletePlayBtn);
@@ -180,7 +179,7 @@ function getUserPlaylist(myData) {
 function populateUserPlayWithData(play_id, play_name, play_art, play_description){
   let card_holder = document.querySelector("#showMycards");
   let card_body = document.querySelector("#myPlaylist").cloneNode(true);
-  console.log(play_name,play_art, play_description)
+
   card_body.querySelector("img").src = (play_art);
   card_body.querySelector("#title").innerHTML = (play_name);
   card_body.querySelector("p").innerHTML = (play_description);
@@ -188,11 +187,42 @@ function populateUserPlayWithData(play_id, play_name, play_art, play_description
   
   // card_body.querySelector("#addToMyPlayBtn").href = ("track.html/");
   card_body.querySelector("#addToMyPlayBtn").href = ("track.html");
+  card_body.querySelector("#deleteMyPlayBtn").addEventListener('click', function(){
+    deleteFullPlaylist(play_id);
+  })
 
 
 
   card_holder.append(card_body)
 }
+function deleteFullPlaylist(playlist_id) {
+  $('#deletePlayModal').on('shown.bs.modal', function (e) {
+
+    // var $button = $(e.target); // The clicked button
+    // $(this).closest('.modal').one('hidden.bs.modal', function() {
+    //   // Fire if the button element 
+    //   console.log('The button that closed the modal is: ', $button);
+    // });
+    document.getElementById("confirmedDeleteBtn").addEventListener('click', function(stop){
+      fetch("http://localhost:8082/playlists/delete/" + playlist_id, {
+        method: 'delete',
+        headers: {
+          "Content-type": "application/json"
+        },
+      })
+        .then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+          window.location.href = "playlist.html"
+        })
+        .catch(function (error) {
+          console.log('Request failed', error);
+
+        });
+    })
+  
+  });
+}
+
 
 
 //get current user's id

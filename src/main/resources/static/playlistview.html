@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- <link href="/css/style.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -104,7 +103,7 @@
                 <p id="text" class="card-text"></p>
                 <button id="editPlaylistBtn" class="btn btn-secondary" data-toggle="modal"
                   data-target="#editPlayModal">Edit</button>
-                <a id="backBtn" class="btn btn-dark"></a>
+                <a id="backBtn" class="btn btn-light"></a>
                 <a id = "addToMyPlayBtn" class="btn btn-primary" href="track.html">Add</a>
                 <!-- a button to delete the whole playlist -->
                 <button id="deletePlay" class="btn btn-danger" data-toggle="modal"
@@ -122,7 +121,20 @@
         <div class="col-sm-8">
           <!-- all the table contents -->
           <h1>Track List</h1>
-          <table id = "track_table" class="table table-dark table-hover"></table>
+
+          <!-- draft model for drop down option -->
+          <div  hidden>
+            <div id ="showEditOption" class="btn-group">
+              <a id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"></a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                <a id= "viewArtistBtn" class="dropdown-item" type="button"  href="#">View Artist</a>
+                <a id= "viewAlbumBtn" class="dropdown-item">View Album</a>
+                <button id= "deleteTrackBtn" class="dropdown-item" type="button">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <table id = "myTable" class="table table-dark table-hover"></table>
         </div>
 
       </div>
