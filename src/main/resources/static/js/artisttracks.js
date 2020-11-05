@@ -1,3 +1,6 @@
+var user_id = get_cookie_value("user_id");
+var isMyCookie = document.cookie;
+
 const params = new URLSearchParams(window.location.search);
 
 for(let param of params){
@@ -105,10 +108,13 @@ function cardData(dataData, aid){
     viewalbum.appendChild(viewalbumText);
     row.appendChild(viewalbum);
 
-    let add = document.createElement("th");
-    let addText = document.createTextNode("ADD");
-    add.appendChild(addText);
-    row.appendChild(add);
+    if (isMyCookie != ""){
+      let add = document.createElement("th");
+      let addText = document.createTextNode("ADD");
+      add.appendChild(addText);
+      row.appendChild(add);
+    }
+
 
 }
 
@@ -164,13 +170,14 @@ function createTableBody(table,dataData, aid){
       text3.href = "albumview.html?id=" + newid;
       cell3.appendChild(text3);
 
-      let editCell = row.insertCell();
-      let editButton = document.createElement("a");
-      editButton.className="btn btn-primary";
-      editButton.href="addtoplaylist.html?id=" + tid;
-      editButton.innerHTML="Add";
-      editCell.appendChild(editButton);
-
+      if (isMyCookie != ""){
+        let editCell = row.insertCell();
+        let editButton = document.createElement("a");
+        editButton.className="btn btn-primary";
+        editButton.href="addtoplaylist.html?id=" + tid;
+        editButton.innerHTML="Add";
+        editCell.appendChild(editButton);
+      }
             }
 }}
 
@@ -183,4 +190,11 @@ function lyricsfunc(chicken, text1){
   text1.setAttribute('data-target', '#lyricModal');
   document.querySelector("#lyricText").innerHTML = chicken;
 
+}
+
+//get current user's id
+function get_cookie_value(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
 }
