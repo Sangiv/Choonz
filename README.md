@@ -87,8 +87,8 @@ time to retrieve the request. Throuput was aslo negativly affected for the same 
 
 ## Deployment
 
-Fork repo, from the command line change directory to ->IMS-Starter\target and run the .jar file using: java -jar ims-0.0.1-jar-with-dependencies.jar
-Use mvn clean package in IMS-Starter to build out application again.
+Fork repo, from the command line change directory to ->Choonz\target and run the Choonz.jar file using: java -jar choonz-0.0.1-jar-with-dependencies.jar
+Use mvn clean package in Choonz to build out application again.
 
 ## Built With
 
