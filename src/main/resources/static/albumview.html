@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Albums</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="navbar-toggler-right">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+    </div>
+  
+    <div class="collapse navbar-collapse flex-column " id="navbar">
+  
+      <ul class="navbar-nav  w-100 justify-content-center px-3 py-md-3">
+  
+        <a class="navbar-brand" href="index.html" style="color: #ede68a; font-size: 30px; font-weight: 700;">Choonz</a>
+  
+        <form class="form-inline">
+          <input id="searchField" class="form-control mr-sm-2" type="search" onsearch="search()" placeholder="Search" aria-label="Search">
+          <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" onclick="search()" type="button" style="margin: 10px;">Search</button>
+  
+          <div id="guestLoggedInBtn">
+            <li class="nav-item" role="presentation" style = "list-style-type: none;">
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                  Guest-Login
+                </button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                  <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#userLoginModal" >Log in</button>
+                  <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >Create Account</button>
+                </div>
+              </div>
+            </li>
+            </div>
+    
+            <div id="userLoggedInBtn">
+              <li class="nav-item" role="presentation" style = "list-style-type: none;">
+                <div class="btn-group">
+                  <button id="myProfile" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    User
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                    <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
+                    <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
+                    <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
+                  </div>
+                </div>
+              </li>
+            </div>
+        </form>
+  
+  
+      </ul>
+      <ul class="navbar-nav justify-content-center w-100 bg-secondary px-3 py-md-3">
+        <class class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="playlist.html">Playlists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artist.html">Artists</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="album.html">Albums<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="genre.html">Genres</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="track.html">Tracks</a>
+          </li>
+        </class>
+    </ul>
+    </div>
+  </nav>
+<!--end of nav bar -->
+  <body>
+<!-- /main -->
+<div class="container">
+  <h1 style="font-size: 350%; text-align: center;">Album</h1>
+
+  <div hidden>
+    <div id = "cards" class="cards">
+      <div id ="card" class="card" classname="card" style="width: 18rem">
+        <img width="250" height="250" class="card-img-top">
+        <div id = "body" class="card-body">
+            <h5 id = "title" class = "card-title"></h5>
+            <p id = "text" class = "card-text"><a id="textlink"  style="color: white; text-decoration: none; background-color: none;"></a></p>
+            <a id = "button" class = "btn btn-primary"></a>
+            <a id = "button2" class = "btn btn-secondary"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <p></p>
+  <div class="card-columns d-flex justify-content-center" style="text-align:center;">
+  <div id ="showcards" class = "showcards"></div>
+  </div>
+</div>
+<br>
+<br>
+
+
+<div class="container">
+  <h1>Tracks</h1>
+  
+  <table class="table table-dark table-bordered"></table>
+<br>
+<br>
+
+ <!-- create account modal -->
+ <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-create" class="card-text">With supporting text below as a natural lead-in to additional
+        content.</p>
+      <div class="modal-body">
+        <form class="create-user" action="index.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"> </i> User
+                Name</span>
+            </div>
+            <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"> </i>
+                Password</span>
+            </div>
+            <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- message modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- user message go in this heading -->
+        <h5 id="show-msg"></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- update user profile -->
+<div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="user-profile" action="todo.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">User Name</span></>
+            </div>
+            <input id="user_name" name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Password</span></l>
+            </div>
+            <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
+              required></input>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="delete-user" type="submit" class="btn btn-danger">Delete Account</button>
+          <button id="update-user" type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- user log in modal -->
+<div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <h5 class="card-title">Log in</h5> -->
+        <p class="card-text">Use your credential to log in</p>
+        <form class="log-in" action="index.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">UserID</span>
+            </div>
+            <input name="userId" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Password</span></>
+            </div>
+            <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="modal-footer">
+            <p id="login-msg" class="card-text"></p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="lyricModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lyrics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id = "user">
+        <h5 id = "lyricText"></h5>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src= "js/albumview.js"></script>
+    <script src= "js/search.js"></script>
+    <script src="js/userAuth.js"></script>
+    <script src="js/newUser.js"></script>
+    <script src="js/crudUser.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

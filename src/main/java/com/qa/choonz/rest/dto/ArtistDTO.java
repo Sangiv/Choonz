@@ -1,5 +1,6 @@
 package com.qa.choonz.rest.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,27 +8,33 @@ import com.qa.choonz.persistence.domain.Album;
 
 public class ArtistDTO {
 
-    private long id;
+    private Long id;
     private String name;
-    private List<Album> albums;
+    private List<Album> albums = new ArrayList<>();
 
     public ArtistDTO() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public ArtistDTO(long id, String name, List<Album> albums) {
+    public ArtistDTO(Long id, String name, List<Album> albums) {
         super();
         this.id = id;
         this.name = name;
         this.albums = albums;
     }
 
-    public long getId() {
+    public ArtistDTO(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

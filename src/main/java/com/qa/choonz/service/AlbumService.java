@@ -41,17 +41,20 @@ public class AlbumService {
         return this.mapToDTO(found);
     }
 
-    public AlbumDTO update(Album album, long id) {
+    public AlbumDTO update(AlbumDTO album, long id) {
         Album toUpdate = this.repo.findById(id).orElseThrow(AlbumNotFoundException::new);
-        toUpdate.setName(toUpdate.getName());
-        toUpdate.setTracks(toUpdate.getTracks());
-        toUpdate.setArtist(toUpdate.getArtist());
-        toUpdate.setCover(toUpdate.getCover());
+        toUpdate.setName(album.getName());
+        toUpdate.setTracks(album.getTracks());
+        toUpdate.setArtist(album.getArtist());
+        toUpdate.setCover(album.getCover());
         Album updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
 
     public boolean delete(long id) {
+        if (!this.repo.existsById(id)) {
+            throw new AlbumNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }

@@ -1,11 +1,13 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,35 +16,41 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
+@JsonIgnoreProperties(value = { "tracks" })
 public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 100)
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
-    private List<Track> tracks;
+    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "album")
+    private List<Track> tracks = new ArrayList<>();
 
     @ManyToOne
     private Artist artist;
 
     @ManyToOne
+    @JsonBackReference(value = "genre")
     private Genre genre;
 
     private String cover;
 
     public Album() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-    public Album(long id, @NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre,
+    public Album(Long id, @NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre,
             String cover) {
         super();
         this.id = id;
@@ -53,11 +61,16 @@ public class Album {
         this.cover = cover;
     }
 
-    public long getId() {
+    public Album(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

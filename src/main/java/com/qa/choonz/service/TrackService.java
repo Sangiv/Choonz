@@ -3,6 +3,7 @@ package com.qa.choonz.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.qa.choonz.persistence.domain.Playlist;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +37,12 @@ public class TrackService {
         return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public TrackDTO read(long id) {
+    public TrackDTO read(Long id) {
         Track found = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
         return this.mapToDTO(found);
     }
 
-    public TrackDTO update(Track track, long id) {
+    public TrackDTO update(TrackDTO track, Long id) {
         Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
         toUpdate.setName(track.getName());
         toUpdate.setAlbum(track.getAlbum());
@@ -52,7 +53,10 @@ public class TrackService {
         return this.mapToDTO(updated);
     }
 
-    public boolean delete(long id) {
+    public boolean delete(Long id) {
+        if (!this.repo.existsById(id)) {
+            throw new TrackNotFoundException();
+        }
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
