@@ -236,7 +236,7 @@ function createTableBody(table, dataData) {
           if (prop == "duration") {
             if(dataData.users.user_id != user_id){
               
-            }
+            }else if(dataData.users.user_id == user_id){
             let delete_track = playlist_t_row.insertCell();
             let delete_track_btn = document.createElement("BUTTON");
             delete_track_btn.innerHTML = "Remove"
@@ -248,6 +248,7 @@ function createTableBody(table, dataData) {
               update_play_single_track_removal(playlist_id,obj.id);
             });
             delete_track.append(delete_track_btn);
+          }
 
           } else if (prop == "lyrics") {
 
