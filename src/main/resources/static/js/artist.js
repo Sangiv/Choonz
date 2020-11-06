@@ -34,8 +34,9 @@ fetch('http://localhost:8082/artists/read')
     let cloneCard = document.querySelector("div.card").cloneNode(true);
     cloneCard.id = ("card" + id);
     cloneCard.querySelector("img").src=(image);
-    cloneCard.querySelector("#title").innerHTML = (title);
-    // cloneCard.querySelector("#text").innerHTML = (description);
+    cloneCard.querySelector('#imglink').href = (buttonLink);
+    cloneCard.querySelector("#titlelink").innerHTML = (title);
+    cloneCard.querySelector("#titlelink").href = (buttonLink);
     cloneCard.querySelector("#button").innerHTML = (buttonText);
     cloneCard.querySelector("#button").href = (buttonLink);
     cloneCard.querySelector("#button2").innerHTML = (button2Text);
@@ -46,9 +47,12 @@ fetch('http://localhost:8082/artists/read')
   function cardData(dataData){
 
     for (let dataRecord of dataData){
-
+        singleIterationCheck = 0;
         for (value in dataRecord){
             if (typeof dataRecord[value] === 'object'){
+              if(singleIterationCheck != 0){
+
+              } else {
                 let id = dataRecord.id;
                 let image = dataRecord.albums[0].cover;
                 let title = dataRecord.name;
@@ -58,7 +62,8 @@ fetch('http://localhost:8082/artists/read')
                 let button2Text = "Tracks";
                 let button2Link = "artisttracks.html?id="+dataRecord.id;
                 createCard(id, image, title, description, buttonText, buttonLink, button2Text, button2Link);
-            }
+                singleIterationCheck++;
+            }}
 
         }
     }

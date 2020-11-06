@@ -34,7 +34,10 @@ public class Track {
     private String name;
 
     @ManyToOne
-    @JsonBackReference(value = "album")
+    //removing this backreference is necessary to
+    //pull album and artist information out of a track
+    //in the frontend
+    //@JsonBackReference(value = "album")
     private Album album;
     
     @ManyToOne
